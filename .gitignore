@@ -1,0 +1,31 @@
+# Data files (user uploads separately)
+data/
+*.npy
+*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Model checkpoints
+results/*/best_model.pt
+results/*/confusion_matrix.png
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# HuggingFace cache
+.cache/

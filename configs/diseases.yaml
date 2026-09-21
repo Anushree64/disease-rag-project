@@ -1,0 +1,42 @@
+diseases:
+  breast_cancer:
+    root: data/breast_cancer
+    classes: [benign, malignant]
+    epochs: 15
+    batch_size: 32
+    freeze_epochs: 3
+
+  cad:
+    root: data/cad
+    classes: [normal, abnormal]
+    epochs: 30
+    batch_size: 16
+    freeze_epochs: 5
+
+  diabetes:
+    root: data/diabetes
+    classes: [Healthy, "Mild DR", "Moderate DR", "Proliferate DR", "Severe DR"]
+    epochs: 20
+    batch_size: 32
+    freeze_epochs: 4
+
+  ckd:
+    root: data/ckd
+    classes: [Normal, Cyst, Tumor, Stone]
+    epochs: 20
+    batch_size: 32
+    freeze_epochs: 4
+
+  nafld:
+    root: data/nafld
+    classes: [normal, fatty_liver]
+    epochs: 20
+    batch_size: 16
+    freeze_epochs: 4
+
+  parkinsons:
+    root: data/parkinsons
+    classes: [healthy, parkinson]
+    epochs: 20
+    batch_size: 16
+    freeze_epochs: 4
