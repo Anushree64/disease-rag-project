@@ -1,0 +1,27 @@
+{
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "auroc": 1.0,
+  "confusion_matrix": [
+    [
+      378,
+      0
+    ],
+    [
+      0,
+      767
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n      benign       1.00      1.00      1.00       378\n   malignant       1.00      1.00      1.00       767\n\n    accuracy                           1.00      1145\n   macro avg       1.00      1.00      1.00      1145\nweighted avg       1.00      1.00      1.00      1145\n",
+  "class_names": [
+    "benign",
+    "malignant"
+  ],
+  "num_test_samples": 1145,
+  "training_time_seconds": 7.506025552749634,
+  "disease": "breast_cancer",
+  "backbone": "efficientnet_b0",
+  "classifier": "xgboost"
+}

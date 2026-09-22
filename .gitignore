@@ -1,31 +1,13 @@
-# Data files (user uploads separately)
-data/
-*.npy
-*.csv
-
-# Python
+# Python bytecode
 __pycache__/
-*.pyc
-*.pyo
-*.egg-info/
-dist/
-build/
-.eggs/
+*.py[cod]
 
-# Model checkpoints
-results/*/best_model.pt
-results/*/confusion_matrix.png
+# Virtual environments
+.venv/
+venv/
+ENV/
 
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# HuggingFace cache
-.cache/
+# Large binary files & temp outputs
+*.pt
+scratch/
+.system_generated/

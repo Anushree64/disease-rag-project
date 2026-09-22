@@ -1,0 +1,29 @@
+{
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "auroc": 1.0,
+  "confusion_matrix": [
+    [
+      6,
+      0
+    ],
+    [
+      0,
+      6
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n fatty_liver       1.00      1.00      1.00         6\n      normal       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+  "class_names": [
+    "fatty_liver",
+    "normal"
+  ],
+  "num_test_samples": 12,
+  "best_val_acc": 1.0,
+  "k_neighbors": 4,
+  "disease": "nafld",
+  "backbone": "resnet18",
+  "classifier": "gat_k4",
+  "training_time_seconds": 0.9654786586761475
+}

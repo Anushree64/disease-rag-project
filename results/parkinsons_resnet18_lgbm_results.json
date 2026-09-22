@@ -1,0 +1,27 @@
+{
+  "accuracy": 0.9166666666666666,
+  "precision": 0.9285714285714285,
+  "recall": 0.9166666666666666,
+  "f1": 0.9160839160839161,
+  "auroc": 0.9166666666666667,
+  "confusion_matrix": [
+    [
+      6,
+      0
+    ],
+    [
+      1,
+      5
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n     healthy       0.86      1.00      0.92         6\n   parkinson       1.00      0.83      0.91         6\n\n    accuracy                           0.92        12\n   macro avg       0.93      0.92      0.92        12\nweighted avg       0.93      0.92      0.92        12\n",
+  "class_names": [
+    "healthy",
+    "parkinson"
+  ],
+  "num_test_samples": 12,
+  "training_time_seconds": 0.058119773864746094,
+  "disease": "parkinsons",
+  "backbone": "resnet18",
+  "classifier": "lightgbm"
+}

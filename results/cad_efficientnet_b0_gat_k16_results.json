@@ -1,0 +1,29 @@
+{
+  "accuracy": 0.8064516129032258,
+  "precision": 0.8058371735791091,
+  "recall": 0.8064516129032258,
+  "f1": 0.8024926686217008,
+  "auroc": 0.8464912280701755,
+  "confusion_matrix": [
+    [
+      17,
+      2
+    ],
+    [
+      4,
+      8
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.81      0.89      0.85        19\n    abnormal       0.80      0.67      0.73        12\n\n    accuracy                           0.81        31\n   macro avg       0.80      0.78      0.79        31\nweighted avg       0.81      0.81      0.80        31\n",
+  "class_names": [
+    "normal",
+    "abnormal"
+  ],
+  "num_test_samples": 31,
+  "best_val_acc": 0.8709677419354839,
+  "k_neighbors": 16,
+  "disease": "cad",
+  "backbone": "efficientnet_b0",
+  "classifier": "gat_k16",
+  "training_time_seconds": 1.3040134906768799
+}

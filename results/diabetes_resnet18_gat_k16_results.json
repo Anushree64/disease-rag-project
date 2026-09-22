@@ -1,0 +1,59 @@
+{
+  "accuracy": 0.7602905569007264,
+  "precision": 0.7530385102541298,
+  "recall": 0.7602905569007264,
+  "f1": 0.7525084101351023,
+  "auroc": 0.9223410378761046,
+  "confusion_matrix": [
+    [
+      146,
+      3,
+      1,
+      0,
+      0
+    ],
+    [
+      4,
+      34,
+      17,
+      1,
+      0
+    ],
+    [
+      3,
+      13,
+      104,
+      7,
+      8
+    ],
+    [
+      1,
+      6,
+      17,
+      20,
+      0
+    ],
+    [
+      1,
+      1,
+      13,
+      3,
+      10
+    ]
+  ],
+  "classification_report": "                precision    recall  f1-score   support\n\n       Healthy       0.94      0.97      0.96       150\n       Mild DR       0.60      0.61      0.60        56\n   Moderate DR       0.68      0.77      0.72       135\nProliferate DR       0.65      0.45      0.53        44\n     Severe DR       0.56      0.36      0.43        28\n\n      accuracy                           0.76       413\n     macro avg       0.68      0.63      0.65       413\n  weighted avg       0.75      0.76      0.75       413\n",
+  "class_names": [
+    "Healthy",
+    "Mild DR",
+    "Moderate DR",
+    "Proliferate DR",
+    "Severe DR"
+  ],
+  "num_test_samples": 413,
+  "best_val_acc": 0.779126213592233,
+  "k_neighbors": 16,
+  "disease": "diabetes",
+  "backbone": "resnet18",
+  "classifier": "gat_k16",
+  "training_time_seconds": 19.00154948234558
+}

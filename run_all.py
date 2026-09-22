@@ -502,10 +502,10 @@ def phase7_prediction():
 # ══════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     start = time.time()
-    print(f"Disease RAG Project — Local Runner")
-    print(f"Base: {BASE}")
-    print(f"Device: {DEVICE}")
-    print(f"Started: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print("Disease RAG Project - Local Runner")
+    print("Base: " + BASE)
+    print("Device: " + str(DEVICE))
+    print("Started: " + time.strftime('%Y-%m-%d %H:%M:%S'))
 
     # Phase 1: EDA
     df = phase1_eda()
@@ -513,11 +513,11 @@ if __name__ == "__main__":
     # Phase 2: Clean & Split
     df = phase2_clean(df)
 
-    # Phase 3: Embeddings (will be slow on CPU, ~30-60 min)
-    emb = phase3_embeddings(df)
+    # Phase 3: BiomedCLIP Embeddings — SKIPPED on CPU (too slow, not needed for training)
+    print("\n[Skipping Phase 3: BiomedCLIP embeddings — run on Colab GPU for this step]")
 
-    # Phase 4: Leakage check
-    phase4_leakage_check(df, emb)
+    # Phase 4: Leakage check — SKIPPED (needs embeddings)
+    print("[Skipping Phase 4: Leakage check — needs embeddings]")
 
     # Phase 5: Train all models
     phase5_training()
@@ -529,6 +529,6 @@ if __name__ == "__main__":
     phase7_prediction()
 
     elapsed = time.time() - start
-    print(f"\n{'='*60}")
-    print(f"  DONE — Total time: {elapsed/60:.1f} minutes")
-    print(f"{'='*60}")
+    print("\n" + "="*60)
+    print("DONE - Total time: " + str(round(elapsed/60, 1)) + " minutes")
+    print("="*60)

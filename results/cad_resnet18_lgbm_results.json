@@ -1,0 +1,27 @@
+{
+  "accuracy": 0.7741935483870968,
+  "precision": 0.7718475073313784,
+  "recall": 0.7741935483870968,
+  "f1": 0.7721796669903261,
+  "auroc": 0.8245614035087719,
+  "confusion_matrix": [
+    [
+      16,
+      3
+    ],
+    [
+      4,
+      8
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.80      0.84      0.82        19\n    abnormal       0.73      0.67      0.70        12\n\n    accuracy                           0.77        31\n   macro avg       0.76      0.75      0.76        31\nweighted avg       0.77      0.77      0.77        31\n",
+  "class_names": [
+    "normal",
+    "abnormal"
+  ],
+  "num_test_samples": 31,
+  "training_time_seconds": 0.10891366004943848,
+  "disease": "cad",
+  "backbone": "resnet18",
+  "classifier": "lightgbm"
+}

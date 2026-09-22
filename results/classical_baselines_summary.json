@@ -1,0 +1,866 @@
+{
+  "breast_cancer_resnet18": {
+    "xgboost": {
+      "accuracy": 0.9973799126637555,
+      "precision": 0.9973833812767042,
+      "recall": 0.9973799126637555,
+      "f1": 0.9973807886745532,
+      "auroc": 0.999993101688017,
+      "confusion_matrix": [
+        [
+          377,
+          1
+        ],
+        [
+          2,
+          765
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      benign       0.99      1.00      1.00       378\n   malignant       1.00      1.00      1.00       767\n\n    accuracy                           1.00      1145\n   macro avg       1.00      1.00      1.00      1145\nweighted avg       1.00      1.00      1.00      1145\n",
+      "class_names": [
+        "benign",
+        "malignant"
+      ],
+      "num_test_samples": 1145,
+      "training_time_seconds": 2.260283946990967,
+      "disease": "breast_cancer",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.9982532751091703,
+      "precision": 0.9982624683980694,
+      "recall": 0.9982532751091703,
+      "f1": 0.9982544393357194,
+      "auroc": 0.9999931016880169,
+      "confusion_matrix": [
+        [
+          378,
+          0
+        ],
+        [
+          2,
+          765
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      benign       0.99      1.00      1.00       378\n   malignant       1.00      1.00      1.00       767\n\n    accuracy                           1.00      1145\n   macro avg       1.00      1.00      1.00      1145\nweighted avg       1.00      1.00      1.00      1145\n",
+      "class_names": [
+        "benign",
+        "malignant"
+      ],
+      "num_test_samples": 1145,
+      "training_time_seconds": 2.0910422801971436,
+      "disease": "breast_cancer",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "breast_cancer_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          378,
+          0
+        ],
+        [
+          0,
+          767
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      benign       1.00      1.00      1.00       378\n   malignant       1.00      1.00      1.00       767\n\n    accuracy                           1.00      1145\n   macro avg       1.00      1.00      1.00      1145\nweighted avg       1.00      1.00      1.00      1145\n",
+      "class_names": [
+        "benign",
+        "malignant"
+      ],
+      "num_test_samples": 1145,
+      "training_time_seconds": 7.506025552749634,
+      "disease": "breast_cancer",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.9991266375545852,
+      "precision": 0.9991277747452693,
+      "recall": 0.9991266375545852,
+      "f1": 0.9991263436517408,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          377,
+          1
+        ],
+        [
+          0,
+          767
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      benign       1.00      1.00      1.00       378\n   malignant       1.00      1.00      1.00       767\n\n    accuracy                           1.00      1145\n   macro avg       1.00      1.00      1.00      1145\nweighted avg       1.00      1.00      1.00      1145\n",
+      "class_names": [
+        "benign",
+        "malignant"
+      ],
+      "num_test_samples": 1145,
+      "training_time_seconds": 2.8524301052093506,
+      "disease": "breast_cancer",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  },
+  "cad_resnet18": {
+    "xgboost": {
+      "accuracy": 0.8064516129032258,
+      "precision": 0.8064516129032258,
+      "recall": 0.8064516129032258,
+      "f1": 0.8064516129032258,
+      "auroc": 0.8421052631578947,
+      "confusion_matrix": [
+        [
+          16,
+          3
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.84      0.84      0.84        19\n    abnormal       0.75      0.75      0.75        12\n\n    accuracy                           0.81        31\n   macro avg       0.80      0.80      0.80        31\nweighted avg       0.81      0.81      0.81        31\n",
+      "class_names": [
+        "normal",
+        "abnormal"
+      ],
+      "num_test_samples": 31,
+      "training_time_seconds": 0.4097445011138916,
+      "disease": "cad",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.7741935483870968,
+      "precision": 0.7718475073313784,
+      "recall": 0.7741935483870968,
+      "f1": 0.7721796669903261,
+      "auroc": 0.8245614035087719,
+      "confusion_matrix": [
+        [
+          16,
+          3
+        ],
+        [
+          4,
+          8
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.80      0.84      0.82        19\n    abnormal       0.73      0.67      0.70        12\n\n    accuracy                           0.77        31\n   macro avg       0.76      0.75      0.76        31\nweighted avg       0.77      0.77      0.77        31\n",
+      "class_names": [
+        "normal",
+        "abnormal"
+      ],
+      "num_test_samples": 31,
+      "training_time_seconds": 0.10891366004943848,
+      "disease": "cad",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "cad_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 0.6774193548387096,
+      "precision": 0.6700460829493088,
+      "recall": 0.6774193548387096,
+      "f1": 0.6708211143695015,
+      "auroc": 0.793859649122807,
+      "confusion_matrix": [
+        [
+          15,
+          4
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.71      0.79      0.75        19\n    abnormal       0.60      0.50      0.55        12\n\n    accuracy                           0.68        31\n   macro avg       0.66      0.64      0.65        31\nweighted avg       0.67      0.68      0.67        31\n",
+      "class_names": [
+        "normal",
+        "abnormal"
+      ],
+      "num_test_samples": 31,
+      "training_time_seconds": 1.5975029468536377,
+      "disease": "cad",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.6451612903225806,
+      "precision": 0.6401759530791788,
+      "recall": 0.6451612903225806,
+      "f1": 0.6419966195562269,
+      "auroc": 0.793859649122807,
+      "confusion_matrix": [
+        [
+          14,
+          5
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n      normal       0.70      0.74      0.72        19\n    abnormal       0.55      0.50      0.52        12\n\n    accuracy                           0.65        31\n   macro avg       0.62      0.62      0.62        31\nweighted avg       0.64      0.65      0.64        31\n",
+      "class_names": [
+        "normal",
+        "abnormal"
+      ],
+      "num_test_samples": 31,
+      "training_time_seconds": 0.23895692825317383,
+      "disease": "cad",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  },
+  "diabetes_resnet18": {
+    "xgboost": {
+      "accuracy": 0.7530266343825666,
+      "precision": 0.7437685622795541,
+      "recall": 0.7530266343825666,
+      "f1": 0.7421905970614988,
+      "auroc": 0.9254183391093008,
+      "confusion_matrix": [
+        [
+          146,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          5,
+          32,
+          16,
+          1,
+          2
+        ],
+        [
+          3,
+          14,
+          107,
+          3,
+          8
+        ],
+        [
+          1,
+          5,
+          18,
+          19,
+          1
+        ],
+        [
+          0,
+          1,
+          16,
+          4,
+          7
+        ]
+      ],
+      "classification_report": "                precision    recall  f1-score   support\n\n       Healthy       0.94      0.97      0.96       150\n       Mild DR       0.59      0.57      0.58        56\n   Moderate DR       0.67      0.79      0.73       135\nProliferate DR       0.70      0.43      0.54        44\n     Severe DR       0.39      0.25      0.30        28\n\n      accuracy                           0.75       413\n     macro avg       0.66      0.60      0.62       413\n  weighted avg       0.74      0.75      0.74       413\n",
+      "class_names": [
+        "Healthy",
+        "Mild DR",
+        "Moderate DR",
+        "Proliferate DR",
+        "Severe DR"
+      ],
+      "num_test_samples": 413,
+      "training_time_seconds": 10.290937423706055,
+      "disease": "diabetes",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.7554479418886199,
+      "precision": 0.7441535942695423,
+      "recall": 0.7554479418886199,
+      "f1": 0.7450788854203607,
+      "auroc": 0.922258906997741,
+      "confusion_matrix": [
+        [
+          147,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          4,
+          33,
+          15,
+          2,
+          2
+        ],
+        [
+          3,
+          14,
+          106,
+          5,
+          7
+        ],
+        [
+          1,
+          6,
+          18,
+          18,
+          1
+        ],
+        [
+          0,
+          1,
+          15,
+          4,
+          8
+        ]
+      ],
+      "classification_report": "                precision    recall  f1-score   support\n\n       Healthy       0.95      0.98      0.96       150\n       Mild DR       0.59      0.59      0.59        56\n   Moderate DR       0.68      0.79      0.73       135\nProliferate DR       0.62      0.41      0.49        44\n     Severe DR       0.44      0.29      0.35        28\n\n      accuracy                           0.76       413\n     macro avg       0.66      0.61      0.63       413\n  weighted avg       0.74      0.76      0.75       413\n",
+      "class_names": [
+        "Healthy",
+        "Mild DR",
+        "Moderate DR",
+        "Proliferate DR",
+        "Severe DR"
+      ],
+      "num_test_samples": 413,
+      "training_time_seconds": 2.4121792316436768,
+      "disease": "diabetes",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "diabetes_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 0.7506053268765133,
+      "precision": 0.7457568364252343,
+      "recall": 0.7506053268765133,
+      "f1": 0.7272325558976523,
+      "auroc": 0.9312212190073526,
+      "confusion_matrix": [
+        [
+          146,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          4,
+          27,
+          23,
+          1,
+          1
+        ],
+        [
+          5,
+          11,
+          117,
+          2,
+          0
+        ],
+        [
+          2,
+          2,
+          23,
+          15,
+          2
+        ],
+        [
+          0,
+          0,
+          18,
+          5,
+          5
+        ]
+      ],
+      "classification_report": "                precision    recall  f1-score   support\n\n       Healthy       0.93      0.97      0.95       150\n       Mild DR       0.64      0.48      0.55        56\n   Moderate DR       0.64      0.87      0.74       135\nProliferate DR       0.65      0.34      0.45        44\n     Severe DR       0.62      0.18      0.28        28\n\n      accuracy                           0.75       413\n     macro avg       0.70      0.57      0.59       413\n  weighted avg       0.75      0.75      0.73       413\n",
+      "class_names": [
+        "Healthy",
+        "Mild DR",
+        "Moderate DR",
+        "Proliferate DR",
+        "Severe DR"
+      ],
+      "num_test_samples": 413,
+      "training_time_seconds": 28.87287974357605,
+      "disease": "diabetes",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.7675544794188862,
+      "precision": 0.7712974549345136,
+      "recall": 0.7675544794188862,
+      "f1": 0.7454370856053029,
+      "auroc": 0.933623524970305,
+      "confusion_matrix": [
+        [
+          146,
+          1,
+          3,
+          0,
+          0
+        ],
+        [
+          3,
+          25,
+          25,
+          1,
+          2
+        ],
+        [
+          4,
+          8,
+          122,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          22,
+          19,
+          1
+        ],
+        [
+          0,
+          0,
+          18,
+          5,
+          5
+        ]
+      ],
+      "classification_report": "                precision    recall  f1-score   support\n\n       Healthy       0.95      0.97      0.96       150\n       Mild DR       0.71      0.45      0.55        56\n   Moderate DR       0.64      0.90      0.75       135\nProliferate DR       0.73      0.43      0.54        44\n     Severe DR       0.62      0.18      0.28        28\n\n      accuracy                           0.77       413\n     macro avg       0.73      0.59      0.62       413\n  weighted avg       0.77      0.77      0.75       413\n",
+      "class_names": [
+        "Healthy",
+        "Mild DR",
+        "Moderate DR",
+        "Proliferate DR",
+        "Severe DR"
+      ],
+      "num_test_samples": 413,
+      "training_time_seconds": 7.182297468185425,
+      "disease": "diabetes",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  },
+  "ckd_resnet18": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n        Cyst       1.00      1.00      1.00         6\n      Normal       1.00      1.00      1.00         6\n       Stone       1.00      1.00      1.00         6\n       Tumor       1.00      1.00      1.00         6\n\n    accuracy                           1.00        24\n   macro avg       1.00      1.00      1.00        24\nweighted avg       1.00      1.00      1.00        24\n",
+      "class_names": [
+        "Cyst",
+        "Normal",
+        "Stone",
+        "Tumor"
+      ],
+      "num_test_samples": 24,
+      "training_time_seconds": 0.728508472442627,
+      "disease": "ckd",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n        Cyst       1.00      1.00      1.00         6\n      Normal       1.00      1.00      1.00         6\n       Stone       1.00      1.00      1.00         6\n       Tumor       1.00      1.00      1.00         6\n\n    accuracy                           1.00        24\n   macro avg       1.00      1.00      1.00        24\nweighted avg       1.00      1.00      1.00        24\n",
+      "class_names": [
+        "Cyst",
+        "Normal",
+        "Stone",
+        "Tumor"
+      ],
+      "num_test_samples": 24,
+      "training_time_seconds": 0.14200043678283691,
+      "disease": "ckd",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "ckd_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n        Cyst       1.00      1.00      1.00         6\n      Normal       1.00      1.00      1.00         6\n       Stone       1.00      1.00      1.00         6\n       Tumor       1.00      1.00      1.00         6\n\n    accuracy                           1.00        24\n   macro avg       1.00      1.00      1.00        24\nweighted avg       1.00      1.00      1.00        24\n",
+      "class_names": [
+        "Cyst",
+        "Normal",
+        "Stone",
+        "Tumor"
+      ],
+      "num_test_samples": 24,
+      "training_time_seconds": 2.0869693756103516,
+      "disease": "ckd",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n        Cyst       1.00      1.00      1.00         6\n      Normal       1.00      1.00      1.00         6\n       Stone       1.00      1.00      1.00         6\n       Tumor       1.00      1.00      1.00         6\n\n    accuracy                           1.00        24\n   macro avg       1.00      1.00      1.00        24\nweighted avg       1.00      1.00      1.00        24\n",
+      "class_names": [
+        "Cyst",
+        "Normal",
+        "Stone",
+        "Tumor"
+      ],
+      "num_test_samples": 24,
+      "training_time_seconds": 0.43740391731262207,
+      "disease": "ckd",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  },
+  "nafld_resnet18": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n fatty_liver       1.00      1.00      1.00         6\n      normal       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "fatty_liver",
+        "normal"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.12732839584350586,
+      "disease": "nafld",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n fatty_liver       1.00      1.00      1.00         6\n      normal       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "fatty_liver",
+        "normal"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.057436227798461914,
+      "disease": "nafld",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "nafld_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n fatty_liver       1.00      1.00      1.00         6\n      normal       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "fatty_liver",
+        "normal"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.25865721702575684,
+      "disease": "nafld",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n fatty_liver       1.00      1.00      1.00         6\n      normal       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "fatty_liver",
+        "normal"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.0812532901763916,
+      "disease": "nafld",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  },
+  "parkinsons_resnet18": {
+    "xgboost": {
+      "accuracy": 0.9166666666666666,
+      "precision": 0.9285714285714285,
+      "recall": 0.9166666666666666,
+      "f1": 0.9160839160839161,
+      "auroc": 0.9166666666666667,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n     healthy       0.86      1.00      0.92         6\n   parkinson       1.00      0.83      0.91         6\n\n    accuracy                           0.92        12\n   macro avg       0.93      0.92      0.92        12\nweighted avg       0.93      0.92      0.92        12\n",
+      "class_names": [
+        "healthy",
+        "parkinson"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.1173543930053711,
+      "disease": "parkinsons",
+      "backbone": "resnet18",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 0.9166666666666666,
+      "precision": 0.9285714285714285,
+      "recall": 0.9166666666666666,
+      "f1": 0.9160839160839161,
+      "auroc": 0.9166666666666667,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n     healthy       0.86      1.00      0.92         6\n   parkinson       1.00      0.83      0.91         6\n\n    accuracy                           0.92        12\n   macro avg       0.93      0.92      0.92        12\nweighted avg       0.93      0.92      0.92        12\n",
+      "class_names": [
+        "healthy",
+        "parkinson"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.058119773864746094,
+      "disease": "parkinsons",
+      "backbone": "resnet18",
+      "classifier": "lightgbm"
+    }
+  },
+  "parkinsons_efficientnet_b0": {
+    "xgboost": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n     healthy       1.00      1.00      1.00         6\n   parkinson       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "healthy",
+        "parkinson"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.20662379264831543,
+      "disease": "parkinsons",
+      "backbone": "efficientnet_b0",
+      "classifier": "xgboost"
+    },
+    "lightgbm": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auroc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n     healthy       1.00      1.00      1.00         6\n   parkinson       1.00      1.00      1.00         6\n\n    accuracy                           1.00        12\n   macro avg       1.00      1.00      1.00        12\nweighted avg       1.00      1.00      1.00        12\n",
+      "class_names": [
+        "healthy",
+        "parkinson"
+      ],
+      "num_test_samples": 12,
+      "training_time_seconds": 0.07425093650817871,
+      "disease": "parkinsons",
+      "backbone": "efficientnet_b0",
+      "classifier": "lightgbm"
+    }
+  }
+}

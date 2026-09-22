@@ -1,0 +1,410 @@
+{
+  "breast_cancer_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.9965065502183406,
+      "precision": 0.9965431308443266,
+      "recall": 0.9965065502183406,
+      "f1": 0.9965111769062179,
+      "avg_confidence": 0.9908644556999207
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.6131004366812227,
+      "precision": 0.5505649844685544,
+      "recall": 0.6131004366812227,
+      "f1": 0.5646953464043977,
+      "avg_confidence": 0.8647465109825134
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.6436681222707423,
+      "precision": 0.5803724779963297,
+      "recall": 0.6436681222707423,
+      "f1": 0.5814847346807599,
+      "avg_confidence": 0.8586011528968811
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.6759825327510917,
+      "precision": 0.6384711620971558,
+      "recall": 0.6759825327510917,
+      "f1": 0.6052239205325016,
+      "avg_confidence": 0.8184533715248108
+    }
+  },
+  "breast_cancer_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.9973799126637555,
+      "precision": 0.9973833812767042,
+      "recall": 0.9973799126637555,
+      "f1": 0.9973807886745532,
+      "avg_confidence": 0.9947843551635742
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.5720524017467249,
+      "precision": 0.6904427653372543,
+      "recall": 0.5720524017467249,
+      "f1": 0.5776904523317723,
+      "avg_confidence": 0.6061460375785828
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.5668122270742358,
+      "precision": 0.6284431764733606,
+      "recall": 0.5668122270742358,
+      "f1": 0.5795948904698314,
+      "avg_confidence": 0.6323685646057129
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5807860262008734,
+      "precision": 0.5941715729753955,
+      "recall": 0.5807860262008734,
+      "f1": 0.5865292601682707,
+      "avg_confidence": 0.6592519879341125
+    }
+  },
+  "cad_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.8064516129032258,
+      "precision": 0.8058371735791091,
+      "recall": 0.8064516129032258,
+      "f1": 0.8024926686217008,
+      "avg_confidence": 0.9016554951667786
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.6129032258064516,
+      "precision": 0.3756503642039542,
+      "recall": 0.6129032258064516,
+      "f1": 0.4658064516129032,
+      "avg_confidence": 0.9635835289955139
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.6129032258064516,
+      "precision": 0.3756503642039542,
+      "recall": 0.6129032258064516,
+      "f1": 0.4658064516129032,
+      "avg_confidence": 0.9656360149383545
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.6129032258064516,
+      "precision": 0.3756503642039542,
+      "recall": 0.6129032258064516,
+      "f1": 0.4658064516129032,
+      "avg_confidence": 0.9707894325256348
+    }
+  },
+  "cad_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.7096774193548387,
+      "precision": 0.7149159084642956,
+      "recall": 0.7096774193548387,
+      "f1": 0.7115605928509154,
+      "avg_confidence": 0.7567735910415649
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.6451612903225806,
+      "precision": 0.6330024813895782,
+      "recall": 0.6451612903225806,
+      "f1": 0.5997048281678262,
+      "avg_confidence": 0.580167829990387
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.6129032258064516,
+      "precision": 0.3756503642039542,
+      "recall": 0.6129032258064516,
+      "f1": 0.4658064516129032,
+      "avg_confidence": 0.5955361127853394
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5161290322580645,
+      "precision": 0.46812596006144397,
+      "recall": 0.5161290322580645,
+      "f1": 0.48059383266869354,
+      "avg_confidence": 0.5748236179351807
+    }
+  },
+  "diabetes_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.7167070217917676,
+      "precision": 0.7230611476132142,
+      "recall": 0.7167070217917676,
+      "f1": 0.7108980465542719,
+      "avg_confidence": 0.8325392007827759
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.6731234866828087,
+      "precision": 0.7047753724106756,
+      "recall": 0.6731234866828087,
+      "f1": 0.6656893581269716,
+      "avg_confidence": 0.8148522973060608
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.6585956416464891,
+      "precision": 0.6605727141611427,
+      "recall": 0.6585956416464891,
+      "f1": 0.6489423317462331,
+      "avg_confidence": 0.7761795520782471
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5544794188861986,
+      "precision": 0.5520675633122339,
+      "recall": 0.5544794188861986,
+      "f1": 0.5222889006741809,
+      "avg_confidence": 0.6937571167945862
+    }
+  },
+  "diabetes_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 0.6949152542372882,
+      "precision": 0.7109892460517997,
+      "recall": 0.6949152542372882,
+      "f1": 0.6965445581487608,
+      "avg_confidence": 0.7288082242012024
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.6246973365617433,
+      "precision": 0.7291867173552576,
+      "recall": 0.6246973365617433,
+      "f1": 0.6141931425171423,
+      "avg_confidence": 0.639906644821167
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.6222760290556901,
+      "precision": 0.6818623158168299,
+      "recall": 0.6222760290556901,
+      "f1": 0.6064262406519416,
+      "avg_confidence": 0.6201696991920471
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.6537530266343826,
+      "precision": 0.6382503246446685,
+      "recall": 0.6537530266343826,
+      "f1": 0.6413058610212296,
+      "avg_confidence": 0.5806455612182617
+    }
+  },
+  "ckd_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.6446564793586731
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.25,
+      "precision": 0.0625,
+      "recall": 0.25,
+      "f1": 0.10000000000000002,
+      "avg_confidence": 0.6293472647666931
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.25,
+      "precision": 0.0625,
+      "recall": 0.25,
+      "f1": 0.10000000000000002,
+      "avg_confidence": 0.6086342334747314
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.25,
+      "precision": 0.0625,
+      "recall": 0.25,
+      "f1": 0.10000000000000002,
+      "avg_confidence": 0.5547248721122742
+    }
+  },
+  "ckd_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7025234699249268
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.625,
+      "precision": 0.5714285714285714,
+      "recall": 0.625,
+      "f1": 0.5474358974358974,
+      "avg_confidence": 0.29909762740135193
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.625,
+      "precision": 0.7403846153846154,
+      "recall": 0.625,
+      "f1": 0.5793233082706767,
+      "avg_confidence": 0.2942062318325043
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5833333333333334,
+      "precision": 0.5,
+      "recall": 0.5833333333333334,
+      "f1": 0.5166666666666667,
+      "avg_confidence": 0.2836485803127289
+    }
+  },
+  "nafld_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7935331463813782
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.5,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "avg_confidence": 0.8347618579864502
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.5,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "avg_confidence": 0.8356589674949646
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "avg_confidence": 0.8462899327278137
+    }
+  },
+  "nafld_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.5734612941741943
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 0.5,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "avg_confidence": 0.6246107816696167
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 0.5,
+      "precision": 0.25,
+      "recall": 0.5,
+      "f1": 0.3333333333333333,
+      "avg_confidence": 0.5888668894767761
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 0.5833333333333334,
+      "precision": 0.7727272727272728,
+      "recall": 0.5833333333333334,
+      "f1": 0.4957983193277311,
+      "avg_confidence": 0.5309946537017822
+    }
+  },
+  "parkinsons_resnet18": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7185333371162415
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7201294898986816
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7201294898986816
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.7201294898986816
+    }
+  },
+  "parkinsons_efficientnet_b0": {
+    "sigma_0.00": {
+      "sigma": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.5745938420295715
+    },
+    "sigma_0.05": {
+      "sigma": 0.05,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.5597743391990662
+    },
+    "sigma_0.10": {
+      "sigma": 0.1,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.5597743391990662
+    },
+    "sigma_0.20": {
+      "sigma": 0.2,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "avg_confidence": 0.5597743391990662
+    }
+  }
+}

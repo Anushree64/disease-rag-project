@@ -1,42 +1,90 @@
-diseases:
-  breast_cancer:
-    root: data/breast_cancer
-    classes: [benign, malignant]
-    epochs: 15
-    batch_size: 32
-    freeze_epochs: 3
+# Disease-RAG Project Configuration
+# Paths are relative to the project root (disease-rag-project/)
 
-  cad:
-    root: data/cad
-    classes: [normal, abnormal]
-    epochs: 30
-    batch_size: 16
-    freeze_epochs: 5
+breast_cancer:
+  backbone: "resnet18"
+  root_path: "data/breast_cancer"
+  classes:
+    - "benign"
+    - "malignant"
+  epochs: 6
+  freeze_epochs: 2
+  batch_size: 64
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "breast cancer ultrasound imaging diagnosis malignant benign classification"
 
-  diabetes:
-    root: data/diabetes
-    classes: [Healthy, "Mild DR", "Moderate DR", "Proliferate DR", "Severe DR"]
-    epochs: 20
-    batch_size: 32
-    freeze_epochs: 4
 
-  ckd:
-    root: data/ckd
-    classes: [Normal, Cyst, Tumor, Stone]
-    epochs: 20
-    batch_size: 32
-    freeze_epochs: 4
 
-  nafld:
-    root: data/nafld
-    classes: [normal, fatty_liver]
-    epochs: 20
-    batch_size: 16
-    freeze_epochs: 4
+cad:
+  backbone: "resnet18"
+  root_path: "data/cad"
+  classes:
+    - "normal"
+    - "abnormal"
+  epochs: 25
+  freeze_epochs: 5
+  batch_size: 16
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "coronary artery disease angiography stenosis diagnosis imaging"
 
-  parkinsons:
-    root: data/parkinsons
-    classes: [healthy, parkinson]
-    epochs: 20
-    batch_size: 16
-    freeze_epochs: 4
+diabetes:
+  backbone: "resnet18"
+  root_path: "data/diabetes"
+  classes:
+    - "Healthy"
+    - "Mild DR"
+    - "Moderate DR"
+    - "Proliferate DR"
+    - "Severe DR"
+  epochs: 6
+  freeze_epochs: 2
+  batch_size: 32
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "diabetic retinopathy retinal imaging severity grading classification deep learning"
+
+
+ckd:
+  backbone: "resnet18"
+  root_path: "data/ckd/CT_Kidney"
+  classes:
+    - "Cyst"
+    - "Normal"
+    - "Stone"
+    - "Tumor"
+  epochs: 15
+  freeze_epochs: 3
+  batch_size: 16
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "chronic kidney disease CT imaging diagnosis classification"
+
+nafld:
+  backbone: "resnet18"
+  root_path: "data/nafld/Ultrasound"
+  classes:
+    - "fatty_liver"
+    - "normal"
+  epochs: 15
+  freeze_epochs: 3
+  batch_size: 16
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "nonalcoholic fatty liver disease ultrasound diagnosis grading"
+
+parkinsons:
+  backbone: "resnet18"
+  root_path: "data/parkinsons/Spiral_Drawings"
+  classes:
+    - "healthy"
+    - "parkinson"
+  epochs: 15
+  freeze_epochs: 3
+  batch_size: 16
+  lr_head: 0.001
+  lr_finetune: 0.0001
+  pubmed_query: "parkinson's disease spiral drawing MRI diagnosis detection"
+
+

@@ -1,0 +1,50 @@
+{
+  "breast_cancer": {
+    "avg_rouge_1": 1.0,
+    "avg_rouge_2": 0.9474,
+    "avg_rouge_l": 0.3706999999999999,
+    "avg_bleu_4": 0.8888999999999999,
+    "avg_bert_score": 0.6853999999999999,
+    "num_samples": 10
+  },
+  "cad": {
+    "avg_rouge_1": 0.8974500000000003,
+    "avg_rouge_2": 0.8537000000000001,
+    "avg_rouge_l": 0.4649,
+    "avg_bleu_4": 0.7874,
+    "avg_bert_score": 0.6812,
+    "num_samples": 10
+  },
+  "diabetes": {
+    "avg_rouge_1": 0.582748,
+    "avg_rouge_2": 0.42955999999999994,
+    "avg_rouge_l": 0.16316,
+    "avg_bleu_4": 0.38400799999999996,
+    "avg_bert_score": 0.37294,
+    "num_samples": 25
+  },
+  "ckd": {
+    "avg_rouge_1": 0.8478000000000001,
+    "avg_rouge_2": 0.8109,
+    "avg_rouge_l": 0.39587500000000003,
+    "avg_bleu_4": 0.7254499999999999,
+    "avg_bert_score": 0.62185,
+    "num_samples": 20
+  },
+  "nafld": {
+    "avg_rouge_1": 0.8671,
+    "avg_rouge_2": 0.8817999999999999,
+    "avg_rouge_l": 0.58805,
+    "avg_bleu_4": 0.8829,
+    "avg_bert_score": 0.7275499999999999,
+    "num_samples": 10
+  },
+  "parkinsons": {
+    "avg_rouge_1": 0.9642999999999999,
+    "avg_rouge_2": 0.8449,
+    "avg_rouge_l": 0.16570000000000001,
+    "avg_bleu_4": 0.5814499999999999,
+    "avg_bert_score": 0.5650000000000001,
+    "num_samples": 10
+  }
+}
