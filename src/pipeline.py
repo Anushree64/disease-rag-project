@@ -53,6 +53,12 @@ from src.reflexion_loop import ReflexionSelfCorrectionLoop
 from src.onnx_quantizer import export_and_quantize_onnx
 from src.audit_ledger import record_audit_ledger_block
 
+from src.fhir_exporter import FHIREHRExporter
+from src.counterfactual import CounterfactualExplainer
+from src.dicom_reader import MedicalImageFileReader
+from src.cot_reasoning import ChainOfThoughtReasoningEngine
+from src.biomedclip_reranker import CrossModalBiomedCLIPReranker
+
 RESULTS_DIR = BASE_DIR / 'results'
 
 
@@ -80,6 +86,13 @@ class DiseaseRAGPipeline:
         self.llm_judge = MultiLLMJudge()
         self.ood_detector = OODAnomalyDetector()
         self.reflexion_loop = ReflexionSelfCorrectionLoop(disease_name)
+
+        # 4. Next-Gen Advanced Engines (FHIR, Counterfactual, DICOM, CoT, Cross-Modal Reranker)
+        self.fhir_exporter = FHIREHRExporter()
+        self.counterfactual_explainer = CounterfactualExplainer(disease_name)
+        self.dicom_reader = MedicalImageFileReader()
+        self.cot_engine = ChainOfThoughtReasoningEngine(disease_name)
+        self.crossmodal_reranker = CrossModalBiomedCLIPReranker(disease_name)
 
         vis_dim = 512 if backbone == 'resnet18' else 1280
         self.fusion_module = TabularImageCrossAttentionFusion(visual_dim=vis_dim, num_classes=len(self.classes)).to(self.device)
@@ -210,12 +223,20 @@ class DiseaseRAGPipeline:
         # Step 12: Quantitative RAG Text Evaluation Metrics
         rag_metrics = evaluate_rag_text_quality(explanation, evidence_chunks)
 
-        # Step 13: Cryptographic Audit Ledger Block
+        # Step 13: Chain-of-Thought (CoT) Differential Diagnosis Reasoning Trace
+        cot_info = self.cot_engine.generate_cot_reasoning_trace(predicted_class, confidence, evidence_chunks)
+
+        # Step 14: Counterfactual Visual & Textual Explanation
+        counterfactual_info = self.counterfactual_explainer.generate_counterfactual(
+            predicted_class, confidence, prob_dict, self.classes
+        )
+
+        # Step 15: Cryptographic Audit Ledger Block
         audit_block = record_audit_ledger_block(
             self.disease_name, image_name, predicted_class, confidence, explanation
         )
 
-        # Step 14: Format Structured Output
+        # Step 16: Format Structured Output
         result = {
             'disease': self.disease_name,
             'image_filename': image_name,
@@ -231,6 +252,8 @@ class DiseaseRAGPipeline:
             'reflexion_self_corrected': self_corrected,
             'multi_agent_consensus': consensus_info,
             'llm_judge_peer_review': peer_review_info,
+            'chain_of_thought_reasoning': cot_info,
+            'counterfactual_explanation': counterfactual_info,
             'cryptographic_audit_block': audit_block,
             'retrieved_evidence': [
                 {
@@ -247,7 +270,14 @@ class DiseaseRAGPipeline:
             'rag_text_metrics': rag_metrics,
         }
 
-        # Step 15: PDF Diagnostic Report Generation
+        # Step 17: FHIR R4 HL7 EHR Report Export
+        try:
+            fhir_res = self.fhir_exporter.export_fhir_report(result)
+            result['fhir_report'] = fhir_res
+        except Exception as e:
+            print(f"  FHIR export warning: {e}")
+
+        # Step 18: PDF Diagnostic Report Generation
         if generate_pdf:
             try:
                 _, overlay_img = self.generate_gradcam(pil_img)

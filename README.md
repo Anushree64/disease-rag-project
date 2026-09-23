@@ -19,7 +19,7 @@ A state-of-the-art medical diagnostic framework supporting **6 disease domains**
 
 ---
 
-## 🌟 Advanced Next-Gen 2026 Features (12 Components)
+## 🌟 Advanced Next-Gen 2026 Features (18 Components)
 
 1. **Grad-CAM Saliency Map Visualization (`src/gradcam.py`)**: Pixel-level spatial activations (`layer4[-1]` & `features[-1]`).
 2. **Split Conformal Prediction & Calibrated Uncertainty (`src/conformal.py`)**: 95% coverage calibrated prediction sets $C(X)$.
@@ -33,6 +33,12 @@ A state-of-the-art medical diagnostic framework supporting **6 disease domains**
 10. **GraphRAG Biomedical Knowledge Graph Extractor (`src/graph_rag.py`)**: Constructs NetworkX entity-relation graphs from PubMed literature.
 11. **HIPAA-Compliant Differential Privacy (DP) Noise Engine (`src/privacy_engine.py`)**: Applies $(\epsilon, \delta)$-DP noise safeguards to visual embeddings.
 12. **Multi-LLM Judge Clinical Peer-Reviewer (`src/llm_judge.py`)**: Evaluates accuracy, groundedness, safety, and hallucination-free scores (1-10 scale).
+13. **FHIR R4 HL7 EHR Standard Export (`src/fhir_exporter.py`)**: Generates compliant FHIR R4 DiagnosticReport & Observation JSON resources for Epic/Cerner integration.
+14. **Counterfactual Visual & Textual Explanations (`src/counterfactual.py`)**: Identifies minimal decision-boundary feature perturbations required to flip diagnosis.
+15. **DICOM (`.dcm`) Medical Reader & CT HU Windowing (`src/dicom_reader.py`)**: Direct DICOM file parsing with Hounsfield Unit (center=40, width=400) soft tissue windowing.
+16. **Chain-of-Thought (CoT) Differential Diagnosis Reasoning (`src/cot_reasoning.py`)**: Step-by-step clinical reasoning trace (Inspection → Rule-Out → Evidence Grounding → Consensus).
+17. **Integrated Gradients (IG) Dual-Attribution XAI (`src/attribution_xai.py`)**: Riemann path integral feature attribution for axiomatic XAI guarantees.
+18. **Zero-Shot Cross-Modal BiomedCLIP Reranker (`src/biomedclip_reranker.py`)**: Direct visual-to-literature cross-modal document similarity reranking.
 
 ---
 

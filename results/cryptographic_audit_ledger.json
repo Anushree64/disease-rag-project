@@ -58,5 +58,15 @@
     "confidence": 0.6601,
     "sha256_signature": "97bcae58898691542f6927e11375924f52f984454dcd1d64b966e87f4e651e9b",
     "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 7,
+    "timestamp": "2026-09-23T11:44:00.550057",
+    "disease": "breast_cancer",
+    "image_filename": "PIL_Image",
+    "predicted_class": "malignant",
+    "confidence": 0.6601,
+    "sha256_signature": "b16ea4933c9a3747db5fcfe92dd29ff5deadd1a3668853b93e8e32b4a7a848e0",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
   }
 ]
