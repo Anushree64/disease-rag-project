@@ -73,75 +73,124 @@ def process_diagnosis(image: Image.Image, disease_choice: str, backbone_choice: 
         mc_info = res.get('mc_epistemic_uncertainty', {})
         audit_info = res.get('cryptographic_audit_block', {})
 
-        pred_text = f"## 🎯 Predicted Diagnosis: **{pred_class}**\n"
-        pred_text += f"**Model Backbone:** `{backbone_choice}` | **Confidence:** `{conf:.1f}%`\n"
-        pred_text += f"🔍 **OOD Anomaly Status:** `{ood_info.get('ood_status', 'Valid')}` (Energy: `{ood_info.get('energy_score', 0.0)}`)\n"
-        pred_text += f"🎲 **Epistemic Uncertainty:** `{mc_info.get('epistemic_uncertainty_level', '')}` (Predictive Entropy: `{mc_info.get('predictive_entropy', 0.0)}`)\n"
-        pred_text += f"🔒 **Privacy Guarantee:** `{dp_info.get('privacy_guarantee', 'HIPAA DP Protected')}`\n"
-        pred_text += f"🔑 **SHA-256 Audit Signature:** `{audit_info.get('sha256_signature', '')[:20]}...`\n\n"
+        pred_text = f"## 🎯 Predicted Diagnosis: **{pred_class}**
+"
+        pred_text += f"**Model Backbone:** `{backbone_choice}` | **Confidence:** `{conf:.1f}%`
+"
+        pred_text += f"🔍 **OOD Anomaly Status:** `{ood_info.get('ood_status', 'Valid')}` (Energy: `{ood_info.get('energy_score', 0.0)}`)
+"
+        pred_text += f"🎲 **Epistemic Uncertainty:** `{mc_info.get('epistemic_uncertainty_level', '')}` (Predictive Entropy: `{mc_info.get('predictive_entropy', 0.0)}`)
+"
+        pred_text += f"🔒 **Privacy Guarantee:** `{dp_info.get('privacy_guarantee', 'HIPAA DP Protected')}`
+"
+        pred_text += f"🔑 **SHA-256 Audit Signature:** `{audit_info.get('sha256_signature', '')[:20]}...`
 
-        pred_text += "### 📊 Class Probabilities:\n"
+"
+
+        pred_text += "### 📊 Class Probabilities:
+"
         for cls, p in probs.items():
-            pred_text += f"- **{cls}**: `{p*100:.1f}%`\n"
+            pred_text += f"- **{cls}**: `{p*100:.1f}%`
+"
 
-        pred_text += "\n### 🛡️ Split Conformal Prediction (95% Coverage Set):\n"
-        pred_text += f"- **Prediction Set $C(X)$:** `{cp_info['prediction_set']}`\n"
-        pred_text += f"- **Set Size:** `{cp_info['set_size']}` | **Guaranteed Coverage:** `{cp_info['coverage_level']}`\n"
+        pred_text += "
+### 🛡️ Split Conformal Prediction (95% Coverage Set):
+"
+        pred_text += f"- **Prediction Set $C(X)$:** `{cp_info['prediction_set']}`
+"
+        pred_text += f"- **Set Size:** `{cp_info['set_size']}` | **Guaranteed Coverage:** `{cp_info['coverage_level']}`
+"
         if cp_info['requires_human_review']:
-            pred_text += "⚠️ **Status:** `HUMAN REVIEW RECOMMENDED` (High uncertainty, multiple plausible classes)\n"
+            pred_text += "⚠️ **Status:** `HUMAN REVIEW RECOMMENDED` (High uncertainty, multiple plausible classes)
+"
         else:
-            pred_text += "✅ **Status:** `HIGH CONFIDENCE SINGLETON` (Single definitive diagnosis)\n"
+            pred_text += "✅ **Status:** `HIGH CONFIDENCE SINGLETON` (Single definitive diagnosis)
+"
 
         # 4. Multi-LLM Judge & GraphRAG Breakdown
         judge = res.get('llm_judge_peer_review', {})
         graph_rag = res.get('graph_rag_knowledge', {})
         reflexion = res.get('reflexion_self_corrected', False)
 
-        judge_text = "### ⚖️ Multi-LLM Judge Clinical Peer-Review:\n"
-        judge_text += f"- **Overall Score:** `{judge.get('overall_peer_review_score', 0.0):.2f} / 10.0` | **Status:** `{judge.get('recommendation', '')}`\n"
-        judge_text += f"- **Reflexion Self-Correction Loop:** `{'Activated & Verified' if reflexion else 'Passed Initial Threshold'}`\n"
+        judge_text = "### ⚖️ Multi-LLM Judge Clinical Peer-Review:
+"
+        judge_text += f"- **Overall Score:** `{judge.get('overall_peer_review_score', 0.0):.2f} / 10.0` | **Status:** `{judge.get('recommendation', '')}`
+"
+        judge_text += f"- **Reflexion Self-Correction Loop:** `{'Activated & Verified' if reflexion else 'Passed Initial Threshold'}`
+"
 
-        graph_text = "### 🕸️ GraphRAG Knowledge Graph Extraction:\n"
-        graph_text += f"- **Graph Nodes:** `{graph_rag.get('num_nodes', 0)}` | **Graph Edges:** `{graph_rag.get('num_edges', 0)}` | **Density:** `{graph_rag.get('graph_density', 0.0)}`\n"
-        graph_text += "- **Extracted Knowledge Triples:**\n"
+        graph_text = "### 🕸️ GraphRAG Knowledge Graph Extraction:
+"
+        graph_text += f"- **Graph Nodes:** `{graph_rag.get('num_nodes', 0)}` | **Graph Edges:** `{graph_rag.get('num_edges', 0)}` | **Density:** `{graph_rag.get('graph_density', 0.0)}`
+"
+        graph_text += "- **Extracted Knowledge Triples:**
+"
         for t in graph_rag.get('extracted_triples', [])[:4]:
-            graph_text += f"  - `({t[0]})` -> `[{t[1]}]` -> `({t[2]})`  \n"
+            graph_text += f"  - `({t[0]})` -> `[{t[1]}]` -> `({t[2]})`  
+"
 
         # 5. Multi-Agent Consensus Breakdown
         consensus = res.get('multi_agent_consensus', {})
-        consensus_text = "### 🤝 Multi-Agent Consensus RAG:\n"
-        consensus_text += f"- **Radiologist Perspective:** *\"{consensus.get('radiologist_perspective', '')}\"*\n"
-        consensus_text += f"- **Pathologist Perspective:** *\"{consensus.get('pathologist_perspective', '')}\"*\n"
-        consensus_text += f"- **Inter-Agent Agreement Score:** `{consensus.get('inter_agent_consensus_score', 0.0):.4f}` ({consensus.get('consensus_level', '')})\n"
+        consensus_text = "### 🤝 Multi-Agent Consensus RAG:
+"
+        consensus_text += f"- **Radiologist Perspective:** *"{consensus.get('radiologist_perspective', '')}"*
+"
+        consensus_text += f"- **Pathologist Perspective:** *"{consensus.get('pathologist_perspective', '')}"*
+"
+        consensus_text += f"- **Inter-Agent Agreement Score:** `{consensus.get('inter_agent_consensus_score', 0.0):.4f}` ({consensus.get('consensus_level', '')})
+"
 
         # 6. Format RAG Text Evaluation Metrics
         rag_m = res['rag_text_metrics']
-        metrics_text = "### 📈 Quantitative RAG Explanation Quality Metrics:\n"
-        metrics_text += f"- **ROUGE-1:** `{rag_m['rouge_1']:.4f}` | **ROUGE-2:** `{rag_m['rouge_2']:.4f}` | **ROUGE-L:** `{rag_m['rouge_l']:.4f}`\n"
-        metrics_text += f"- **BLEU-4:** `{rag_m['bleu_4']:.4f}` | **BERTScore Sim:** `{rag_m['bert_score_sim']:.4f}`\n"
+        metrics_text = "### 📈 Quantitative RAG Explanation Quality Metrics:
+"
+        metrics_text += f"- **ROUGE-1:** `{rag_m['rouge_1']:.4f}` | **ROUGE-2:** `{rag_m['rouge_2']:.4f}` | **ROUGE-L:** `{rag_m['rouge_l']:.4f}`
+"
+        metrics_text += f"- **BLEU-4:** `{rag_m['bleu_4']:.4f}` | **BERTScore Sim:** `{rag_m['bert_score_sim']:.4f}`
+"
 
         # 7. Format Retrieved Literature Evidence (BiomedCLIP Multimodal)
-        evidence_text = "### 📚 Retrieved PubMed Literature (BiomedCLIP Multimodal Reranking):\n"
+        evidence_text = "### 📚 Retrieved PubMed Literature (BiomedCLIP Multimodal Reranking):
+"
         for idx, ev in enumerate(res['retrieved_evidence'], 1):
             pmid = ev['pmid']
             link = f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/" if pmid != 'Unknown' and not str(pmid).startswith('STATIC') else '#'
             score = ev.get('biomedclip_similarity', ev['rerank_score'])
-            evidence_text += f"**[{idx}] [{ev['title']}]({link})** (PMID: [{pmid}]({link})) | *BiomedCLIP Similarity: {score:.4f}*\n"
-            evidence_text += f"> \"{ev['passage']}\"\n\n"
+            evidence_text += f"**[{idx}] [{ev['title']}]({link})** (PMID: [{pmid}]({link})) | *BiomedCLIP Similarity: {score:.4f}*
+"
+            evidence_text += f"> "{ev['passage']}"
+
+"
 
         # 8. Format Explanation & Faithfulness
-        explanation_text = f"### 💡 Clinical Explanation (FLAN-T5 Grounded RAG):\n"
-        explanation_text += f"*{res['explanation']}*\n"
+        explanation_text = f"### 💡 Clinical Explanation (FLAN-T5 Grounded RAG):
+"
+        explanation_text += f"*{res['explanation']}*
+"
 
         faith_score = res['nli_faithfulness']['average_faithfulness']
-        faith_text = f"### 🛡️ NLI Faithfulness Score: **{faith_score:.4f} / 1.0000**\n"
-        faith_text += "*Per-Sentence Entailment Breakdown against Retrieved Evidence:*\n"
+        faith_text = f"### 🛡️ NLI Faithfulness Score: **{faith_score:.4f} / 1.0000**
+"
+        faith_text += "*Per-Sentence Entailment Breakdown against Retrieved Evidence:*
+"
         for ps in res['nli_faithfulness'].get('per_sentence', []):
             score = ps['entailment_score']
             badge = "🟢 High Entailment" if score >= 0.7 else "🟡 Moderate" if score >= 0.4 else "🔴 Low/Hallucinated"
-            faith_text += f"- **\"{ps['sentence']}\"**  \n  Score: `{score:.4f}` | {badge} | Matched PMID: `{ps['matched_pmid']}`\n"
+            faith_text += f"- **"{ps['sentence']}"**  
+  Score: `{score:.4f}` | {badge} | Matched PMID: `{ps['matched_pmid']}`
+"
 
-        full_explanation_combined = explanation_text + "\n\n" + judge_text + "\n\n" + graph_text + "\n\n" + consensus_text + "\n\n" + faith_text + "\n\n" + metrics_text
+        full_explanation_combined = explanation_text + "
+
+" + judge_text + "
+
+" + graph_text + "
+
+" + consensus_text + "
+
+" + faith_text + "
+
+" + metrics_text
         pdf_path = res.get('pdf_report_path')
 
         return gradcam_overlay, ig_overlay, pred_text, evidence_text, full_explanation_combined, faith_text, pdf_path, "Report ready for download."

@@ -46,13 +46,21 @@ def generate_explanation(
     for idx, chunk in enumerate(evidence_chunks[:3], 1):
         passage = chunk.get('passage', chunk.get('text', ''))
         pmid = chunk.get('pmid', 'Unknown')
-        evidence_text += f"Evidence [{idx}] (PMID:{pmid}): {passage}\n"
+        evidence_text += f"Evidence [{idx}] (PMID:{pmid}): {passage}
+"
 
     prompt = (
-        f"You are a clinical decision support assistant. Explain the following diagnostic prediction using the scientific evidence provided.\n\n"
-        f"Disease Context: {disease_name.replace('_', ' ').title()}\n"
-        f"Prediction: {predicted_class} (Confidence: {confidence*100:.1f}%)\n\n"
-        f"Scientific Evidence:\n{evidence_text}\n"
+        f"You are a clinical decision support assistant. Explain the following diagnostic prediction using the scientific evidence provided.
+
+"
+        f"Disease Context: {disease_name.replace('_', ' ').title()}
+"
+        f"Prediction: {predicted_class} (Confidence: {confidence*100:.1f}%)
+
+"
+        f"Scientific Evidence:
+{evidence_text}
+"
         f"Task: Write a concise, professional clinical explanation summarizing why the image features match the predicted class '{predicted_class}' based on the evidence provided above."
     )
 
@@ -89,4 +97,5 @@ if __name__ == '__main__':
         'passage': 'Malignant breast lesions characteristically demonstrate irregular margins, posterior acoustic shadowing, and non-parallel orientation on ultrasound.',
     }]
     exp = generate_explanation('breast_cancer', 'malignant', 0.985, test_evidence)
-    print("Generated Explanation:\n", exp)
+    print("Generated Explanation:
+", exp)

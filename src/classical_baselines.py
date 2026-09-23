@@ -132,7 +132,8 @@ def run_classical_baselines_for_disease(
     class_names = config['classes']
     num_classes = len(class_names)
 
-    print(f"\n==================================================")
+    print(f"
+==================================================")
     print(f"  CLASSICAL BASELINES: {disease_name.upper()} ({backbone_name})")
     print(f"==================================================")
 
@@ -235,7 +236,8 @@ def run_all_classical_baselines():
     with open(base_dir / "results" / "classical_baselines_summary.json", 'w') as f:
         json.dump(all_results, f, indent=2)
 
-    print("\n==================================================")
+    print("
+==================================================")
     print("  CLASSICAL BASELINES COMPLETED FOR ALL DISEASES")
     print("==================================================")
 

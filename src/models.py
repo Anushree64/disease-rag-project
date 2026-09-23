@@ -108,7 +108,8 @@ def unfreeze_all(model: nn.Module) -> None:
 # ───────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
     for name in ['resnet18', 'efficientnet_b0']:
-        print(f"\n--- {name} ---")
+        print(f"
+--- {name} ---")
         m = build_model(name, num_classes=5, pretrained=True)
         freeze_backbone(m)
         dummy = torch.randn(2, 3, 224, 224)

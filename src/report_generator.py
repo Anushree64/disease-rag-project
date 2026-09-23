@@ -151,7 +151,7 @@ def generate_pdf_report(
     # Explanation Section
     story.append(Paragraph("💡 AI Clinical Explanation (FLAN-T5 Grounded RAG)", subtitle_style))
     exp_text = pipeline_result.get('explanation', 'No explanation generated.')
-    story.append(Paragraph(f"<i>\"{exp_text}\"</i>", body_style))
+    story.append(Paragraph(f"<i>"{exp_text}"</i>", body_style))
     story.append(Spacer(1, 8))
 
     # Faithfulness & Metrics Summary
@@ -183,7 +183,7 @@ def generate_pdf_report(
         pmid = ev.get('pmid', 'N/A')
         passage = ev.get('passage', '')
         story.append(Paragraph(f"<b>[{idx}] {title}</b> (PMID: {pmid})", body_style))
-        story.append(Paragraph(f"\"{passage}\"", quote_style))
+        story.append(Paragraph(f""{passage}"", quote_style))
         story.append(Spacer(1, 4))
 
     doc.build(story)

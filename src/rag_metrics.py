@@ -131,7 +131,8 @@ def run_all_rag_benchmark_evaluations():
     with open(out_path, 'w') as f:
         json.dump(summary, f, indent=2)
 
-    print("\n  Quantitative RAG Evaluation complete! Saved to results/rag_quantitative_metrics.json")
+    print("
+  Quantitative RAG Evaluation complete! Saved to results/rag_quantitative_metrics.json")
     return summary
 
 

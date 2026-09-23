@@ -267,7 +267,9 @@ if __name__ == '__main__':
     # Test retrieval
     retriever = PubMedRetriever('breast_cancer')
     results = retriever.retrieve("malignant tumor features on ultrasound", top_k_final=3)
-    print(f"\nTop 3 Retrieved Evidence:")
+    print(f"
+Top 3 Retrieved Evidence:")
     for r in results:
         print(f"PMID: {r['pmid']} | Rerank Score: {r['rerank_score']:.4f}")
-        print(f"Passage: {r['passage']}\n")
+        print(f"Passage: {r['passage']}
+")
