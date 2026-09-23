@@ -68,5 +68,25 @@
     "confidence": 0.6601,
     "sha256_signature": "b16ea4933c9a3747db5fcfe92dd29ff5deadd1a3668853b93e8e32b4a7a848e0",
     "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 8,
+    "timestamp": "2026-09-23T12:20:47.077695",
+    "disease": "breast_cancer",
+    "image_filename": "PIL_Image",
+    "predicted_class": "malignant",
+    "confidence": 0.6601,
+    "sha256_signature": "3fb1e34a8530a5ae0cad05b003c208c0c7aac7559a0fd62f210218e3ca3673eb",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 9,
+    "timestamp": "2026-09-23T12:24:13.834019",
+    "disease": "diabetes",
+    "image_filename": "PIL_Image",
+    "predicted_class": "Proliferate DR",
+    "confidence": 0.4943,
+    "sha256_signature": "f1f09b5b7f2cbb2722e24111ba2ac4851756562e281656b15b9dcfb5ef38f4ab",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
   }
 ]

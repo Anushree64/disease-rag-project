@@ -3,7 +3,7 @@
   "id": "diag-rep-breast_cancer-PATIENT-99482",
   "meta": {
     "versionId": "1",
-    "lastUpdated": "2026-09-23T06:14:00.591078Z",
+    "lastUpdated": "2026-09-23T06:50:47.090858Z",
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
     ]
@@ -34,8 +34,8 @@
     "reference": "Patient/PATIENT-99482",
     "display": "Patient ID: PATIENT-99482"
   },
-  "effectiveDateTime": "2026-09-23T06:14:00.591078Z",
-  "issued": "2026-09-23T06:14:00.591078Z",
+  "effectiveDateTime": "2026-09-23T06:50:47.090858Z",
+  "issued": "2026-09-23T06:50:47.090858Z",
   "conclusion": "Predicted Diagnosis: malignant (Confidence: 66.0%). Conformal Set: ['benign', 'malignant'].",
   "result": [
     {
