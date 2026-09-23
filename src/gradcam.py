@@ -42,7 +42,7 @@ class GradCAM:
         target_class_idx: Optional[int] = None,
     ) -> np.ndarray:
         """
-        Generate normalized Grad-CAM heatmap [224, 224] for input tensor.
+        Generate normalized Grad-CAM heatmap for input tensor.
         """
         self.model.eval()
         self.model.zero_grad()
@@ -94,13 +94,17 @@ def get_gradcam_overlay(
 
     cam_map = grad_cam.generate_heatmap(input_tensor, target_class_idx=target_class_idx)
 
-    # Resize input image to match heatmap (224, 224)
+    # Resize spatial heatmap (e.g. 7x7) to match image resolution (224, 224)
+    cam_img = Image.fromarray((cam_map * 255.0).astype(np.uint8)).resize((224, 224), resample=Image.BILINEAR)
+    cam_map_resized = np.array(cam_img, dtype=np.float32) / 255.0
+
+    # Resize input image to (224, 224)
     resized_img = pil_image.convert('RGB').resize((224, 224))
     img_np = np.array(resized_img, dtype=np.float32) / 255.0
 
     # Apply JET colormap to heatmap
     colormap = cm.get_cmap('jet')
-    heatmap_colored = colormap(cam_map)[:, :, :3]  # Drop alpha
+    heatmap_colored = colormap(cam_map_resized)[:, :, :3]  # Drop alpha channel
 
     # Blend original image and heatmap
     overlay = (1.0 - alpha) * img_np + alpha * heatmap_colored
@@ -108,7 +112,3 @@ def get_gradcam_overlay(
 
     overlay_pil = Image.fromarray(overlay)
     return overlay_pil, cam_map
-
-
-if __name__ == '__main__':
-    print("Grad-CAM module ready.")
