@@ -64,8 +64,7 @@ class DiseaseRAGPipeline:
         self.backbone = backbone
         self.device = device or torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-        print(f"
-Initializing Pipeline for '{disease_name}'...")
+        print(f"\nInitializing Pipeline for '{disease_name}'...")
         # 1. Load trained classifier model
         self.model, self.classes, _ = load_trained_model(disease_name, backbone=backbone, device=self.device)
         self.transform = get_transforms(train=False)

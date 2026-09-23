@@ -40,7 +40,7 @@ class ReflexionSelfCorrectionLoop:
         while current_score < self.min_faithfulness and iteration < self.max_iterations:
             iteration += 1
             self_corrected = True
-            print(f"  🔄 Reflexion Loop Iteration {iteration}: Initial score ({current_score:.4f}) < {self.min_faithfulness}. Re-retrieving expanded PubMed evidence...")
+            print(f"  [REFLEXION] Loop Iteration {iteration}: Initial score ({current_score:.4f}) < {self.min_faithfulness}. Re-retrieving expanded PubMed evidence...")
 
             # 1. Query Reformulation & Expanded Re-retrieval
             expanded_query = f"{self.disease_name.replace('_', ' ')} {predicted_class} diagnosis pathology clinical management risk"

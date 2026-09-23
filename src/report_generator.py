@@ -103,7 +103,7 @@ def generate_pdf_report(
     story = []
 
     # Title & Header
-    story.append(Paragraph(f"🩺 Clinical Diagnostic & RAG Report — {disease_name}", title_style))
+    story.append(Paragraph(f"Clinical Diagnostic & RAG Report - {disease_name}", title_style))
     story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor("#1e3a8a"), spaceAfter=12))
 
     # Patient & Model Overview Table
@@ -111,7 +111,7 @@ def generate_pdf_report(
     conf = pipeline_result.get('confidence', 0.0) * 100
     cp_info = pipeline_result.get('conformal_prediction_set', {})
     cp_set = str(cp_info.get('prediction_set', []))
-    review_status = "⚠️ Human Review Recommended" if cp_info.get('requires_human_review', False) else "✅ High Confidence Singleton"
+    review_status = "[WARNING] Human Review Recommended" if cp_info.get('requires_human_review', False) else "[OK] High Confidence Singleton"
 
     meta_data = [
         [Paragraph("<b>Target Domain:</b>", body_style), Paragraph(disease_name, body_style),
@@ -133,7 +133,7 @@ def generate_pdf_report(
     story.append(Spacer(1, 12))
 
     # Visual Heatmap Section
-    story.append(Paragraph("📸 Visual Diagnostic Imaging & Grad-CAM Heatmap", subtitle_style))
+    story.append(Paragraph("Visual Diagnostic Imaging & Grad-CAM Heatmap", subtitle_style))
     img_table_data = [
         [RLImage(str(orig_img_path), width=2.5*inch, height=2.5*inch),
          RLImage(str(cam_img_path), width=2.5*inch, height=2.5*inch)],
@@ -149,9 +149,9 @@ def generate_pdf_report(
     story.append(Spacer(1, 12))
 
     # Explanation Section
-    story.append(Paragraph("💡 AI Clinical Explanation (FLAN-T5 Grounded RAG)", subtitle_style))
+    story.append(Paragraph("AI Clinical Explanation (FLAN-T5 Grounded RAG)", subtitle_style))
     exp_text = pipeline_result.get('explanation', 'No explanation generated.')
-    story.append(Paragraph(f"<i>"{exp_text}"</i>", body_style))
+    story.append(Paragraph(f"<i>'{exp_text}'</i>", body_style))
     story.append(Spacer(1, 8))
 
     # Faithfulness & Metrics Summary
@@ -159,7 +159,7 @@ def generate_pdf_report(
     faith_score = faith_info.get('average_faithfulness', 0.0)
     rag_metrics = pipeline_result.get('rag_text_metrics', {})
 
-    story.append(Paragraph("📈 Faithfulness & Quantitative Text Metrics", subtitle_style))
+    story.append(Paragraph("Faithfulness & Quantitative Text Metrics", subtitle_style))
     metrics_data = [
         [Paragraph("<b>NLI Faithfulness Score:</b>", body_style), Paragraph(f"<b>{faith_score:.4f} / 1.0000</b>", body_style),
          Paragraph("<b>ROUGE-1:</b>", body_style), Paragraph(f"{rag_metrics.get('rouge_1', 0.0):.4f}", body_style)],
@@ -177,13 +177,13 @@ def generate_pdf_report(
     story.append(Spacer(1, 12))
 
     # Retrieved Evidence Section
-    story.append(Paragraph("📚 Retrieved PubMed Literature Evidence", subtitle_style))
+    story.append(Paragraph("Retrieved PubMed Literature Evidence", subtitle_style))
     for idx, ev in enumerate(pipeline_result.get('retrieved_evidence', []), 1):
         title = ev.get('title', 'PubMed Article')
         pmid = ev.get('pmid', 'N/A')
         passage = ev.get('passage', '')
         story.append(Paragraph(f"<b>[{idx}] {title}</b> (PMID: {pmid})", body_style))
-        story.append(Paragraph(f""{passage}"", quote_style))
+        story.append(Paragraph(f"'{passage}'", quote_style))
         story.append(Spacer(1, 4))
 
     doc.build(story)
@@ -195,7 +195,7 @@ def generate_pdf_report(
     except Exception:
         pass
 
-    print(f"✅ Generated PDF Diagnostic Report: {output_path}")
+    print(f"  [OK] Generated PDF Diagnostic Report: {output_path}")
     return str(output_path)
 
 

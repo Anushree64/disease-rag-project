@@ -69,7 +69,7 @@ def fetch_pubmed_abstracts(query: str, max_results: int = 20) -> List[Dict]:
                 print(f"  Loaded {len(articles)} PubMed articles from cache ({cache_path.name})")
                 return articles
         except Exception as e:
-            print(f"  ⚠️  Cache read failed: {e}. Re-fetching...")
+            print(f"  [WARNING] Cache read failed: {e}. Re-fetching...")
 
     print(f"  Fetching PubMed abstracts for query: '{query}'...")
 
@@ -90,7 +90,7 @@ def fetch_pubmed_abstracts(query: str, max_results: int = 20) -> List[Dict]:
 
     id_list = search_data.get('esearchresult', {}).get('idlist', [])
     if not id_list:
-        print(f"  ⚠️  No PubMed IDs found for query '{query}'")
+        print(f"  [WARNING] No PubMed IDs found for query '{query}'")
         return []
 
     # Step 2: EFetch
@@ -215,7 +215,7 @@ class PubMedRetriever:
         self.chunks = chunk_articles(self.articles, sentences_per_chunk=3)
 
         if not self.chunks:
-            print(f"  ⚠️  No valid passages extracted for query '{self.query}'")
+            print(f"  [WARNING] No valid passages extracted for query '{self.query}'")
             return
 
         # Prepare BM25
@@ -267,9 +267,7 @@ if __name__ == '__main__':
     # Test retrieval
     retriever = PubMedRetriever('breast_cancer')
     results = retriever.retrieve("malignant tumor features on ultrasound", top_k_final=3)
-    print(f"
-Top 3 Retrieved Evidence:")
+    print(f"\nTop 3 Retrieved Evidence:")
     for r in results:
         print(f"PMID: {r['pmid']} | Rerank Score: {r['rerank_score']:.4f}")
-        print(f"Passage: {r['passage']}
-")
+        print(f"Passage: {r['passage']}\n")

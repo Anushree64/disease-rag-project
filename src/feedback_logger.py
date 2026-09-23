@@ -58,7 +58,7 @@ def log_clinician_feedback(
     with open(FEEDBACK_FILE, 'w', encoding='utf-8') as f:
         json.dump(records, f, indent=2, ensure_ascii=False)
 
-    print(f"✅ Clinician feedback logged to {FEEDBACK_FILE} (Total entries: {len(records)})")
+    print(f"  [OK] Clinician feedback logged to {FEEDBACK_FILE} (Total entries: {len(records)})")
     return entry
 
 

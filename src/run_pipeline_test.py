@@ -114,13 +114,13 @@ def run_full_pipeline_evaluation(diseases: List[str] = None, samples_per_class: 
                 'runs': disease_runs,
             }
 
-            print(f"\n  ✅ {disease.upper()} Evaluation Summary:")
+            print(f"\n  [OK] {disease.upper()} Evaluation Summary:")
             print(f"     Accuracy:         {accuracy*100:.2f}%")
             print(f"     Avg Confidence:   {avg_conf*100:.2f}%")
             print(f"     Avg Faithfulness: {avg_faith:.4f}")
 
         except Exception as e:
-            print(f"  ❌ Failed evaluation for {disease}: {e}")
+            print(f"  [ERROR] Failed evaluation for {disease}: {e}")
             import traceback
             traceback.print_exc()
 

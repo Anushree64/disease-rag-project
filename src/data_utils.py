@@ -53,13 +53,10 @@ def find_class_dir(root: Path, class_name: str) -> Path:
     all_dirs = sorted(
         str(d.relative_to(root)) for d in root.rglob('*') if d.is_dir()
     )
-    tree_str = "
-".join(f"  📁 {d}" for d in all_dirs) if all_dirs else "  (no subdirectories found)"
+    tree_str = "\n".join(f"  📁 {d}" for d in all_dirs) if all_dirs else "  (no subdirectories found)"
     raise FileNotFoundError(
-        f"Class folder '{class_name}' not found under '{root}'.
-"
-        f"Actual directory tree:
-{tree_str}"
+        f"Class folder '{class_name}' not found under '{root}'.\n"
+        f"Actual directory tree:\n{tree_str}"
     )
 
 
@@ -174,8 +171,7 @@ def get_dataloaders(
     classes = config['classes']
     bs = batch_size or config.get('batch_size', 32)
 
-    print(f"
-{'='*60}")
+    print(f"\n{'='*60}")
     print(f"Loading dataset: {disease_name}")
     print(f"Root: {root}")
     print(f"{'='*60}")
@@ -191,7 +187,7 @@ def get_dataloaders(
                 f"No images found in '{cls_dir}' for class '{cls_name}'. "
                 f"Supported extensions: {IMAGE_EXTENSIONS}"
             )
-        print(f"  ✅ Class '{cls_name}' (label={idx}): {len(imgs)} images  →  {cls_dir}")
+        print(f"  [OK] Class '{cls_name}' (label={idx}): {len(imgs)} images -> {cls_dir}")
         all_paths.extend(imgs)
         all_labels.extend([idx] * len(imgs))
 
@@ -256,8 +252,6 @@ if __name__ == '__main__':
             train_ld, val_ld, test_ld, cls_names = get_dataloaders(disease)
             imgs, lbls = next(iter(train_ld))
             print(f"  Sample batch: images={imgs.shape}, labels={lbls.shape}")
-            print(f"  ✓ {disease} OK
-")
+            print(f"  ✓ {disease} OK\n")
         except Exception as e:
-            print(f"  ✗ {disease} FAILED: {e}
-")
+            print(f"  ✗ {disease} FAILED: {e}\n")

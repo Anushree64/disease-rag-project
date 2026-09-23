@@ -90,8 +90,7 @@ def evaluate_model(
         auroc = None
 
     # ── Print results ───────────────────────────────────────────────────
-    print(f"
-  {'─'*50}")
+    print(f"\n  {'─'*50}")
     print(f"  EVALUATION RESULTS")
     print(f"  {'─'*50}")
     print(f"  Accuracy:  {acc:.4f}")
@@ -100,17 +99,14 @@ def evaluate_model(
     print(f"  F1 Score:  {f1:.4f} (weighted)")
     if auroc is not None:
         print(f"  AUROC:     {auroc:.4f}")
-    print(f"
-  Confusion Matrix:")
+    print(f"\n  Confusion Matrix:")
     # Print confusion matrix with class labels
     header = "  " + " " * 15 + "  ".join(f"{c:>10s}" for c in class_names)
     print(header)
     for i, row in enumerate(cm):
         row_str = "  ".join(f"{v:>10d}" for v in row)
         print(f"  {class_names[i]:>13s}  {row_str}")
-    print(f"
-  Classification Report:
-{report}")
+    print(f"\n  Classification Report:\n{report}")
 
     return {
         'accuracy': float(acc),

@@ -115,8 +115,7 @@ def train_disease(
     lr_head       = config.get('lr_head', 1e-3)
     lr_finetune   = config.get('lr_finetune', 1e-4)
 
-    print(f"
-{'#'*60}")
+    print(f"\n{'#'*60}")
     print(f"  TRAINING: {disease_name} ({backbone})")
     print(f"  Device: {device}")
     print(f"  Classes: {classes}")
@@ -150,8 +149,7 @@ def train_disease(
     for epoch in range(1, total_epochs + 1):
         # Transition to Phase 2
         if epoch == freeze_epochs + 1:
-            print(f"
-  ── Unfreezing all layers at epoch {epoch} ──")
+            print(f"\n  ── Unfreezing all layers at epoch {epoch} ──")
             unfreeze_all(model)
             optimizer = optim.Adam(model.parameters(), lr=lr_finetune)
 
@@ -187,14 +185,12 @@ def train_disease(
             print(msg, flush=True)
 
     elapsed = time.time() - start_time
-    print(f"
-  Training complete in {elapsed:.1f}s")
+    print(f"\n  Training complete in {elapsed:.1f}s")
     print(f"  Best val accuracy: {best_val_acc:.4f}")
     print(f"  Checkpoint saved: {ckpt_path}")
 
     # ── Evaluate on test set with the BEST checkpoint ───────────────────
-    print(f"
-  ── Evaluating best checkpoint on test set ──")
+    print(f"\n  ── Evaluating best checkpoint on test set ──")
     ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
     model.load_state_dict(ckpt['model_state_dict'])
 
@@ -261,10 +257,8 @@ if __name__ == '__main__':
     for disease in diseases:
         try:
             metrics = train_disease(disease, backbone='resnet18', device=device)
-            print(f"
-  ✅ {disease}: Test Accuracy = {metrics['accuracy']:.4f}")
+            print(f"\n  [OK] {disease}: Test Accuracy = {metrics['accuracy']:.4f}")
         except Exception as e:
-            print(f"
-  ❌ {disease} FAILED: {e}")
+            print(f"\n  [ERROR] {disease} FAILED: {e}")
             import traceback
             traceback.print_exc()

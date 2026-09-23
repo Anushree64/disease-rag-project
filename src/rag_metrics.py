@@ -95,7 +95,7 @@ def run_all_rag_benchmark_evaluations():
     """Evaluate quantitative RAG metrics over full pipeline results."""
     full_res_path = BASE_DIR / "results" / "full_pipeline_results.json"
     if not full_res_path.exists():
-        print("  ⚠️ full_pipeline_results.json missing.")
+        print("  [WARNING] full_pipeline_results.json missing.")
         return {}
 
     with open(full_res_path, 'r') as f:
@@ -131,8 +131,7 @@ def run_all_rag_benchmark_evaluations():
     with open(out_path, 'w') as f:
         json.dump(summary, f, indent=2)
 
-    print("
-  Quantitative RAG Evaluation complete! Saved to results/rag_quantitative_metrics.json")
+    print("\n  Quantitative RAG Evaluation complete! Saved to results/rag_quantitative_metrics.json")
     return summary
 
 

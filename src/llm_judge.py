@@ -54,11 +54,11 @@ class MultiLLMJudge:
         overall_score = round(float(np.mean([accuracy_score, groundedness_score, safety_score, hallucination_free_score])), 2)
 
         if overall_score >= 8.5:
-            recommendation = "✅ APPROVED FOR CLINICAL USE"
+            recommendation = "[OK] APPROVED FOR CLINICAL USE"
         elif overall_score >= 6.5:
-            recommendation = "🟡 MINOR REVISION SUGGESTED"
+            recommendation = "[WARNING] MINOR REVISION SUGGESTED"
         else:
-            recommendation = "🔴 REJECTED — RE-RETRIEVAL REQUIRED"
+            recommendation = "[REJECTED] REJECTED - RE-RETRIEVAL REQUIRED"
 
         return {
             'accuracy_score': accuracy_score,

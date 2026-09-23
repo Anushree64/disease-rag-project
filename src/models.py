@@ -51,10 +51,28 @@ def build_model(
         in_features = model.classifier[1].in_features
         model.classifier[1] = nn.Linear(in_features, num_classes)
 
+    elif backbone_name in ['vit_b_16', 'vit']:
+        weights = models.ViT_B_16_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.vit_b_16(weights=weights)
+        in_features = model.heads.head.in_features
+        model.heads.head = nn.Linear(in_features, num_classes)
+
+    elif backbone_name in ['convnext_tiny', 'convnext']:
+        weights = models.ConvNeXt_Tiny_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.convnext_tiny(weights=weights)
+        in_features = model.classifier[2].in_features
+        model.classifier[2] = nn.Linear(in_features, num_classes)
+
+    elif backbone_name in ['swin_t', 'swin']:
+        weights = models.Swin_T_Weights.IMAGENET1K_V1 if pretrained else None
+        model = models.swin_t(weights=weights)
+        in_features = model.head.in_features
+        model.head = nn.Linear(in_features, num_classes)
+
     else:
         raise ValueError(
             f"Unsupported backbone '{backbone_name}'. "
-            f"Choose from: 'resnet18', 'efficientnet_b0'"
+            f"Choose from: 'resnet18', 'efficientnet_b0', 'vit_b_16', 'convnext_tiny', 'swin_t'"
         )
 
     # Tag the model so checkpoints can record the backbone
@@ -63,7 +81,7 @@ def build_model(
 
     total_params = sum(p.numel() for p in model.parameters())
     trainable   = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"  Model: {backbone_name} → {num_classes} classes")
+    print(f"  Model: {backbone_name} -> {num_classes} classes")
     print(f"  Parameters: {total_params:,} total, {trainable:,} trainable")
 
     return model
@@ -83,6 +101,15 @@ def freeze_backbone(model: nn.Module) -> None:
     elif backbone_name == 'efficientnet_b0':
         for param in model.classifier.parameters():
             param.requires_grad = True
+    elif backbone_name in ['vit_b_16', 'vit']:
+        for param in model.heads.parameters():
+            param.requires_grad = True
+    elif backbone_name in ['convnext_tiny', 'convnext']:
+        for param in model.classifier.parameters():
+            param.requires_grad = True
+    elif backbone_name in ['swin_t', 'swin']:
+        for param in model.head.parameters():
+            param.requires_grad = True
     else:
         # Fallback: unfreeze last layer
         children = list(model.children())
@@ -91,7 +118,7 @@ def freeze_backbone(model: nn.Module) -> None:
                 param.requires_grad = True
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"  🧊 Backbone frozen — {trainable:,} trainable params (head only)")
+    print(f"  [FROZEN] Backbone frozen - {trainable:,} trainable params (head only)")
 
 
 def unfreeze_all(model: nn.Module) -> None:
@@ -100,7 +127,7 @@ def unfreeze_all(model: nn.Module) -> None:
         param.requires_grad = True
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"  🔥 All layers unfrozen — {trainable:,} trainable params")
+    print(f"  [UNFROZEN] All layers unfrozen - {trainable:,} trainable params")
 
 
 # ───────────────────────────────────────────────────────────────────────────
@@ -108,8 +135,7 @@ def unfreeze_all(model: nn.Module) -> None:
 # ───────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
     for name in ['resnet18', 'efficientnet_b0']:
-        print(f"
---- {name} ---")
+        print(f"\n--- {name} ---")
         m = build_model(name, num_classes=5, pretrained=True)
         freeze_backbone(m)
         dummy = torch.randn(2, 3, 224, 224)

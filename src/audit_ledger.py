@@ -58,7 +58,7 @@ def record_audit_ledger_block(
     with open(LEDGER_FILE, 'w', encoding='utf-8') as f:
         json.dump(blocks, f, indent=2, ensure_ascii=False)
 
-    print(f"🔒 Recorded Cryptographic Audit Block #{block['block_index']} (SHA-256: {sha256_hash[:16]}...)")
+    print(f"  [AUDIT] Recorded Cryptographic Audit Block #{block['block_index']} (SHA-256: {sha256_hash[:16]}...)")
     return block
 
 

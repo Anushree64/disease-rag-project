@@ -34,7 +34,7 @@ class OODAnomalyDetector:
         max_prob = float(probs.max().item())
 
         is_ood = (energy < self.energy_threshold) or (max_prob < 0.40)
-        status = "⚠️ OUT-OF-DISTRIBUTION / ANOMALY DETECTED" if is_ood else "✅ IN-DISTRIBUTION VALID MEDICAL SCAN"
+        status = "[WARNING] OUT-OF-DISTRIBUTION / ANOMALY DETECTED" if is_ood else "[OK] IN-DISTRIBUTION VALID MEDICAL SCAN"
 
         return {
             'energy_score': round(energy, 4),
