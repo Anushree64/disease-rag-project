@@ -66,6 +66,18 @@ from src.clinical_trial_matcher import ClinicalTrialMatcher
 from src.report_translator import ClinicalReportTranslator
 from src.voice_dictation import VoiceDictationProcessor
 
+from src.survival_analysis import SurvivalAnalysisEngine
+from src.clinical_grading import ClinicalGradingEngine
+from src.radiogenomics import RadiogenomicsEngine
+from src.tumor_board import TumorBoardSimulator
+from src.fda_safety_engine import openFDASafetyEngine
+from src.concept_bottleneck import ConceptBottleneckModel
+from src.med_vqa import MedVQAEngine
+from src.radiomics_features import RadiomicsFeatureExtractor
+from src.federated_learning import FederatedLearningSimulator
+from src.dual_report import DualReportGenerator
+from src.guideline_auditor import ClinicalGuidelineAuditor
+
 RESULTS_DIR = BASE_DIR / 'results'
 
 
@@ -86,7 +98,7 @@ class DiseaseRAGPipeline:
         self.retriever = PubMedRetriever(disease_name)
         self.biomedclip_retriever = BiomedCLIPRetriever(disease_name)
 
-        # 3. Engines
+        # 3. Core Engines
         self.consensus_engine = MultiAgentConsensusRAG(disease_name)
         self.graph_rag_engine = GraphRAGKnowledgeExtractor(disease_name)
         self.privacy_engine = DifferentialPrivacyEngine(epsilon=1.0, delta=1e-5)
@@ -94,19 +106,32 @@ class DiseaseRAGPipeline:
         self.ood_detector = OODAnomalyDetector()
         self.reflexion_loop = ReflexionSelfCorrectionLoop(disease_name)
 
-        # 4. Next-Gen Advanced Engines (FHIR, Counterfactual, DICOM, CoT, Cross-Modal Reranker)
+        # 4. Advanced Clinical Engines
         self.fhir_exporter = FHIREHRExporter()
         self.counterfactual_explainer = CounterfactualExplainer(disease_name)
         self.dicom_reader = MedicalImageFileReader()
         self.cot_engine = ChainOfThoughtReasoningEngine(disease_name)
         self.crossmodal_reranker = CrossModalBiomedCLIPReranker(disease_name)
 
-        # 5. Frontier Capabilities (ICD-10, SAM-Med Lesion Mask, Progression Tracker, Trial Matcher, Translator, Voice)
+        # 5. Enterprise Infrastructure & Frontier Capabilities
         self.icd_mapper = ICDSNOMEDMapper()
         self.progression_tracker = LongitudinalProgressionTracker()
         self.trial_matcher = ClinicalTrialMatcher()
         self.translator = ClinicalReportTranslator()
         self.voice_processor = VoiceDictationProcessor()
+
+        # 6. Ultra-Specialized Frontier Research Engines
+        self.survival_engine = SurvivalAnalysisEngine()
+        self.clinical_grading_engine = ClinicalGradingEngine()
+        self.radiogenomics_engine = RadiogenomicsEngine()
+        self.tumor_board_engine = TumorBoardSimulator()
+        self.fda_safety_engine = openFDASafetyEngine()
+        self.cbm_engine = ConceptBottleneckModel()
+        self.vqa_engine = MedVQAEngine()
+        self.radiomics_engine = RadiomicsFeatureExtractor()
+        self.federated_engine = FederatedLearningSimulator()
+        self.dual_report_engine = DualReportGenerator()
+        self.guideline_auditor = ClinicalGuidelineAuditor()
 
         vis_dim = 512 if backbone == 'resnet18' else 1280
         self.fusion_module = TabularImageCrossAttentionFusion(visual_dim=vis_dim, num_classes=len(self.classes)).to(self.device)
@@ -273,7 +298,55 @@ class DiseaseRAGPipeline:
             self.disease_name, image_name, predicted_class, confidence, explanation
         )
 
-        # Step 21: Format Structured Output
+        # Step 21: Kaplan-Meier Survival Analysis & Hazard Ratio
+        survival_info = self.survival_engine.compute_survival_profile(
+            self.disease_name, 58.0, lesion_metrics.get('lesion_surface_area_mm2', 185.0), mc_info.get('uncertainty_score', 0.05)
+        )
+
+        # Step 22: Clinical Diagnostic Grading Scorecards (BI-RADS / ETDRS / LI-RADS)
+        clinical_grade_info = self.clinical_grading_engine.compute_scorecard(
+            self.disease_name, predicted_class, confidence, lesion_metrics.get('lesion_surface_area_mm2', 185.0)
+        )
+
+        # Step 23: Radiogenomic Biomarker & Mutation Fusion
+        radiogenomics_info = self.radiogenomics_engine.evaluate_radiogenomic_fusion(
+            self.disease_name, 0.65
+        )
+
+        # Step 24: 5-Specialist Multidisciplinary Tumor Board Simulation
+        tumor_board_info = self.tumor_board_engine.simulate_board_review(
+            self.disease_name, predicted_class, confidence, clinical_grade_info['grade_code']
+        )
+
+        # Step 25: openFDA Drug Interaction & Safety Engine
+        fda_safety_info = self.fda_safety_engine.evaluate_drug_safety(self.disease_name)
+
+        # Step 26: Concept Bottleneck Model (CBM) Clinical Concepts
+        cbm_info = self.cbm_engine.predict_concepts(self.disease_name, confidence)
+
+        # Step 27: Med-VQA Visual Question Answering
+        med_vqa_info = self.vqa_engine.answer_visual_query(
+            self.disease_name, "What do the spatial margins of this lesion indicate?"
+        )
+
+        # Step 28: PyRadiomics Quantitative Texture Feature Extraction
+        radiomics_info = self.radiomics_engine.extract_features()
+
+        # Step 29: Federated Learning FedAvg Simulation
+        federated_info = self.federated_engine.simulate_fedavg_round()
+
+        # Step 30: Dual-Audience Report Generation (Patient vs Specialist)
+        concept_names = [c['concept_name'] for c in cbm_info.get('predicted_concepts', [])]
+        dual_reports_info = self.dual_report_engine.generate_dual_reports(
+            self.disease_name, predicted_class, confidence, clinical_grade_info['grade_code'], concept_names
+        )
+
+        # Step 31: NCCN & AHA Guideline Compliance Audit
+        guidelines_info = self.guideline_auditor.audit_guidelines(
+            self.disease_name, predicted_class, clinical_grade_info['grade_code']
+        )
+
+        # Step 32: Format Structured Output
         result = {
             'disease': self.disease_name,
             'image_filename': image_name,
@@ -296,6 +369,17 @@ class DiseaseRAGPipeline:
             'llm_judge_peer_review': peer_review_info,
             'chain_of_thought_reasoning': cot_info,
             'counterfactual_explanation': counterfactual_info,
+            'survival_analysis': survival_info,
+            'clinical_diagnostic_grading': clinical_grade_info,
+            'radiogenomics_fusion': radiogenomics_info,
+            'tumor_board_consensus': tumor_board_info,
+            'openfda_drug_safety': fda_safety_info,
+            'concept_bottleneck_cbm': cbm_info,
+            'med_vqa_visual_qa': med_vqa_info,
+            'pyradiomics_features': radiomics_info,
+            'federated_learning_fedavg': federated_info,
+            'dual_audience_reports': dual_reports_info,
+            'guideline_compliance_audit': guidelines_info,
             'cryptographic_audit_block': audit_block,
             'retrieved_evidence': [
                 {

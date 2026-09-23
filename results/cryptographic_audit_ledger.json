@@ -88,5 +88,45 @@
     "confidence": 0.4943,
     "sha256_signature": "f1f09b5b7f2cbb2722e24111ba2ac4851756562e281656b15b9dcfb5ef38f4ab",
     "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 10,
+    "timestamp": "2026-09-23T13:55:06.765341",
+    "disease": "breast_cancer",
+    "image_filename": "PIL_Image",
+    "predicted_class": "malignant",
+    "confidence": 0.6601,
+    "sha256_signature": "f512a4f9cfd8a3cc02698e45c822f006c4cdbadaf6f8abc74697f2db4403f9de",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 11,
+    "timestamp": "2026-09-23T14:13:14.394592",
+    "disease": "breast_cancer",
+    "image_filename": "53587663 (3).png",
+    "predicted_class": "benign",
+    "confidence": 1.0,
+    "sha256_signature": "a71f77e13b1d3d01ac88a9dce4fba2a5d8c53c38ecbf1522e531ae50bc457109",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 12,
+    "timestamp": "2026-09-23T14:14:07.566186",
+    "disease": "breast_cancer",
+    "image_filename": "53586869 (46).png",
+    "predicted_class": "benign",
+    "confidence": 1.0,
+    "sha256_signature": "60c7360b3808d66725a4bdd5b8f7b15b9789ca3c27b202927daca61161c88ee8",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 13,
+    "timestamp": "2026-09-23T14:15:15.915991",
+    "disease": "breast_cancer",
+    "image_filename": "51049107 (70).png",
+    "predicted_class": "benign",
+    "confidence": 0.9999,
+    "sha256_signature": "c19475c98b4fc6101a6274f21c1cb85919ed9e3027b46edbee1e14c34f1500c2",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
   }
 ]
