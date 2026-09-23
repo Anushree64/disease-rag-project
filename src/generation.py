@@ -56,16 +56,15 @@ def generate_explanation(
         f"Task: Write a concise, professional clinical explanation summarizing why the image features match the predicted class '{predicted_class}' based on the evidence provided above."
     )
 
-    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=1024)
+    inputs = tokenizer(prompt, return_tensors="pt", truncation=True, max_length=512)
 
     with torch.no_grad():
         outputs = model.generate(
             **inputs,
             max_new_tokens=max_length,
-            num_beams=3,
+            num_beams=2,
             early_stopping=True,
             no_repeat_ngram_size=3,
-            temperature=0.7,
         )
 
     explanation = tokenizer.decode(outputs[0], skip_special_tokens=True).strip()
