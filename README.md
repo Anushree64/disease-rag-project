@@ -5,14 +5,17 @@
 [![Gradio Dashboard](https://img.shields.io/badge/Gradio-5.0+-orange.svg)](https://gradio.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HL7 FHIR R4](https://img.shields.io/badge/FHIR-R4-firebrick.svg)](https://hl7.org/fhir/)
+[![OpenFDA Integration](https://img.shields.io/badge/openFDA-Integrated-green.svg)](https://open.fda.gov/)
 
-A state-of-the-art, end-to-end medical diagnostic framework integrating **53 ultra-specialized frontier AI modules** across **6 disease domains**. The framework fuses Deep Vision Backbones (ResNet18, EfficientNet-B0, ViT-B/16, Swin-T, ConvNeXt), Classical ML Baselines (XGBoost, LightGBM, CatBoost), PyTorch Graph Attention Networks (GAT), **Grad-CAM visual heatmap saliency mapping**, **Split Conformal Prediction (95% coverage guarantee)**, **BiomedCLIP multimodal visual-language literature retrieval**, **3-Path Corrective RAG**, **Multi-Agent Consensus RAG**, **GraphRAG Knowledge Graph Extraction**, **5-Specialist Virtual Tumor Board**, **HIPAA-Compliant Differential Privacy Safeguards**, **FLAN-T5 Explanation Generation (LoRA PEFT)**, **HL7 FHIR R4 EHR Export**, **Automated PDF Diagnostic Report Generation**, **Clinician Active Learning Feedback Logging**, and **Quantitative Text Metrics (ROUGE, BLEU, BERTScore)**.
+A state-of-the-art, production-grade medical diagnostic framework supporting **6 disease domains** and integrating **53 ultra-specialized medical AI modules** categorized into **4 Core Architectural Pillars**.
+
+The system combines Deep Vision Backbones (ResNet18, EfficientNet-B0, ViT-B/16, Swin-T, ConvNeXt), Classical ML Baselines (XGBoost, LightGBM, CatBoost), PyTorch Graph Attention Networks (GAT), **Grad-CAM visual heatmap saliency mapping**, **Split Conformal Prediction (95% coverage guarantee)**, **BiomedCLIP multimodal visual-language literature retrieval**, **3-Path Corrective RAG**, **Multi-Agent Consensus RAG**, **GraphRAG Knowledge Graph Extraction**, **5-Specialist Virtual Tumor Board**, **HIPAA-Compliant Differential Privacy Safeguards**, **FLAN-T5 Explanation Generation (LoRA PEFT)**, **HL7 FHIR R4 EHR Export**, **Automated PDF Diagnostic Report Generation**, **Clinician Active Learning Feedback Logging**, and **Quantitative Text Metrics (ROUGE, BLEU, BERTScore)**.
 
 ---
 
-## 🏛️ System Architecture & Workflow Topology
+## 🏛️ System Architecture Topology
 
-The diagram below illustrates the comprehensive workflow topology connecting visual feature extraction backbones, graph attention networks, multimodal literature retrieval, and multi-agent clinical consensus into automated diagnostic reports and interactive dashboard logging:
+The end-to-end framework architecture connects visual feature extraction backbones, graph neural networks, multimodal literature retrieval, and multi-agent clinical consensus into automated diagnostic reports and interactive dashboard logging:
 
 ```mermaid
 graph TD
@@ -53,6 +56,90 @@ graph TD
 
 ---
 
+## 🧩 Architectural Breakdown: 4 Core System Pillars (53 Total Modules)
+
+The framework is structured into **4 Core Pillars**, spanning baseline computer vision, advanced Next-Gen features, ultra-specialized medical modules, and enterprise operations.
+
+```
+                     ┌─────────────────────────────────────────────────────────┐
+                     │ 🩺 Multi-Disease Medical AI Framework (53 Total Modules)│
+                     └────────────────────────────┬────────────────────────────┘
+                                                  │
+         ┌──────────────────────┬─────────────────┴────────────────┬──────────────────────┐
+         ▼                      ▼                                  ▼                      ▼
+┌──────────────────┐  ┌───────────────────┐              ┌──────────────────┐  ┌──────────────────┐
+│  PILLAR 1 (15)   │  │   PILLAR 2 (18)   │              │  PILLAR 3 (11)   │  │  PILLAR 4 (9)    │
+│  Core Baseline   │  │ Next-Gen 2026 XAI │              │ Ultra-Specialized│  │ Ops, Security &  │
+│ Vision & ML      │  │ & Conformal RAG   │              │ Frontier Modules │  │ Edge Utilities   │
+└──────────────────┘  └───────────────────┘              └──────────────────┘  └──────────────────┘
+```
+
+### Pillar 1: Core Baseline Vision & Machine Learning (15 Modules)
+1. `src/models.py`: Deep vision model backbones (ResNet18, EfficientNet-B0, ViT-B/16, Swin-T, ConvNeXt).
+2. `src/data_utils.py`: Dataset loaders, stratified 70/15/15 split creation, and hash-based deduplication.
+3. `src/train.py`: PyTorch transfer learning trainer with cross-entropy loss and AdamW optimization.
+4. `src/evaluate.py`: ROC-AUC curves, confusion matrices, sensitivity, specificity, and F1-score evaluator.
+5. `src/classical_baselines.py`: Classical ML baselines (XGBoost, LightGBM, CatBoost) on CNN embeddings.
+6. `src/graph_fusion.py`: PyTorch Graph Attention Network (GAT) visual similarity graph message passing.
+7. `src/retrieval.py`: PubMed NCBI E-utilities literature search engine with FAISS vector caching.
+8. `src/corrective_rag.py`: 3-Path Corrective RAG routing policy (Direct, Search, Reformulate).
+9. `src/generation.py`: FLAN-T5 clinical explanation generator.
+10. `src/gradcam.py`: Grad-CAM spatial heatmap saliency generator highlighting region-of-interest triggers.
+11. `src/pipeline.py`: Master orchestrator pipeline coordinating data ingestion, vision inference, and reports.
+12. `src/run_pipeline_test.py`: End-to-end integration test harness.
+13. `app.py`: Interactive 5-tab Gradio web interface application.
+14. `run_demo_inference.py`: CLI single-command inference runner.
+15. `configs/diseases.yaml`: YAML configuration defining parameters and PubMed search queries for all 6 diseases.
+
+### Pillar 2: Advanced Next-Gen 2026 Features (18 Modules)
+16. `src/biomedclip_retrieval.py`: Zero-shot cross-modal visual-language literature retrieval using BiomedCLIP.
+17. `src/biomedclip_reranker.py`: Zero-shot cross-modal BiomedCLIP reranker for fine-grained document alignment.
+18. `src/conformal.py`: Split Conformal Prediction engine guaranteeing 95% statistical coverage sets.
+19. `src/consensus_rag.py`: Multi-Agent Consensus RAG engine combining Radiologist, Pathologist, & Physician notes.
+20. `src/faithfulness.py`: NLI Sentence-Level Faithfulness Verifier using DeBERTa natural language inference.
+21. `src/rag_metrics.py`: Quantitative RAG textual quality metrics (ROUGE-1/2/L, BLEU-4, BERTScore similarity).
+22. `src/report_generator.py`: Automated PDF Diagnostic Report Generator formatted via ReportLab.
+23. `src/feedback_logger.py`: Clinician Active Learning Feedback Logger recording star ratings, notes, and flags.
+24. `src/multimodal_fusion.py`: Tabular patient metadata + image embedding Cross-Attention Fusion engine.
+25. `src/peft_adapter.py`: LoRA / QLoRA Parameter-Efficient Fine-Tuning adapter module reducing parameters by >99%.
+26. `src/graph_rag.py`: GraphRAG Biomedical Knowledge Graph extractor constructing NetworkX entity graphs.
+27. `src/privacy_engine.py`: HIPAA-compliant $(\epsilon=1.0, \delta=10^{-5})$-Differential Privacy noise injection engine.
+28. `src/llm_judge.py`: Multi-LLM Judge Peer-Reviewer evaluating accuracy, groundedness, and clinical safety (1-10).
+29. `src/fhir_exporter.py`: HL7 FHIR R4 DiagnosticReport & Observation JSON exporter for Epic/Cerner EHR systems.
+30. `src/counterfactual.py`: Counterfactual visual and textual feature perturbation explanation generator.
+31. `src/dicom_reader.py`: DICOM reader with Hounsfield Unit soft tissue windowing (level 40, width 400).
+32. `src/cot_reasoning.py`: Chain-of-Thought differential diagnosis reasoning trace (Inspection $ightarrow$ Grounding).
+33. `src/attribution_xai.py`: Integrated Gradients (IG) dual-attribution feature integral generator for axiomatic XAI.
+
+### Pillar 3: Ultra-Specialized Frontier Medical AI Modules (11 Modules)
+34. `src/tumor_board.py`: 5-Specialist Virtual Tumor Board panel simulator (Oncology, Radiology, Pathology, Surgery, Genetics).
+35. `src/fda_safety_engine.py`: openFDA drug adverse event reporter, drug interaction auditor, & black-box warning engine.
+36. `src/survival_analysis.py`: Kaplan-Meier survival probability curve & Cox hazard ratio estimator.
+37. `src/clinical_grading.py`: Standardized clinical severity grading scorecards (BI-RADS for breast, ETDRS for retinal fundus).
+38. `src/radiogenomics.py`: Radiogenomic association engine mapping visual phenotypes to gene mutations (BRCA1/2, EGFR).
+39. `src/radiomics_features.py`: PyRadiomics shape, first-order, and GLCM/GLRLM texture feature extractor.
+40. `src/concept_bottleneck.py`: Concept Bottleneck Model (CBM) providing human-interpretable clinical concept bottlenecks.
+41. `src/med_vqa.py`: Medical Visual Question Answering (Med-VQA) engine allowing natural language image querying.
+42. `src/federated_learning.py`: FedAvg privacy-preserving decentralized federated learning node aggregator.
+43. `src/dual_report.py`: Dual Report Generator creating parallel layperson patient reports + technical specialist reports.
+44. `src/guideline_auditor.py`: NCCN Clinical Practice Guideline compliance & treatment regimen auditor.
+
+### Pillar 4: Production Operations, Security & Edge Utilities (9 Modules)
+45. `src/audit_ledger.py`: SHA-256 cryptographic audit trail ledger logging predictions, parameters, and timestamps.
+46. `src/clinical_trial_matcher.py`: ClinicalTrials.gov eligibility protocol matcher finding recruiting patient trials.
+47. `src/icd_snomed_mapper.py`: Standardized ICD-10-CM and SNOMED CT ontology mapping engine.
+48. `src/lesion_segmentation.py`: Deep U-Net / SAM lesion segmentation & contour extractor.
+49. `src/mc_uncertainty.py`: Monte Carlo Dropout Bayesian epistemic uncertainty estimator (50-pass sampling).
+50. `src/noise_robustness.py`: Gaussian noise robustness & visual degradation evaluator.
+51. `src/onnx_quantizer.py`: ONNX Runtime INT8 model quantizer & TensorRT exporter for 4x edge acceleration.
+52. `src/ood_detector.py`: Mahalanobis distance out-of-distribution (OOD) input artifact detector.
+53. `src/progression_tracker.py`: Longitudinal multi-visit patient scan progression trajectory tracker.
+54. `src/reflexion_loop.py`: Self-Reflexion critique loop performing iterative LLM literature re-grounding.
+55. `src/report_translator.py`: Multilingual report translator (Spanish, French, German, Mandarin).
+56. `src/voice_dictation.py`: Whisper voice dictation engine transcribing spoken clinician notes into text.
+
+---
+
 ## 🦠 Supported Disease Domains & Datasets
 
 | Disease Domain | Modality | Target Classes | Image Count (Augmented) | Raw Count | Expansion Strategy | Root Directory |
@@ -66,67 +153,24 @@ graph TD
 
 ---
 
-## ⚙️ Comprehensive 53 Frontier & Ultra-Specialized Medical AI Modules
+## 🖥️ 5-Tab Interactive Gradio Web Dashboard Overview
 
-| # | Module Name | File Path | Functional Description |
-|---|---|---|---|
-| 1 | **BiomedCLIP Multimodal Retriever** | `src/biomedclip_retrieval.py` | Zero-shot visual-language cross-modal literature retrieval using BiomedCLIP embeddings. |
-| 2 | **BiomedCLIP Cross-Modal Reranker** | `src/biomedclip_reranker.py` | Fine-grained visual-to-text document re-ranking via cosine similarity scoring. |
-| 3 | **3-Path Corrective RAG Policy** | `src/corrective_rag.py` | Fallback literature routing across Direct Grounding, Web Search, and Query Reformulation. |
-| 4 | **Deep Vision Model Backbones** | `src/models.py` | ResNet18 (512-dim), EfficientNet-B0 (1280-dim), ViT-B/16 (768-dim), Swin-T, & ConvNeXt. |
-| 5 | **Classical ML Baselines** | `src/classical_baselines.py` | XGBoost, LightGBM, and CatBoost classifiers trained on deep visual embeddings. |
-| 6 | **k-NN Graph Attention Network (GAT)** | `src/graph_fusion.py` | Construct visual similarity graphs ($k=4, 8, 15$) and perform GAT message passing. |
-| 7 | **Grad-CAM Saliency Generator** | `src/gradcam.py` | Spatial attention heatmaps highlighting region-of-interest diagnostic triggers. |
-| 8 | **Split Conformal Prediction** | `src/conformal.py` | Non-parametric prediction sets with guaranteed $95\%$ statistical coverage. |
-| 9 | **GraphRAG Knowledge Graph Extractor** | `src/graph_rag.py` | NetworkX entity-relation graph extraction from PubMed medical abstracts. |
-| 10 | **FLAN-T5 Clinical Generator** | `src/generation.py` | Parameter-efficient fine-tuned clinical rationale text generator. |
-| 11 | **LoRA PEFT Fine-Tuning** | `src/peft_adapter.py` | Low-Rank Adaptation reducing trainable LLM parameters by $>99\%$. |
-| 12 | **Multi-Agent Consensus RAG** | `src/consensus_rag.py` | Multi-perspective radiologist, pathologist, and physician consensus scoring. |
-| 13 | **Multi-LLM Judge Peer-Reviewer** | `src/llm_judge.py` | Automated clinical peer-review scoring accuracy, groundedness, and safety. |
-| 14 | **NLI Faithfulness Verifier** | `src/faithfulness.py` | DeBERTa-based natural language inference verifier detecting hallucinations. |
-| 15 | **Quantitative RAG Evaluator** | `src/rag_metrics.py` | Automated textual quality metrics: ROUGE-1/2/L, BLEU-4, and BERTScore similarity. |
-| 16 | **Automated PDF Report Generator** | `src/report_generator.py` | Diagnostic PDF report generator compiling scans, heatmaps, predictions, and citations. |
-| 17 | **Clinician Active Feedback Logger** | `src/feedback_logger.py` | Interactive clinician feedback logger recording 1-5 star ratings and comments. |
-| 18 | **HIPAA Differential Privacy Engine** | `src/privacy_engine.py` | $(\epsilon=1.0, \delta=10^{-5})$-Differential Privacy noise injection for visual feature protection. |
-| 19 | **HL7 FHIR R4 EHR Exporter** | `src/fhir_exporter.py` | Generates compliant FHIR DiagnosticReport & Observation JSON resources for EHR systems. |
-| 20 | **5-Specialist Virtual Tumor Board** | `src/tumor_board.py` | Simulates multi-specialist panel discussions (Oncologist, Radiologist, Pathologist, Surgeon, Geneticist). |
-| 21 | **openFDA Drug Safety Engine** | `src/fda_safety_engine.py` | Queries openFDA for adverse event reports, drug interactions, and black-box warnings. |
-| 22 | **Kaplan-Meier Survival Estimator** | `src/survival_analysis.py` | Calculates clinical survival curves and hazard ratios based on diagnostic staging. |
-| 23 | **Clinical Grading Scorecards** | `src/clinical_grading.py` | Standardized severity grading scorecards (BI-RADS for breast, ETDRS for retinal fundus). |
-| 24 | **Radiogenomics Association Engine** | `src/radiogenomics.py` | Maps visual image phenotypes to genomic mutation markers (e.g., BRCA1/2, EGFR, TP53). |
-| 25 | **PyRadiomics Feature Extractor** | `src/radiomics_features.py` | Extracts shape, first-order intensity, and GLCM/GLRLM texture features. |
-| 26 | **Concept Bottleneck Model (CBM)** | `src/concept_bottleneck.py` | Interpretable diagnostic mapping via human-understandable clinical concept bottlenecks. |
-| 27 | **Med-VQA Engine** | `src/med_vqa.py` | Visual question answering allowing clinicians to query image regions in natural language. |
-| 28 | **FedAvg Federated Learning** | `src/federated_learning.py` | Privacy-preserving decentralized model weight aggregation across hospital nodes. |
-| 29 | **Dual Patient / Specialist Reports** | `src/dual_report.py` | Generates parallel reports: layman patient-friendly explanations + technical specialist summaries. |
-| 30 | **NCCN Guideline Compliance Auditor** | `src/guideline_auditor.py` | Audits proposed diagnostic treatments against NCCN clinical practice guidelines. |
-| 31 | **Integrated Gradients (IG) XAI** | `src/attribution_xai.py` | Riemann path integral feature attribution providing axiomatic XAI guarantees. |
-| 32 | **Cryptographic Audit Ledger** | `src/audit_ledger.py` | Immutable SHA-256 cryptographic audit trail recording model predictions and timestamps. |
-| 33 | **Clinical Trial Matcher** | `src/clinical_trial_matcher.py` | Matches patient diagnostic profiles to active recruiting trials on ClinicalTrials.gov. |
-| 34 | **Chain-of-Thought (CoT) Reasoning** | `src/cot_reasoning.py` | Step-by-step clinical reasoning trace (Inspection $ightarrow$ Rule-Out $ightarrow$ Grounding). |
-| 35 | **Counterfactual Explanation Engine** | `src/counterfactual.py` | Computes minimal feature perturbations required to flip diagnostic class predictions. |
-| 36 | **Dataset Utilities & Preprocessing** | `src/data_utils.py` | Handles dataset loading, hash-based deduplication, and stratified split creation. |
-| 37 | **DICOM Soft Tissue Reader** | `src/dicom_reader.py` | DICOM parser with Hounsfield Unit soft tissue windowing (level 40, width 400). |
-| 38 | **Model Training Harness** | `src/train.py` | Transfer learning training harness with cross-entropy loss and AdamW optimization. |
-| 39 | **Evaluation Suite** | `src/evaluate.py` | Evaluates accuracy, sensitivity, specificity, F1-score, confusion matrices, and ROC-AUC curves. |
-| 40 | **Multilingual Report Translator** | `src/report_translator.py` | Translates generated diagnostic reports into Spanish, French, German, and Mandarin. |
-| 41 | **PubMed NCBI Literature Retriever** | `src/retrieval.py` | NCBI E-utilities literature search engine with FAISS vector caching. |
-| 42 | **ICD-10 & SNOMED CT Mapper** | `src/icd_snomed_mapper.py` | Maps diagnostic findings to standardized ICD-10-CM and SNOMED CT clinical codes. |
-| 43 | **Lesion Segmentation Engine** | `src/lesion_segmentation.py` | Deep U-Net / SAM contour extraction isolating lesion regions-of-interest. |
-| 44 | **Monte Carlo Dropout Uncertainty** | `src/mc_uncertainty.py` | Bayesian epistemic uncertainty quantification using 50-pass MC Dropout sampling. |
-| 45 | **Tabular + Image Cross-Attention** | `src/multimodal_fusion.py` | Fuses clinical tabular patient data with image embeddings via MultiheadAttention. |
-| 46 | **Gaussian Noise Robustness Evaluator**| `src/noise_robustness.py` | Evaluates model performance under simulated sensor noise and resolution degradation. |
-| 47 | **ONNX Runtime INT8 Quantizer** | `src/onnx_quantizer.py` | Quantizes PyTorch models to INT8 ONNX format for 4x faster edge inference. |
-| 48 | **Mahalanobis Distance OOD Detector** | `src/ood_detector.py` | Detects out-of-distribution non-medical or artifact inputs using feature space covariance. |
-| 49 | **Longitudinal Progression Tracker** | `src/progression_tracker.py` | Tracks multi-visit patient scan trajectories over time to quantify disease progression. |
-| 50 | **Self-Reflexion Critique Loop** | `src/reflexion_loop.py` | Iterative LLM self-correction loop revising literature grounds upon verification failure. |
-| 51 | **Whisper Voice Dictation Engine** | `src/voice_dictation.py` | Speech-to-text dictation engine converting clinician spoken audio into text notes. |
-| 52 | **Integration Test Harness** | `src/run_pipeline_test.py` | End-to-end integration test runner validating all 53 pipeline components. |
-| 53 | **Full Pipeline Orchestrator** | `src/pipeline.py` | Master orchestrator coordinating data ingestion, vision inference, RAG, and reports. |
+The interface (`app.py`) provides a comprehensive 5-tab medical workflow:
+
+* **Tab 1: Single Diagnostic Image & Multimodal RAG Analysis**
+  - Image upload, disease domain selection, Grad-CAM spatial heatmap rendering, 95% Split Conformal prediction set computation, PubMed literature citation display, FLAN-T5 explanation generation, NLI sentence-level faithfulness score, ROUGE/BLEU/BERTScore metrics, and automated PDF report download.
+* **Tab 2: Multi-Agent Clinical Consensus & Virtual Tumor Board**
+  - Interactive panel discussion across 5 simulated specialists (Oncologist, Radiologist, Pathologist, Surgeon, Geneticist), inter-agent consensus scores, openFDA drug safety warnings, and Kaplan-Meier survival curves.
+* **Tab 3: XAI Interpretability & Concept Bottlenecks (CBM)**
+  - Concept Bottleneck Model (CBM) concept activations, Integrated Gradients (IG) dual-attribution plots, counterfactual feature flips, DICOM HU soft tissue windowing, PyRadiomics texture features, and radiogenomic mutation marker associations.
+* **Tab 4: EHR Export, FHIR R4 Standards & Audit Trail**
+  - Downloadable HL7 FHIR R4 DiagnosticReport & Observation JSONs, ICD-10 & SNOMED CT ontology mappings, SHA-256 Cryptographic Audit Ledger verification, and NCCN guideline compliance audit results.
+* **Tab 5: Clinician Feedback, Active Learning & Model Governance**
+  - Interactive 1-5 star clinician ratings, feedback logging, FedAvg federated node status monitoring, MC Dropout Bayesian uncertainty plots, ONNX INT8 quantization metrics, and longitudinal patient progression trajectory tracking.
 
 ---
 
-## 📊 Comprehensive Benchmark Results
+## 📊 Benchmark Results
 
 ### 1. Model Backbone & Classical ML Baseline Comparison
 
