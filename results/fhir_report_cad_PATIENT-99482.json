@@ -1,9 +1,9 @@
 {
   "resourceType": "DiagnosticReport",
-  "id": "diag-rep-breast_cancer-PATIENT-99482",
+  "id": "diag-rep-cad-PATIENT-99482",
   "meta": {
     "versionId": "1",
-    "lastUpdated": "2026-09-23T08:58:02.004503Z",
+    "lastUpdated": "2026-09-23T09:20:30.600220Z",
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
     ]
@@ -25,18 +25,18 @@
       {
         "system": "http://loinc.org",
         "code": "47528-5",
-        "display": "Breast Cancer Diagnostic Imaging AI Report"
+        "display": "Cad Diagnostic Imaging AI Report"
       }
     ],
-    "text": "AI Diagnostic Report for breast_cancer"
+    "text": "AI Diagnostic Report for cad"
   },
   "subject": {
     "reference": "Patient/PATIENT-99482",
     "display": "Patient ID: PATIENT-99482"
   },
-  "effectiveDateTime": "2026-09-23T08:58:02.004503Z",
-  "issued": "2026-09-23T08:58:02.004503Z",
-  "conclusion": "Predicted Diagnosis: malignant (Confidence: 100.0%). Conformal Set: ['benign', 'malignant'].",
+  "effectiveDateTime": "2026-09-23T09:20:30.600220Z",
+  "issued": "2026-09-23T09:20:30.600220Z",
+  "conclusion": "Predicted Diagnosis: abnormal (Confidence: 99.4%). Conformal Set: ['normal', 'abnormal'].",
   "result": [
     {
       "reference": "Observation/obs-prediction-PATIENT-99482",
@@ -56,7 +56,7 @@
         "text": "Primary AI Class Prediction Probability"
       },
       "valueQuantity": {
-        "value": 100.0,
+        "value": 99.42,
         "unit": "%",
         "system": "http://unitsofmeasure.org",
         "code": "%"
@@ -75,7 +75,7 @@
   "extension": [
     {
       "url": "http://ai-diagnostic-framework.org/fhir/StructureDefinition/nli-faithfulness",
-      "valueDecimal": 0.3338
+      "valueDecimal": 0.2489
     },
     {
       "url": "http://ai-diagnostic-framework.org/fhir/StructureDefinition/audit-signature",

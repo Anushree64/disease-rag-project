@@ -128,5 +128,655 @@
     "confidence": 0.9999,
     "sha256_signature": "c19475c98b4fc6101a6274f21c1cb85919ed9e3027b46edbee1e14c34f1500c2",
     "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 14,
+    "timestamp": "2026-09-23T14:16:07.059208",
+    "disease": "breast_cancer",
+    "image_filename": "53586896 (56).png",
+    "predicted_class": "benign",
+    "confidence": 1.0,
+    "sha256_signature": "16dcc205b2e2d3396c0798acb2b9991350a8117a7038af4f4cf62f2fceebf05c",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 15,
+    "timestamp": "2026-09-23T14:17:00.375088",
+    "disease": "breast_cancer",
+    "image_filename": "53586896 (42).png",
+    "predicted_class": "benign",
+    "confidence": 0.9998,
+    "sha256_signature": "9a63ef720460eebd09fd822f37858f94ada099e966b57a71eef8071ed5dcb641",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 16,
+    "timestamp": "2026-09-23T14:17:45.473767",
+    "disease": "breast_cancer",
+    "image_filename": "53586896 (32).png",
+    "predicted_class": "benign",
+    "confidence": 0.9995,
+    "sha256_signature": "64af10e55835d21ea1e21989ee435b088d14bac8225fe7f26164c41afe813247",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 17,
+    "timestamp": "2026-09-23T14:18:26.650298",
+    "disease": "breast_cancer",
+    "image_filename": "53586869 (59).png",
+    "predicted_class": "benign",
+    "confidence": 1.0,
+    "sha256_signature": "44c44b81bbb1f8bbfd45b5dd416e24efcec94ac235c4b439759e88a05db560c7",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 18,
+    "timestamp": "2026-09-23T14:19:07.274997",
+    "disease": "breast_cancer",
+    "image_filename": "53587663.png",
+    "predicted_class": "benign",
+    "confidence": 1.0,
+    "sha256_signature": "b2c78b0e54b4315bcb58970046b2c735b6b393ab4272583a08c566f13ebcb61b",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 19,
+    "timestamp": "2026-09-23T14:19:47.866573",
+    "disease": "breast_cancer",
+    "image_filename": "53586869 (41).png",
+    "predicted_class": "benign",
+    "confidence": 0.9996,
+    "sha256_signature": "16e129997c336606fceb11b2a38ca602c46d01f615f98c3de98a0a233f699be0",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 20,
+    "timestamp": "2026-09-23T14:20:27.813340",
+    "disease": "breast_cancer",
+    "image_filename": "53587663 (47).png",
+    "predicted_class": "benign",
+    "confidence": 0.9999,
+    "sha256_signature": "7496eedc6a903fd300e0b0d9a5da38ab3b4f3a047147d38ede153b35e07fff36",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 21,
+    "timestamp": "2026-09-23T14:21:10.000656",
+    "disease": "breast_cancer",
+    "image_filename": "53582683 (68).png",
+    "predicted_class": "malignant",
+    "confidence": 1.0,
+    "sha256_signature": "f07780adb9d114343274142f6864cc8e6cc879fe210b0474587b7c9596ac96a4",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 22,
+    "timestamp": "2026-09-23T14:21:53.982260",
+    "disease": "breast_cancer",
+    "image_filename": "53581460 (17).png",
+    "predicted_class": "malignant",
+    "confidence": 0.9065,
+    "sha256_signature": "8a3bc34bb1df5c537d0da860804307f49e3b5236cf85531bd1a535850480e737",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 23,
+    "timestamp": "2026-09-23T14:22:43.157096",
+    "disease": "breast_cancer",
+    "image_filename": "50998981 (49).png",
+    "predicted_class": "malignant",
+    "confidence": 1.0,
+    "sha256_signature": "86c4cb6eab5073bf2e559a97596d3ec20105f4fa7c882a4b3f0440a8a14eb1a4",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 24,
+    "timestamp": "2026-09-23T14:23:27.636584",
+    "disease": "breast_cancer",
+    "image_filename": "53581460 (59).png",
+    "predicted_class": "malignant",
+    "confidence": 0.9535,
+    "sha256_signature": "484609d04a3f4664859e8324338ba416b4620217497631e209b7bd2c9a25adb1",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 25,
+    "timestamp": "2026-09-23T14:24:18.485950",
+    "disease": "breast_cancer",
+    "image_filename": "53580858 (33).png",
+    "predicted_class": "malignant",
+    "confidence": 0.9932,
+    "sha256_signature": "9b9840b7060b4e2c9c484904e216a6475838b0112f256570610da689bf509c97",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 26,
+    "timestamp": "2026-09-23T14:25:01.588165",
+    "disease": "breast_cancer",
+    "image_filename": "50997515 (62).png",
+    "predicted_class": "malignant",
+    "confidence": 0.9831,
+    "sha256_signature": "fb405a82a2ae3902fdba8f1d9e5803bd7f732f7db73c1051d6b44495226d69a4",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 27,
+    "timestamp": "2026-09-23T14:25:41.987790",
+    "disease": "breast_cancer",
+    "image_filename": "50997515 (60).png",
+    "predicted_class": "malignant",
+    "confidence": 0.8459,
+    "sha256_signature": "31d0740b3b829b6f53d780f03c8620b2c7b8e0cb348590f31019fa72925dd76e",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 28,
+    "timestamp": "2026-09-23T14:26:31.179493",
+    "disease": "breast_cancer",
+    "image_filename": "50998981 (54).png",
+    "predicted_class": "malignant",
+    "confidence": 1.0,
+    "sha256_signature": "6586a864f1eb06afe690ea2fa7fa246ad58a278da43d597dd724c6d9078759ad",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 29,
+    "timestamp": "2026-09-23T14:27:14.370187",
+    "disease": "breast_cancer",
+    "image_filename": "50999432 (4).png",
+    "predicted_class": "malignant",
+    "confidence": 1.0,
+    "sha256_signature": "b0ffb5629199a975e58e36a3521d7ed54c364c44f3989842c891a56d11731a40",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 30,
+    "timestamp": "2026-09-23T14:28:01.996400",
+    "disease": "breast_cancer",
+    "image_filename": "50999432 (53).png",
+    "predicted_class": "malignant",
+    "confidence": 1.0,
+    "sha256_signature": "2c6b531919e363362168bd85c4726fbde888f0692c382da117163e8ccde7c106",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 31,
+    "timestamp": "2026-09-23T14:29:28.128764",
+    "disease": "cad",
+    "image_filename": "normal i5_003.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9919,
+    "sha256_signature": "f807b52e90405e64408f3196790ace23fbe27bbe7277e71016abfa92dbc6c8ea",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 32,
+    "timestamp": "2026-09-23T14:30:36.036508",
+    "disease": "cad",
+    "image_filename": "normal i4_005.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9851,
+    "sha256_signature": "d83cb8ddb5c9acebc0ff847533be608c0d25203e82217578f54ce9ddd639a2a1",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 33,
+    "timestamp": "2026-09-23T14:31:39.349845",
+    "disease": "cad",
+    "image_filename": "normal i6_002.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9398,
+    "sha256_signature": "dec510b557f4c58aee143508f7d8135c723b1222bf5c90b90a88e187711f9034",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 34,
+    "timestamp": "2026-09-23T14:32:35.930298",
+    "disease": "cad",
+    "image_filename": "normal i6_001.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9975,
+    "sha256_signature": "78572ebfff088dbbcdd778e5a3e7c42a703bc52fc3c395d4229b393b99370609",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 35,
+    "timestamp": "2026-09-23T14:33:38.609377",
+    "disease": "cad",
+    "image_filename": "normal i9_002.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9999,
+    "sha256_signature": "5ff36e216556af32243ec289cd567035660281c4f8966d032f3af9d630600530",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 36,
+    "timestamp": "2026-09-23T14:34:33.732667",
+    "disease": "cad",
+    "image_filename": "normal i5_002.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9945,
+    "sha256_signature": "e13e1c030b0f816a345de03bd8cd803d8fb8aece5290e1e2efb3e19e105a6768",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 37,
+    "timestamp": "2026-09-23T14:35:30.137450",
+    "disease": "cad",
+    "image_filename": "normal i6_005.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9999,
+    "sha256_signature": "b2d3d1430d555790caafdf1f84cf6b0a87dec871e0a64d128f421a7fdb904e73",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 38,
+    "timestamp": "2026-09-23T14:36:27.015682",
+    "disease": "cad",
+    "image_filename": "normal i5_001.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9983,
+    "sha256_signature": "c9ab6840c8b591e6e05eda109bd47572f44246d2c952e3ced98a20254affbdc9",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 39,
+    "timestamp": "2026-09-23T14:37:27.726678",
+    "disease": "cad",
+    "image_filename": "normal i6_004.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9917,
+    "sha256_signature": "b705aef1a73e45393842761b6b64f14022d54b5df25f7510ad070de6cf27dbd9",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 40,
+    "timestamp": "2026-09-23T14:38:34.061863",
+    "disease": "cad",
+    "image_filename": "normal i9_003.jpg",
+    "predicted_class": "normal",
+    "confidence": 0.9976,
+    "sha256_signature": "1e9a600cf89d9dcf2cf713068a2af8d642a996a38b427bb8c68898335622cf50",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 41,
+    "timestamp": "2026-09-23T14:39:37.135560",
+    "disease": "cad",
+    "image_filename": "abnormal k1_001.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9996,
+    "sha256_signature": "dc8e4291651ae4b686b5158c452bc25d759ec86f3bea8757b5ee18d807d26921",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 42,
+    "timestamp": "2026-09-23T14:40:41.317584",
+    "disease": "cad",
+    "image_filename": "abnormal k_005.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9944,
+    "sha256_signature": "949f99649ce744802b899a7b3c927d0120bf5db945c6d5b882b0c351faa97eea",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 43,
+    "timestamp": "2026-09-23T14:41:45.952622",
+    "disease": "cad",
+    "image_filename": "abnormal k_002.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.6252,
+    "sha256_signature": "b97db2917654b948dea051b4f010ec6cc81c91ecb1d53b21db1a9209c6667443",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 44,
+    "timestamp": "2026-09-23T14:43:03.380073",
+    "disease": "cad",
+    "image_filename": "abnormal i_006.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9961,
+    "sha256_signature": "246bc90d9ddd762dbf99d589ddb34f75140cb2da7f36645581b07ecadbaf626a",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 45,
+    "timestamp": "2026-09-23T14:44:04.571478",
+    "disease": "cad",
+    "image_filename": "abnormal k_004.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9925,
+    "sha256_signature": "a100741676761eb81c5c0f5d2374cc6aa0cdc8e6f3492ba1aa95df3f992d7e85",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 46,
+    "timestamp": "2026-09-23T14:45:26.079400",
+    "disease": "cad",
+    "image_filename": "abnormal k_003.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9908,
+    "sha256_signature": "f4d438ecd6c5d9de69ffdd943c4a02771040d16cec716ee103fb9f4b2770d9ce",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 47,
+    "timestamp": "2026-09-23T14:46:49.585924",
+    "disease": "cad",
+    "image_filename": "abnormal k_007.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9992,
+    "sha256_signature": "41f25376bd5dd05448397bf223275112482d4733123797bff6209ba33f779291",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 48,
+    "timestamp": "2026-09-23T14:48:04.143838",
+    "disease": "cad",
+    "image_filename": "abnormal k_001.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9762,
+    "sha256_signature": "c1468b02253faa2c3bb4aeaf5362b1c40c6af1375e94a33b5560ae5689db25e9",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 49,
+    "timestamp": "2026-09-23T14:49:22.826237",
+    "disease": "cad",
+    "image_filename": "abnormal k_006.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9935,
+    "sha256_signature": "52759aeabda5115d0fb83a8feba0cd4c0acc6b3f89581311f516cb0ab68e3641",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 50,
+    "timestamp": "2026-09-23T14:50:30.590475",
+    "disease": "cad",
+    "image_filename": "abnormal k1_002.jpg",
+    "predicted_class": "abnormal",
+    "confidence": 0.9942,
+    "sha256_signature": "bf3558295f1e5e251a4a49673bcd4e5c74b0880aa2fca4f4e38b42a8ee9bd4f8",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 51,
+    "timestamp": "2026-09-23T14:52:02.702946",
+    "disease": "diabetes",
+    "image_filename": "Healthy_89.png",
+    "predicted_class": "Healthy",
+    "confidence": 1.0,
+    "sha256_signature": "38f0ab8c20cc4c1f04127cea997fcb997f3f575243e8e6cc40d19ef57b9ba30c",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 52,
+    "timestamp": "2026-09-23T14:53:01.998922",
+    "disease": "diabetes",
+    "image_filename": "Healthy_87.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9995,
+    "sha256_signature": "71c53d11859f0e89d511e1fe085a784a176ae970c863a28e8572333251810c23",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 53,
+    "timestamp": "2026-09-23T14:54:08.193881",
+    "disease": "diabetes",
+    "image_filename": "Healthy_927.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9999,
+    "sha256_signature": "64634a39de494efae097041a6f0235a82a4cf6777a11113d0c747b3827c5597d",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 54,
+    "timestamp": "2026-09-23T14:54:59.666166",
+    "disease": "diabetes",
+    "image_filename": "Healthy_92.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9991,
+    "sha256_signature": "bd9b89bcf35b5ec1f8ff32f247bba3ce02bd6430b943b5aadeb69f2dffb8b5ed",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 55,
+    "timestamp": "2026-09-23T14:55:50.268754",
+    "disease": "diabetes",
+    "image_filename": "Healthy_915.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9997,
+    "sha256_signature": "7195cd5a35d3161ae0a66aea3e88713e8dbc498265251c98ea5ee91f990f208c",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 56,
+    "timestamp": "2026-09-23T14:56:43.078586",
+    "disease": "diabetes",
+    "image_filename": "Healthy_896.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9999,
+    "sha256_signature": "018c26356e61431c2f5f5240b38e453b0fe6a1bce2a72c5d6431055a461fa83d",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 57,
+    "timestamp": "2026-09-23T14:57:35.364317",
+    "disease": "diabetes",
+    "image_filename": "Healthy_888.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9999,
+    "sha256_signature": "088e6660490962d18935c0e00c07c6a3071ff549e3996d5ce3ff91dcd0566349",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 58,
+    "timestamp": "2026-09-23T14:58:50.158358",
+    "disease": "diabetes",
+    "image_filename": "Healthy_99.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9997,
+    "sha256_signature": "acd2d713ff49279255488825621b61e1cfe24158a8751467aeba2574af1a9a04",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 59,
+    "timestamp": "2026-09-23T15:00:03.470620",
+    "disease": "diabetes",
+    "image_filename": "Healthy_884.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9976,
+    "sha256_signature": "7380016cd7dcfa44e187336b2f597f926a1f63f317cc5c88596768b75cc31cea",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 60,
+    "timestamp": "2026-09-23T15:01:07.425504",
+    "disease": "diabetes",
+    "image_filename": "Healthy_961.png",
+    "predicted_class": "Healthy",
+    "confidence": 0.9968,
+    "sha256_signature": "f6030fdd6b8d27bb8dded1bf5322b030a02db9017b294397d22d7b1d6506333f",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 61,
+    "timestamp": "2026-09-23T15:02:20.101375",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_50.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.9902,
+    "sha256_signature": "802bfa284dd0ca5647941e70482c1e1353445cd671a7df6ac3d93d8d9fb158fa",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 62,
+    "timestamp": "2026-09-23T15:03:36.445401",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_5.png",
+    "predicted_class": "Severe DR",
+    "confidence": 0.6483,
+    "sha256_signature": "1a64a4a1e71194580494db686fc1b87c2b91450b0c75620cd7feb9a87feae8ef",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 63,
+    "timestamp": "2026-09-23T15:04:29.455720",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_53.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.915,
+    "sha256_signature": "eeb2e9a7827302f480d2e4d9ada0f7129f824d70dd480d0ab7f95aa46cdc8719",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 64,
+    "timestamp": "2026-09-23T15:05:19.026618",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_60.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.5527,
+    "sha256_signature": "d1d4df02033d3a56522cda689074a4ba71379ed37245a8bf7049f96dc88b78dd",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 65,
+    "timestamp": "2026-09-23T15:06:30.130103",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_61.png",
+    "predicted_class": "Proliferate DR",
+    "confidence": 0.4943,
+    "sha256_signature": "a89cb917482ba8afafba2e62c20ec0108318bc6e0d0b41ca6604e9de3755399e",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 66,
+    "timestamp": "2026-09-23T16:04:43.922725",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_78.png",
+    "predicted_class": "Proliferate DR",
+    "confidence": 0.6469,
+    "sha256_signature": "21297b3de1d0402cd74c4be145b366652f58f297143655a646531c08d023184b",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 67,
+    "timestamp": "2026-09-23T16:05:30.862117",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_83.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.9895,
+    "sha256_signature": "4bda38a538c6e8505888f7d5d26c228450934fa9a5709be81de379ea7c159190",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 68,
+    "timestamp": "2026-09-23T16:06:15.757294",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_98.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.9199,
+    "sha256_signature": "59b7c1965eb5b57de2db3e15b71a8ec93dbd6a606796ae90c02f60934796dbf3",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 69,
+    "timestamp": "2026-09-23T16:07:04.539750",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_80.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.9746,
+    "sha256_signature": "ea4472afc44b0db20807542e849755a0b0cd5c42d9321c96b073b7b56425ce70",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 70,
+    "timestamp": "2026-09-23T16:07:55.552963",
+    "disease": "diabetes",
+    "image_filename": "Mild_DR_6.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.9963,
+    "sha256_signature": "06cabda4001aaa3116353db436a07f99c1b36d5f0eab322c0797c12e19ad82ac",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 71,
+    "timestamp": "2026-09-23T16:09:01.141850",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_885.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.8325,
+    "sha256_signature": "b6a828a5ba10bcdd68e430dd4851726804cc6f2f616aac1f2ab4e44b02ef9ae3",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 72,
+    "timestamp": "2026-09-23T16:09:52.471265",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_839.png",
+    "predicted_class": "Mild DR",
+    "confidence": 0.5488,
+    "sha256_signature": "7235d0e02e6e42b1ffc18169c28c199b320aec9c7cff054aace4c47d4289f5f6",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 73,
+    "timestamp": "2026-09-23T16:10:54.141804",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_891.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.4114,
+    "sha256_signature": "1ed66b7512a3469efb707ae856501c055248d0b26d4f66747e375eeba7406bd6",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 74,
+    "timestamp": "2026-09-23T16:11:53.022400",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_852.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.6714,
+    "sha256_signature": "6cd7f9db3d784831ca69f4c2ee8b3f33581deb56eb741e735ff2dc2bf1916b84",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 75,
+    "timestamp": "2026-09-23T16:12:51.252570",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_79.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.8577,
+    "sha256_signature": "7448a375d0d060b56d5704070446262a7279c0145d59574d2fcba9d738a50f63",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 76,
+    "timestamp": "2026-09-23T16:13:49.925886",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_824.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.8864,
+    "sha256_signature": "e8233a618a5a82a72a7d9281af6dd0409831487d6528269ca1037e40401d1b32",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 77,
+    "timestamp": "2026-09-23T16:14:40.803712",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_886.png",
+    "predicted_class": "Proliferate DR",
+    "confidence": 0.4136,
+    "sha256_signature": "79d64d73183afb60447f313e6dace0f4d081eb30e43737f4426058e7ef00eec5",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 78,
+    "timestamp": "2026-09-23T18:00:18.950313",
+    "disease": "diabetes",
+    "image_filename": "Moderate_DR_867.png",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.8007,
+    "sha256_signature": "1af7f2025d53e7152c34b593be3ec137a574bf92da2b35e957ebef5807db99ba",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
   }
 ]
