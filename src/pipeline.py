@@ -381,6 +381,7 @@ class DiseaseRAGPipeline:
             'dual_audience_reports': dual_reports_info,
             'guideline_compliance_audit': guidelines_info,
             'cryptographic_audit_block': audit_block,
+            'nli_faithfulness_score': faithfulness_res.get('average_faithfulness', None) if isinstance(faithfulness_res, dict) else None,
             'retrieved_evidence': [
                 {
                     'pmid': c['pmid'],

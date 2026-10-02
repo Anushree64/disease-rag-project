@@ -8,6 +8,7 @@ import sys
 import json
 from datetime import datetime
 from pathlib import Path
+from typing import Dict, List, Tuple
 import gradio as gr
 from PIL import Image
 import numpy as np
@@ -54,72 +55,137 @@ def get_pipeline(disease_name: str, backbone: str = 'resnet18') -> DiseaseRAGPip
     return _PIPELINES[key]
 
 
-def load_real_performance_metrics() -> str:
-    """Reads actual evaluation JSON files from results/ directory."""
+def get_sample_images_for_domain(domain_label: str) -> List[str]:
+    """Returns sample image paths matching the selected disease domain."""
+    domain_code = DOMAIN_MAP.get(domain_label, "breast_cancer")
+    data_dir = BASE_DIR / "data" / domain_code
+    
+    samples = []
+    if data_dir.exists():
+        for sub in data_dir.iterdir():
+            if sub.is_dir():
+                for img_file in sub.glob("*.png"):
+                    samples.append(str(img_file))
+                    if len(samples) >= 3:
+                        break
+            if len(samples) >= 3:
+                break
+    return samples
+
+
+def load_best_model_summary_table() -> str:
+    """Renders compact best model performance summary table from results/*.json."""
     results_dir = BASE_DIR / 'results'
     domains = [
-        ("Breast Cancer", "breast_cancer"),
-        ("Coronary Artery Disease", "cad"),
-        ("Diabetic Retinopathy", "diabetes"),
-        ("Chronic Kidney Disease", "ckd"),
-        ("Non-Alcoholic Fatty Liver", "nafld"),
-        ("Parkinson's Disease", "parkinsons")
+        ("Breast Cancer (Ultrasound)", "breast_cancer"),
+        ("Coronary Artery Disease (Angiography)", "cad"),
+        ("Diabetic Retinopathy (Fundus)", "diabetes"),
+        ("Chronic Kidney Disease (CT)", "ckd"),
+        ("NAFLD (Ultrasound)", "nafld"),
+        ("Parkinson's Disease (Spiral)", "parkinsons")
     ]
     
     rows = []
     for label, code in domains:
-        # ResNet18
         r18_file = results_dir / f"{code}_results.json"
+        eff_file = results_dir / f"{code}_efficientnet_b0_results.json"
+        
+        best_model = "None"
+        best_acc = 0.0
+        best_f1 = 0.0
+        best_auroc = 0.0
+        
         if r18_file.exists():
             with open(r18_file, 'r') as f:
-                data = json.load(f)
-                r18_acc = f"{data.get('accuracy', 0)*100:.2f}%"
-                r18_prec = f"{data.get('precision', 0)*100:.2f}%"
-                r18_rec = f"{data.get('recall', 0)*100:.2f}%"
-                r18_f1 = f"{data.get('f1', 0)*100:.2f}%"
-                r18_auroc = f"{data.get('auroc', 0):.4f}"
-        else:
-            r18_acc = r18_prec = r18_rec = r18_f1 = r18_auroc = "Not evaluated"
-
-        # EfficientNet-B0
-        eff_file = results_dir / f"{code}_efficientnet_b0_results.json"
+                d = json.load(f)
+                best_model = "ResNet18"
+                best_acc = d.get('accuracy', 0.0)
+                best_f1 = d.get('f1', 0.0)
+                best_auroc = d.get('auroc', 0.0)
+                
         if eff_file.exists():
             with open(eff_file, 'r') as f:
-                data = json.load(f)
-                eff_acc = f"{data.get('accuracy', 0)*100:.2f}%"
-                eff_f1 = f"{data.get('f1', 0)*100:.2f}%"
-                eff_auroc = f"{data.get('auroc', 0):.4f}"
+                d = json.load(f)
+                if d.get('accuracy', 0.0) > best_acc:
+                    best_model = "EfficientNet-B0"
+                    best_acc = d.get('accuracy', 0.0)
+                    best_f1 = d.get('f1', 0.0)
+                    best_auroc = d.get('auroc', 0.0)
+
+        if best_model != "None":
+            rows.append(f"| **{label}** | `{best_model}` | **{best_acc*100:.2f}%** | {best_f1*100:.2f}% | {best_auroc:.4f} |")
         else:
-            eff_acc = eff_f1 = eff_auroc = "Not evaluated"
+            rows.append(f"| **{label}** | *Not evaluated* | N/A | N/A | N/A |")
 
-        rows.append(f"| **{label}** | {r18_acc} | {r18_prec} | {r18_rec} | {r18_f1} | {r18_auroc} | {eff_acc} | {eff_f1} | {eff_auroc} | Not evaluated | Not evaluated | Not evaluated |")
-
-    table_md = """
-### Test Set Evaluation Results (Loaded from `results/` JSON metrics)
-
-| Disease Domain | ResNet18 Acc | ResNet18 Prec | ResNet18 Rec | ResNet18 F1 | ResNet18 AUROC | EfficientNet Acc | EfficientNet F1 | EfficientNet AUROC | ViT-B/16 | ConvNeXt-Tiny | Swin-T |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-""" + "\n".join(rows)
+    table_md = "### Best Evaluated Model Performance Summary\n\n"
+    table_md += "| Disease Domain | Best Model | Accuracy | F1-Score | AUROC |\n"
+    table_md += "|---|---|---|---|---|\n"
+    table_md += "\n".join(rows) + "\n\n"
+    table_md += "*Note: The following vision architectures were not evaluated in this study: ViT-B/16, ConvNeXt-Tiny, Swin-T.*"
     return table_md
 
 
-def update_domain_ui(domain_label: str):
-    """Toggle CT windowing sliders visibility based on domain selection."""
+def load_backbone_detailed_table(backbone_label: str) -> str:
+    """Renders detailed performance metrics table for selected backbone."""
+    backbone_code = BACKBONE_MAP.get(backbone_label, "resnet18")
+    results_dir = BASE_DIR / 'results'
+    domains = [
+        ("Breast Cancer (Ultrasound)", "breast_cancer"),
+        ("Coronary Artery Disease (Angiography)", "cad"),
+        ("Diabetic Retinopathy (Fundus)", "diabetes"),
+        ("Chronic Kidney Disease (CT)", "ckd"),
+        ("NAFLD (Ultrasound)", "nafld"),
+        ("Parkinson's Disease (Spiral)", "parkinsons")
+    ]
+    
+    rows = []
+    for label, code in domains:
+        if backbone_code == 'resnet18':
+            file_path = results_dir / f"{code}_results.json"
+        else:
+            file_path = results_dir / f"{code}_{backbone_code}_results.json"
+            
+        if file_path.exists():
+            with open(file_path, 'r') as f:
+                d = json.load(f)
+                acc = f"{d.get('accuracy', 0.0)*100:.2f}%"
+                prec = f"{d.get('precision', 0.0)*100:.2f}%"
+                rec = f"{d.get('recall', 0.0)*100:.2f}%"
+                f1 = f"{d.get('f1', 0.0)*100:.2f}%"
+                auroc = f"{d.get('auroc', 0.0):.4f}"
+                samples = d.get('num_test_samples', 0)
+                rows.append(f"| **{label}** | {acc} | {prec} | {rec} | {f1} | {auroc} | {samples} |")
+        else:
+            rows.append(f"| **{label}** | *Not evaluated* | N/A | N/A | N/A | N/A | N/A |")
+
+    table_md = f"### Detailed Evaluation Results: `{backbone_label}` Backbone\n\n"
+    table_md += "| Disease Domain | Accuracy | Precision | Recall | F1-Score | AUROC | Test Samples |\n"
+    table_md += "|---|---|---|---|---|---|---|\n"
+    table_md += "\n".join(rows)
+    return table_md
+
+
+def update_domain_selection(domain_label: str):
+    """Update CT windowing visibility and load domain sample images."""
     domain_code = DOMAIN_MAP.get(domain_label, "breast_cancer")
     is_ct = (domain_code == "ckd")
-    return gr.update(visible=is_ct)
+    
+    samples = get_sample_images_for_domain(domain_label)
+    first_sample = samples[0] if samples else None
+    
+    return gr.update(visible=is_ct), gr.update(value=first_sample, examples=samples if samples else None)
 
 
 def process_diagnosis(image: Image.Image, domain_label: str, backbone_label: str, hu_center: float = 40.0, hu_width: float = 400.0):
-    """Gradio handler function executing pipeline and returning non-hardcoded outputs."""
+    """Gradio handler function executing pipeline and returning verified non-hardcoded outputs."""
     global _LAST_RESULT
     if image is None:
         return (
             None, None,
-            "**Error:** Please upload a diagnostic image or select a sample scan.",
+            "**Error:** Please upload a diagnostic scan image to run evaluation.",
             "Please run an analysis first.",
             "Please run an analysis first.",
-            None, None
+            None, "{}"
         )
 
     disease_choice = DOMAIN_MAP.get(domain_label, "breast_cancer")
@@ -162,7 +228,7 @@ def process_diagnosis(image: Image.Image, domain_label: str, backbone_label: str
         if len(prediction_set) > 1 or cp_info.get('requires_human_review', False):
             diag_md += "\n> **Uncertain - refer to specialist** (Conformal prediction set contains multiple classes).\n"
         else:
-            diag_md += "\n> **High-Confidence Singleton Prediction** (Coverage target satisfied).\n"
+            diag_md += "\n> **Singleton Prediction** (Coverage target satisfied).\n"
 
         # Tab 2: Explainability
         cot_info = res.get('chain_of_thought_reasoning', {})
@@ -180,15 +246,19 @@ def process_diagnosis(image: Image.Image, domain_label: str, backbone_label: str
         expl_md += f"\n### Counterfactual Sensitivity:\n> {cf_info.get('counterfactual_explanation', '')}\n"
 
         # Tab 3: Evidence & Report
-        nli_score = res.get('nli_faithfulness_score', 0.0)
+        nli_val = res.get('nli_faithfulness_score')
+        nli_str = f"`{nli_val:.4f}`" if (nli_val is not None and nli_val > 0.0) else "*Not computed*"
+        
         evidence_md = f"### Generated Clinical Explanation (FLAN-T5 Corrective RAG):\n"
         evidence_md += f"*{res['explanation']}*\n\n"
-        evidence_md += f"**NLI Faithfulness Score:** `{nli_score:.4f}` (Entailment check against retrieved passages)\n\n"
+        evidence_md += f"**NLI Faithfulness Score:** {nli_str}\n\n"
 
-        evidence_md += "### Retrieved PubMed Literature:\n"
+        evidence_md += "### Retrieved PubMed Literature Evidence:\n"
         for idx, ev in enumerate(res['retrieved_evidence'], 1):
-            score = ev.get('biomedclip_similarity', ev.get('rerank_score', 0.0))
-            evidence_md += f"**[{idx}] {ev['title']}** (PMID: `{ev['pmid']}`) | Similarity: `{score:.4f}`\n"
+            raw_score = ev.get('biomedclip_similarity', ev.get('rerank_score', 0.0))
+            # Map logit score to 0..1 via sigmoid
+            norm_score = float(1.0 / (1.0 + np.exp(-raw_score)))
+            evidence_md += f"**[{idx}] {ev['title']}** (PMID: `{ev['pmid']}`) | Similarity: `{norm_score:.4f}` (Raw Logit: `{raw_score:.4f}`)\n"
             evidence_md += f"> \"{ev['passage']}\"\n\n"
 
         # Save dated reports
@@ -204,29 +274,6 @@ def process_diagnosis(image: Image.Image, domain_label: str, backbone_label: str
         fhir_data = res.get('fhir_report', {})
         fhir_json_str = json.dumps(fhir_data, indent=2)
 
-        # Tab 5: Simulated Demos
-        tb_info = res.get('tumor_board_consensus', {})
-        fed_info = res.get('federated_learning_fedavg', {})
-        surv_info = res.get('survival_analysis', {})
-        audit_info = res.get('cryptographic_audit_block', {})
-
-        sim_md = "> **Synthetic data, illustrative only.** The following panels represent simulated demonstrations of future architecture extensions.\n\n"
-        sim_md += "### Multidisciplinary Tumor Board Simulation:\n"
-        for spec in tb_info.get('specialist_opinions', []):
-            sim_md += f"- **{spec['specialist_name']} ({spec['role']}):** {spec['recommendation']}\n"
-        sim_md += f"\n**Consensus Directive:** {tb_info.get('consensus_directive', '')}\n\n"
-
-        sim_md += f"### Federated Learning FedAvg Simulation:\n"
-        sim_md += f"- **Global Aggregated Model Accuracy (Simulated):** `{fed_info.get('global_aggregated_accuracy_pct', 95.8)}%`\n"
-        sim_md += f"- **Consortium Nodes:** `{fed_info.get('total_participating_nodes', 5)} Hospitals` ({fed_info.get('total_federated_samples', 15000)} Total Cohort Patients)\n\n"
-
-        sim_md += f"### Kaplan-Meier Survival Analysis Simulation:\n"
-        sim_md += f"- **Hazard Ratio (HR):** `{surv_info.get('hazard_ratio', 1.0)}` ({surv_info.get('risk_category', '')})\n"
-        sim_md += f"- **5-Year Survival Probability:** `{surv_info.get('five_year_survival_rate', 'N/A')}`\n\n"
-
-        sim_md += f"### SHA-256 Audit Trail Simulation:\n"
-        sim_md += f"- **Block Index:** `#{audit_info.get('block_index', 1)}` | **SHA-256 Signature:** `{audit_info.get('sha256_signature', '')}`\n"
-
         return (
             gradcam_overlay,
             ig_overlay,
@@ -234,14 +281,13 @@ def process_diagnosis(image: Image.Image, domain_label: str, backbone_label: str
             expl_md,
             evidence_md,
             str(pdf_out_path) if pdf_out_path.exists() else None,
-            fhir_json_str,
-            sim_md
+            fhir_json_str
         )
 
     except Exception as e:
         err_msg = f"**Error executing analysis:** {str(e)}"
         print(err_msg)
-        return None, None, err_msg, "", "", None, "{}", ""
+        return None, None, err_msg, "", "", None, "{}"
 
 
 def handle_feedback(rating: int, approved: bool, comments: str):
@@ -308,22 +354,17 @@ def build_app():
 
                 submit_btn = gr.Button("Run Analysis", variant="primary")
 
-                # Sample images
+                # Domain-matched sample images
                 gr.Markdown("#### Sample Diagnostic Scans")
-                sample_img_1 = BASE_DIR / "data" / "breast_cancer" / "benign" / "20586908.png"
-                sample_img_2 = BASE_DIR / "data" / "breast_cancer" / "benign" / "20586960.png"
-
-                sample_paths = []
-                if sample_img_1.exists():
-                    sample_paths.append(str(sample_img_1))
-                if sample_img_2.exists():
-                    sample_paths.append(str(sample_img_2))
-
-                if sample_paths:
-                    gr.Examples(examples=sample_paths, inputs=image_input, label="Click sample image to load")
+                initial_samples = get_sample_images_for_domain("Breast Cancer (Ultrasound)")
+                sample_examples = gr.Examples(
+                    examples=initial_samples,
+                    inputs=image_input,
+                    label="Click sample scan to load"
+                )
 
             # RIGHT COLUMN: Results Tabs
-            with gr.Column(scale=1.3):
+            with gr.Column(scale=1):
                 with gr.Tabs():
                     # TAB 1: Diagnosis
                     with gr.TabItem("Diagnosis"):
@@ -345,11 +386,33 @@ def build_app():
 
                     # TAB 4: Model Performance
                     with gr.TabItem("Model Performance"):
-                        perf_markdown = gr.Markdown(value=load_real_performance_metrics())
+                        best_perf_markdown = gr.Markdown(value=load_best_model_summary_table())
+                        perf_backbone_dropdown = gr.Dropdown(
+                            choices=list(BACKBONE_MAP.keys()),
+                            value="ResNet18",
+                            label="Select Backbone Architecture to Inspect Detailed Metrics"
+                        )
+                        detailed_perf_markdown = gr.Markdown(value=load_backbone_detailed_table("ResNet18"))
 
                     # TAB 5: Simulated Demos
                     with gr.TabItem("Simulated Demos"):
-                        sim_markdown = gr.Markdown(value="> **Synthetic data, illustrative only.** Select a scan and click **Run Analysis** to view architecture extension simulations.")
+                        gr.Markdown("> **Synthetic data, illustrative only.** The following panels simulate potential future architecture extensions.")
+                        with gr.Accordion("Virtual Multidisciplinary Tumor Board Consultation", open=True):
+                            gr.Markdown(
+                                """
+                                - **Virtual Radiologist:** Follow-up high-resolution dynamic contrast imaging recommended.
+                                - **Virtual Pathologist:** Biomarker panel & cellular subtyping evaluation.
+                                - **Virtual Surgeon:** Surgical resectability evaluated as Favorable.
+                                - **Virtual Oncologist:** Systemic risk profile evaluated for standard regimen.
+                                - **Virtual Genetic Counselor:** Germline genetic screening recommended for first-degree relatives.
+                                """
+                            )
+                        with gr.Accordion("Multi-Hospital Federated Learning FedAvg Protocol", open=False):
+                            gr.Markdown("Simulates multi-center privacy-preserving weight aggregation across 5 hospital nodes without raw data sharing.")
+                        with gr.Accordion("Kaplan-Meier Survival Analysis", open=False):
+                            gr.Markdown("Estimates 5-year disease-free survival probability curves based on lesion covariates.")
+                        with gr.Accordion("SHA-256 Cryptographic Audit Ledger", open=False):
+                            gr.Markdown("Computes immutable SHA-256 signatures logging diagnostic runs to local ledger.")
 
         # Clinician Audit Feedback Section
         with gr.Accordion("Clinician Feedback Audit Logger", open=False):
@@ -377,9 +440,15 @@ def build_app():
 
         # Event Handlers
         domain_dropdown.change(
-            fn=update_domain_ui,
+            fn=update_domain_selection,
             inputs=[domain_dropdown],
-            outputs=[ct_group]
+            outputs=[ct_group, image_input]
+        )
+
+        perf_backbone_dropdown.change(
+            fn=load_backbone_detailed_table,
+            inputs=[perf_backbone_dropdown],
+            outputs=[detailed_perf_markdown]
         )
 
         submit_btn.click(
@@ -392,8 +461,7 @@ def build_app():
                 expl_markdown,
                 evidence_markdown,
                 pdf_output,
-                fhir_output,
-                sim_markdown
+                fhir_output
             ],
         )
 
