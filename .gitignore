@@ -13,3 +13,4 @@ scratch/
 *.pt
 data/
 results/*.pt
+.gradio/

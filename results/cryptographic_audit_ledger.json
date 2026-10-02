@@ -778,5 +778,15 @@
     "confidence": 0.8007,
     "sha256_signature": "1af7f2025d53e7152c34b593be3ec137a574bf92da2b35e957ebef5807db99ba",
     "compliance": "HIPAA & GDPR Cryptographically Verified"
+  },
+  {
+    "block_index": 79,
+    "timestamp": "2026-10-02T19:22:39.600938",
+    "disease": "diabetes",
+    "image_filename": "PIL_Image",
+    "predicted_class": "Moderate DR",
+    "confidence": 0.6233,
+    "sha256_signature": "aea65368ec4956068708c118d4c6c8074456c5473e9be13ae39cc6fdd645fabf",
+    "compliance": "HIPAA & GDPR Cryptographically Verified"
   }
 ]

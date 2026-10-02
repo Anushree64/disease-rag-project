@@ -3,7 +3,7 @@
   "id": "diag-rep-diabetes-PATIENT-99482",
   "meta": {
     "versionId": "1",
-    "lastUpdated": "2026-09-23T12:30:19.006992Z",
+    "lastUpdated": "2026-10-02T13:52:39.639528Z",
     "profile": [
       "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
     ]
@@ -34,9 +34,9 @@
     "reference": "Patient/PATIENT-99482",
     "display": "Patient ID: PATIENT-99482"
   },
-  "effectiveDateTime": "2026-09-23T12:30:19.006992Z",
-  "issued": "2026-09-23T12:30:19.006992Z",
-  "conclusion": "Predicted Diagnosis: Moderate DR (Confidence: 80.1%). Conformal Set: ['Healthy', 'Mild DR', 'Moderate DR', 'Proliferate DR', 'Severe DR'].",
+  "effectiveDateTime": "2026-10-02T13:52:39.639528Z",
+  "issued": "2026-10-02T13:52:39.639528Z",
+  "conclusion": "Predicted Diagnosis: Moderate DR (Confidence: 62.3%). Conformal Set: ['Mild DR', 'Moderate DR', 'Severe DR'].",
   "result": [
     {
       "reference": "Observation/obs-prediction-PATIENT-99482",
@@ -56,7 +56,7 @@
         "text": "Primary AI Class Prediction Probability"
       },
       "valueQuantity": {
-        "value": 80.07,
+        "value": 62.33,
         "unit": "%",
         "system": "http://unitsofmeasure.org",
         "code": "%"
@@ -69,7 +69,7 @@
       "code": {
         "text": "Conformal Set Size"
       },
-      "valueInteger": 5
+      "valueInteger": 3
     }
   ],
   "extension": [
