@@ -31,15 +31,17 @@ _LAST_RESULT = {}
 CUSTOM_CSS = """
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* Base Container & Full-Width High Contrast Dark Theme */
+/* Base Container & Full-Width High Contrast Dark Theme for 100% Zoom */
 body, html {
     margin: 0 !important;
     padding: 0 !important;
     background-color: #050811 !important;
+    overflow-x: hidden !important;
 }
 
 body, .gradio-container, .gradio-container * {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    box-sizing: border-box !important;
 }
 
 .gradio-container {
@@ -48,70 +50,69 @@ body, .gradio-container, .gradio-container * {
     max-width: 100% !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 28px 32px 28px !important;
-    box-sizing: border-box !important;
+    padding: 0 24px 24px 24px !important;
 }
 
-/* Full-Width Enterprise Navbar Header */
+/* Compact Full-Width Enterprise Navbar Header */
 .enterprise-navbar {
     background: linear-gradient(135deg, #0b1120 0%, #151d30 50%, #0f172a 100%);
     border-bottom: 1px solid #1e293b;
-    border-radius: 0 0 16px 16px;
-    padding: 20px 32px;
-    margin: 0 -28px 24px -28px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 12px 12px;
+    padding: 14px 24px;
+    margin: 0 -24px 18px -24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
 .brand-icon {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    width: 52px;
-    height: 52px;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
 }
 
 .brand-title h1 {
     color: #ffffff !important;
-    font-size: 1.8rem !important;
+    font-size: 1.45rem !important;
     font-weight: 800 !important;
-    letter-spacing: -0.5px;
-    margin: 0 0 2px 0 !important;
+    letter-spacing: -0.4px;
+    margin: 0 0 1px 0 !important;
 }
 
 .brand-title p {
     color: #94a3b8 !important;
-    font-size: 0.9rem !important;
+    font-size: 0.84rem !important;
     margin: 0 !important;
 }
 
 .status-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 
 .status-pill {
-    padding: 6px 14px;
+    padding: 4px 10px;
     border-radius: 9999px;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
     text-transform: uppercase;
 }
 
@@ -142,20 +143,20 @@ body, .gradio-container, .gradio-container * {
 /* Tabs & Navigation Bar */
 .tabs {
     border-bottom: 2px solid #1e293b !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
 }
 
 .tab-nav, .tabs button, button[role="tab"] {
     background-color: #0b1120 !important;
     color: #94a3b8 !important;
-    font-size: 0.98rem !important;
+    font-size: 0.9rem !important;
     font-weight: 600 !important;
     border: 1px solid #1e293b !important;
     border-bottom: none !important;
-    border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important;
-    padding: 12px 22px !important;
-    margin-right: 6px !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    padding: 9px 18px !important;
+    margin-right: 4px !important;
     transition: all 0.2s ease !important;
 }
 
@@ -168,7 +169,14 @@ body, .gradio-container, .gradio-container * {
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
     color: #ffffff !important;
     border-color: #38bdf8 !important;
-    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4) !important;
+    box-shadow: 0 3px 12px rgba(2, 132, 199, 0.35) !important;
+}
+
+/* Compact Image Overlays at 100% Zoom */
+.image-container, .gr-image, .gr-image img, div[data-testid="image"] img {
+    max-height: 280px !important;
+    object-fit: contain !important;
+    border-radius: 8px !important;
 }
 
 /* Tables */
@@ -176,9 +184,9 @@ table {
     width: 100% !important;
     border-collapse: separate !important;
     border-spacing: 0 !important;
-    margin: 14px 0 !important;
+    margin: 10px 0 !important;
     background-color: #0b1120 !important;
-    border-radius: 10px !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
     border: 1px solid #1e293b !important;
 }
@@ -187,8 +195,8 @@ th {
     background-color: #1e293b !important;
     color: #38bdf8 !important;
     font-weight: 700 !important;
-    font-size: 0.92rem !important;
-    padding: 13px 18px !important;
+    font-size: 0.85rem !important;
+    padding: 10px 14px !important;
     text-align: left !important;
     border-bottom: 2px solid #334155 !important;
     text-transform: uppercase;
@@ -197,8 +205,8 @@ th {
 
 td {
     color: #f1f5f9 !important;
-    font-size: 0.92rem !important;
-    padding: 12px 18px !important;
+    font-size: 0.85rem !important;
+    padding: 9px 14px !important;
     border-bottom: 1px solid #1e293b !important;
 }
 
@@ -217,19 +225,21 @@ code, pre, .gr-code {
     color: #38bdf8 !important;
     border-radius: 6px !important;
     border: 1px solid #1e293b !important;
+    font-size: 0.84rem !important;
 }
 
 input, textarea, select, .gr-input, .gr-box, label span {
     background-color: #0b1120 !important;
     color: #f8fafc !important;
     border-color: #334155 !important;
-    border-radius: 8px !important;
+    border-radius: 6px !important;
+    font-size: 0.88rem !important;
 }
 
 label {
     color: #cbd5e1 !important;
     font-weight: 600 !important;
-    font-size: 0.92rem !important;
+    font-size: 0.86rem !important;
 }
 
 /* Action Buttons */
@@ -237,11 +247,11 @@ button.primary, .btn-primary, .gr-button-primary {
     background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    font-size: 1.02rem !important;
+    font-size: 0.95rem !important;
     border: none !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4) !important;
-    padding: 13px 26px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
+    padding: 10px 20px !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
 }
@@ -256,14 +266,15 @@ button.secondary, .btn-secondary {
     color: #f8fafc !important;
     font-weight: 600 !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-    padding: 10px 20px !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    font-size: 0.88rem !important;
 }
 
 /* Full-Width Footer */
 .enterprise-footer {
-    margin: 40px -28px -32px -28px;
-    padding: 24px 32px;
+    margin: 32px -24px -24px -24px;
+    padding: 16px 24px;
     background: #090d16;
     border-top: 1px solid #1e293b;
     color: #94a3b8;
@@ -271,34 +282,34 @@ button.secondary, .btn-secondary {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
 }
 
 .footer-info h4 {
     color: #f8fafc;
-    margin: 0 0 4px 0;
-    font-size: 0.95rem;
+    margin: 0 0 2px 0;
+    font-size: 0.88rem;
     font-weight: 700;
 }
 
 .footer-info p {
     margin: 0;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #64748b;
 }
 
 .footer-badges {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     font-weight: 600;
 }
 
 .footer-badge-item {
     background: #0f172a;
     border: 1px solid #1e293b;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 6px;
     color: #cbd5e1;
 }
@@ -467,7 +478,7 @@ def handle_feedback(rating: int, approved: bool, comments: str):
 
 
 def build_app():
-    """Build streamlined full-screen enterprise Gradio UI."""
+    """Build streamlined full-screen enterprise Gradio UI optimized for 100% zoom."""
     with gr.Blocks(title="MED-AI Enterprise Diagnostic Workbench") as demo:
         # Full-Width Header Navbar
         gr.HTML(
