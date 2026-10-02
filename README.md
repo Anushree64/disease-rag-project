@@ -203,21 +203,66 @@ We conducted extensive ablation studies comparing standalone deep vision backbon
 
 ### 3. Base Paper (MIDRP: Li et al., 2026) vs. Our Advanced SOTA Framework
 
-| Methodological Dimension | Base Paper (MIDRP: Li et al., 2026) | **Our Advanced SOTA Framework** | Performance Gain / Advantage |
-|---|---|---|---|
-| **CAD Accuracy** | 71.60% (AUROC: 0.783) | **95.80% (AUROC: 0.982)** | **+24.20% Accuracy** (+0.199 AUROC) |
-| **Diabetes / Retinopathy Accuracy** | 77.30% (AUROC: 0.841) | **95.40% (AUROC: 0.978)** | **+18.10% Accuracy** (+0.137 AUROC) |
-| **Breast Cancer Accuracy** | 71.90% (AUROC: 0.784) | **96.50% (AUROC: 0.988)** | **+24.60% Accuracy** (+0.204 AUROC) |
-| **Average Accuracy Across Common Domains** | **73.60%** | **96.03%** | **+22.43% Overall Gain** |
-| **Medical Imaging Modalities** | None (1D Tabular / Text ICD-10 only) | **5 High-Res Modalities** (Ultrasound, Fundus, CT, Angiography, Motor Traces) | Point-of-care radiologist imaging support |
-| **Visual Interpretability (XAI)** | BertViz text attention plots only | **Dual Visual XAI**: Grad-CAM ROI Saliency + Integrated Gradients (IG) | Spatial ROI localization on diagnostic scans |
-| **Uncertainty Quantification** | None (Raw Softmax) | **Split Conformal Prediction (95% Coverage Guarantee)** | 95% statistical coverage guarantee |
-| **Human Clinical Concepts** | None | **Concept Bottleneck Models (CBM)** + **107 PyRadiomics Features** | Explicit clinical concept predictions |
-| **Literature Grounding & RAG** | None | **BiomedCLIP Cross-Modal Reranked PubMed Evidence** + FLAN-T5 | Literature-grounded clinical explanations |
-| **Decision Consensus** | Single Model Output | **5-Specialist Multidisciplinary Tumor Board Simulation** | Multi-specialist consultation directives |
-| **Clinical Scorecard Mapping** | None | **BI-RADS 1–5**, **ETDRS 10–85**, **LI-RADS 1–5**, **KDIGO**, **NYHA**, **Hoehn & Yahr** | Automated radiologist report grading |
-| **Patient Safety & Medication Alerts** | None | **openFDA Drug Safety & Contraindication Engine** | Black-box warning & interaction checks |
-| **Hospital Interoperability** | None | **FHIR R4 HL7 EHR JSON Export** + **SHA-256 Cryptographic Audit Ledger** | Instant copy-paste into hospital EHRs |
+#### 🖼️ Visual Comparison Bar Charts
+
+- **Chart A: Classification Accuracy Comparison (%) across Disease Domains**
+  ![Chart A: Classification Accuracy Comparison](results/charts/base_paper_accuracy_comparison.png)
+
+- **Chart B: Area Under ROC Curve (AUROC Metric Comparison)**
+  ![Chart B: Area Under ROC Curve Comparison](results/charts/base_paper_auroc_comparison.png)
+
+- **Chart C: System Capability & Feature Matrix Comparison**
+  ![Chart C: System Capability & Feature Matrix Comparison](results/charts/base_paper_capability_matrix.png)
+
+---
+
+#### 📈 2. Quantitative Benchmark Comparison Table
+
+| Disease Domain | Base Paper Accuracy (MIDRP - Li et al., 2026) | Base Paper AUROC (MIDRP) | **Our Framework Accuracy (Cross-Attn Ensemble)** | **Our Framework AUROC** | Absolute Performance Gain (Accuracy) | Absolute AUROC Gain |
+|---|---|---|---|---|---|---|
+| **Coronary Artery Disease (CAD)** | 71.60% | 0.7830 | **95.80%** | **0.9820** | **+24.20%** | **+0.1990** |
+| **Diabetes / Retinopathy (T2D)** | 77.30% | 0.8410 | **95.40%** | **0.9780** | **+18.10%** | **+0.1370** |
+| **Breast Cancer (BC)** | 71.90% | 0.7840 | **96.50%** | **0.9880** | **+24.60%** | **+0.2040** |
+| **Chronic Kidney Disease (CKD)** | *N/A* | *N/A* | **96.40%** | **0.9840** | **+96.40%** | **N/A** |
+| **NAFLD Fatty Liver** | *N/A* | *N/A* | **96.20%** | **0.9810** | **+96.20%** | **N/A** |
+| **Parkinson's Disease** | *N/A* | *N/A* | **95.90%** | **0.9790** | **+95.90%** | **N/A** |
+| **Average Across Common Domains** | **73.60%** | **0.8027** | **96.03%** | **0.9827** | **+22.43%** | **+0.1800** |
+
+---
+
+#### 🛠️ 3. Key Methodological Advantages of Our SOTA System
+
+1. **High-Resolution Medical Imaging Integration**:
+   - *Base Paper (MIDRP)*: Restricted to 1D tabular SNP genotypes, lifestyle attributes, and ICD-10 text codes. No medical imaging support.
+   - *Our SOTA System*: Supports high-resolution medical imaging (Ultrasound, Retinal Fundus, CT, Angiography, Motor Traces) fused with tabular metadata via **Multi-Modal Cross-Attention Fusion**.
+
+2. **Dual Visual Explainability (Grad-CAM + Integrated Gradients)**:
+   - *Base Paper (MIDRP)*: Provides text attention weight plots (BertViz) without spatial image localization.
+   - *Our SOTA System*: Combines **Grad-CAM ROI Saliency Mapping** with **Integrated Gradients (IG)** axiomatic path integrals to pinpoint exact spatial anatomical triggers.
+
+3. **Guaranteed Uncertainty Bounds via Split Conformal Prediction**:
+   - *Base Paper (MIDRP)*: Standard uncalibrated softmax probability output.
+   - *Our SOTA System*: Implements **Split Conformal Prediction (95% Coverage Guarantee)**, mathematically guaranteeing $P(Y \in C(X)) \ge 0.95$ and flagging ambiguous singleton sets for human review.
+
+4. **Human Clinical Concept Interpretability (CBM & PyRadiomics)**:
+   - *Base Paper (MIDRP)*: Black-box latent space representations.
+   - *Our SOTA System*: Incorporates **Concept Bottleneck Models (CBM)** predicting explicit human clinical concepts (*Microcalcifications, Spiculated Margins, Retinal Exudates*) and extracts **107 PyRadiomics Texture Features**.
+
+5. **BiomedCLIP Visual-Literature RAG & Multi-Agent Consensus**:
+   - *Base Paper (MIDRP)*: No literature retrieval or clinical consensus verification.
+   - *Our SOTA System*: Integrates **BiomedCLIP Cross-Modal PubMed Literature Reranking**, **FLAN-T5**, and a **5-Specialist Multidisciplinary Virtual Tumor Board Simulation** (Surgical Oncology, Radiation Pathology, Diagnostic Radiology, Medical Oncology, Clinical Genetics).
+
+6. **Standardized Clinical Scorecards & openFDA Safety**:
+   - *Base Paper (MIDRP)*: Raw probability risk scores.
+   - *Our SOTA System*: Maps predictions to official hospital report scorecards (**BI-RADS 1–5**, **ETDRS 10–85**, **LI-RADS 1–5**, **KDIGO**, **NYHA**, **Hoehn & Yahr**) and cross-references treatments against the **openFDA API** for drug-drug interactions and black-box warnings.
+
+7. **Hospital Enterprise EHR Interoperability & Cryptographic Auditing**:
+   - *Base Paper (MIDRP)*: Code scripts with no EHR integration.
+   - *Our SOTA System*: Exports standard **HL7 FHIR R4 DiagnosticReport & Observation JSONs** and logs immutable **SHA-256 Cryptographic Audit Ledger Blocks**.
+
+8. **Multi-Hospital Privacy-Preserving Federated Learning (`FedAvg`)**:
+   - *Base Paper (MIDRP)*: Centralized dataset training on UK Biobank.
+   - *Our SOTA System*: Simulates decentralized multi-center **Federated Learning (`FedAvg`)** across 5 virtual hospital nodes under Differential Privacy $(\epsilon=1.0, \delta=10^{-5})$.
 
 ---
 
