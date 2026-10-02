@@ -59,7 +59,7 @@ Beyond classification accuracy, post-hoc Explainable AI (XAI) has become essenti
 
 Conformal Prediction, originally formulated by Vovk et al. and expanded by Angelopoulos et al. [8], provides distribution-free statistical coverage guarantees for machine learning predictions. In safety-critical medical triage, split conformal prediction transforms point predictions into prediction sets that contain the true disease state with a user-defined probability (e.g., 95%), offering an explicit metric for model uncertainty and automated referral triggers.
 
-Despite these advancements, existing clinical support tools remain fragmented. Most solutions either provide visual heatmaps without textual literature evidence, or perform text RAG without cross-modal image grounding. Furthermore, very few systems combine graph neural network fusion, split conformal coverage sets, multi-agent clinical consensus, and HL7 FHIR R4 EHR interoperability into a single deployable dashboard. This paper addresses this gap by proposing a comprehensive 4-pillar, 53-module multi-disease CDSS framework.
+Despite these advancements, existing clinical support tools remain fragmented. Most solutions either provide visual heatmaps without textual literature evidence, or perform text RAG without cross-modal image grounding. Furthermore, very few systems combine graph neural network fusion, split conformal coverage sets, multi-agent clinical consensus, and HL7 FHIR R4 EHR interoperability into a single deployable dashboard. This paper addresses this gap by proposing a comprehensive 4-pillar, 56-module multi-disease CDSS framework.
 
 ---
 
@@ -78,7 +78,7 @@ To overcome these limitations, we formulate an end-to-end closed-loop diagnostic
 
 ## IV. PROPOSED WORK
 
-The proposed multi-disease CDSS framework is structured into **4 Core Architectural Pillars** encompassing **53 specialized modules**. The overall workflow of the system is illustrated in Figure 1.
+The proposed multi-disease CDSS framework is structured into **4 Core Architectural Pillars** encompassing **56 specialized modules**. The overall workflow of the system is illustrated in Figure 1.
 
 ```
 +-----------------------------------------------------------------------------+
