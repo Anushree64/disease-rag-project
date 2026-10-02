@@ -29,33 +29,151 @@ _PIPELINES = {}
 _LAST_RESULT = {}
 
 CUSTOM_CSS = """
-body, .gradio-container {
-    background-color: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: 'Inter', -apple-system, sans-serif !important;
+/* Base Container & High Contrast Theme */
+body, .gradio-container, .gradio-container * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
+
+.gradio-container {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+/* Premium Main Header Banner */
 .main-header {
     text-align: center;
-    padding: 20px;
+    padding: 24px 20px;
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border-radius: 12px;
+    border-radius: 16px;
     border: 1px solid #334155;
-    margin-bottom: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 24px;
 }
 .main-header h1 {
-    color: #38bdf8;
-    font-size: 2.2rem;
-    font-weight: 700;
+    color: #38bdf8 !important;
+    font-size: 2.3rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
 }
 .main-header p {
-    color: #94a3b8;
-    font-size: 1.0rem;
+    color: #cbd5e1 !important;
+    font-size: 1.05rem !important;
+    font-weight: 500;
 }
-.card-panel {
+
+/* Tabs & Tab Nav Bar - Crisp High-Contrast Fix */
+.tabs {
+    border-bottom: 2px solid #334155 !important;
+}
+.tab-nav, .tabs button, button[role="tab"] {
     background-color: #1e293b !important;
+    color: #94a3b8 !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
     border: 1px solid #334155 !important;
+    border-bottom: none !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    padding: 10px 18px !important;
+    margin-right: 4px !important;
+    transition: all 0.2s ease-in-out !important;
+}
+.tab-nav:hover, .tabs button:hover, button[role="tab"]:hover {
+    color: #38bdf8 !important;
+    background-color: #334155 !important;
+}
+.tab-nav.selected, .tabs button.selected, button[role="tab"][aria-selected="true"] {
+    background-color: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #38bdf8 !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* Markdown Tables High Contrast Fix */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 15px 0 !important;
+    background-color: #1e293b !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    border: 1px solid #334155 !important;
+}
+th {
+    background-color: #0f172a !important;
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
+    font-size: 1.0rem !important;
+    padding: 12px 16px !important;
+    text-align: left !important;
+    border-bottom: 2px solid #334155 !important;
+}
+td {
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid #334155 !important;
+}
+tr:nth-child(even) td {
+    background-color: #162032 !important;
+}
+tr:hover td {
+    background-color: #1e293b !important;
+}
+
+/* Markdown Content Elements */
+.markdown-text, .gr-markdown, div.gr-form, .markdown-body {
+    color: #f1f5f9 !important;
+}
+.markdown-text h1, .markdown-text h2, .markdown-text h3, .gr-markdown h1, .gr-markdown h2, .gr-markdown h3 {
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
+}
+.markdown-text strong, .gr-markdown strong {
+    color: #f8fafc !important;
+}
+.markdown-text code, .gr-markdown code {
+    background-color: #0f172a !important;
+    color: #38bdf8 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    border: 1px solid #334155 !important;
+}
+
+/* Form Controls, Inputs, Sliders, Dropdowns, Cards */
+input, textarea, select, .gr-input, .gr-box, label span, .block {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+label {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+}
+
+/* Primary & Secondary Action Buttons */
+button.primary, .btn-primary, .gr-button-primary {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 1.05rem !important;
+    border: none !important;
     border-radius: 10px !important;
-    padding: 15px !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4) !important;
+    padding: 12px 24px !important;
+}
+button.primary:hover, .btn-primary:hover {
+    background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+}
+button.secondary, .btn-secondary, .gr-button-secondary {
+    background-color: #334155 !important;
+    color: #f8fafc !important;
+    font-weight: 600 !important;
+    border: 1px solid #475569 !important;
+    border-radius: 8px !important;
 }
 """
 
