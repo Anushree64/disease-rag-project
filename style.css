@@ -1,4 +1,4 @@
-/* style.css — Academic Research Prototype CSS Theme & Complete Gradio Overrides */
+/* style.css — Professional Full-Width Clinical CDS System Theme */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root, .dark, body {
@@ -31,22 +31,40 @@
 body, html {
     margin: 0 !important;
     padding: 0 !important;
-    background-color: #0f172a !important;
+    background: linear-gradient(180deg, #0b1220, #0f172a) !important;
     color: #f8fafc !important;
     font-family: 'Inter', sans-serif !important;
+    font-size: 15px !important;
+    overflow-x: hidden !important;
 }
 
+/* Full-Width Container Alignment */
 .gradio-container {
-    background-color: #0f172a !important;
+    background: transparent !important;
     color: #f8fafc !important;
-    max-width: 100% !important;
+    max-width: none !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 0 24px 24px 24px !important;
+    padding: 0 clamp(16px, 2.5vw, 48px) 32px !important;
     box-sizing: border-box !important;
 }
 
-/* High Contrast Heading & Prose Overrides */
+/* Remove limits on Gradio inner wrappers */
+.gradio-container > .main,
+.gradio-container .wrap,
+.gradio-container .contain,
+.gradio-container .app,
+.gradio-container > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+}
+
+/* High Contrast Headings */
 h1, h2, h3, h4, h5, h6, .markdown-text h1, .markdown-text h2, .markdown-text h3, .gr-markdown h1, .gr-markdown h2, .gr-markdown h3 {
     color: #ffffff !important;
     font-weight: 700 !important;
@@ -54,102 +72,88 @@ h1, h2, h3, h4, h5, h6, .markdown-text h1, .markdown-text h2, .markdown-text h3,
 
 p, span, div, label, legend, .gr-form, .gr-box, .gr-markdown p, .gr-markdown li {
     color: #f8fafc !important;
+    font-size: 0.95rem;
 }
 
-/* Fix Input Controls, Section Labels & Sample Images Title */
-label span, .block-title, .gr-label, div[data-testid="block-label"], .gr-form legend {
-    color: #ffffff !important;
-    font-weight: 700 !important;
-    font-size: 0.92rem !important;
-    background-color: transparent !important;
-}
-
-/* Header Banner */
+/* Header Single Card with Left Accent Bar & Gradient */
 .academic-header {
-    background-color: #1e293b;
-    border-bottom: 1px solid #334155;
-    padding: 20px 24px;
-    margin: 0 -24px 20px -24px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+    border: 1px solid #334155 !important;
+    border-left: 4px solid #0284c7 !important;
+    border-radius: 10px !important;
+    padding: 20px 28px !important;
+    margin: 16px 0 24px 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.header-title-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
 }
 
 .header-title-section h1 {
     color: #ffffff !important;
-    font-size: 1.6rem !important;
+    font-size: clamp(1.3rem, 2vw, 1.8rem) !important;
     font-weight: 800 !important;
-    margin: 0 0 4px 0 !important;
+    margin: 0 0 6px 0 !important;
+    line-height: 1.25 !important;
 }
 
 .header-title-section p {
     color: #cbd5e1 !important;
     font-size: 0.95rem !important;
-    margin: 0 0 12px 0 !important;
+    margin: 0 !important;
 }
 
-.academic-banner {
-    background-color: rgba(234, 179, 8, 0.15);
-    color: #fde047 !important;
-    border: 1px solid rgba(234, 179, 8, 0.4);
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    display: inline-block;
-}
-
-/* Dark Surface Panels & Containers */
+/* Dark Surface Panels & Consistent 10px Border Radius */
 .block, .gr-box, .gr-form, .gr-panel, div.column {
     background-color: #1e293b !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
+    margin-bottom: 16px !important;
 }
 
-/* Image Component & Inputs */
-input, textarea, select, .gr-input, .gr-box, select option {
+/* Input Form Controls */
+input, textarea, select, .gr-input, select option {
     background-color: #0f172a !important;
     color: #f8fafc !important;
     border: 1px solid #334155 !important;
-    border-radius: 6px !important;
+    border-radius: 8px !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+input:focus, textarea:focus, select:focus, .gr-input:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3) !important;
 }
 
 /* Image container */
 div[data-testid="image"], .image-container, .gr-image {
     background-color: #0f172a !important;
     border: 1px solid #334155 !important;
+    border-radius: 10px !important;
 }
 
 /* Examples / Sample Scans Container */
 .examples, .gr-examples {
     background-color: #1e293b !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-    padding: 12px !important;
-}
-.examples *, .gr-examples * {
-    color: #f8fafc !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
 }
 
 /* Accordion Dark Surface */
 .gr-accordion, div.accordion {
     background-color: #1e293b !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
-}
-.gr-accordion .label-wrap {
-    color: #ffffff !important;
+    border-radius: 10px !important;
+    margin-bottom: 16px !important;
 }
 
-/* Download Box & JSON Code Viewer Dark Panels */
-.gr-file, div[data-testid="file-upload"], .file-preview, .gr-code {
-    background-color: #0f172a !important;
-    border: 1px solid #334155 !important;
-    color: #f8fafc !important;
-    border-radius: 8px !important;
-}
-.gr-file *, .gr-code * {
-    color: #f8fafc !important;
-}
-
-/* Tabs */
+/* Tabs & Active Underline Styling */
 .tabs {
     border-bottom: 1px solid #334155 !important;
     margin-bottom: 20px !important;
@@ -158,14 +162,15 @@ div[data-testid="image"], .image-container, .gr-image {
 .tab-nav, .tabs button, button[role="tab"] {
     background-color: #0f172a !important;
     color: #cbd5e1 !important;
-    font-size: 0.92rem !important;
+    font-size: 0.95rem !important;
     font-weight: 600 !important;
     border: 1px solid #334155 !important;
-    border-bottom: none !important;
+    border-bottom: 3px solid transparent !important;
     border-top-left-radius: 8px !important;
     border-top-right-radius: 8px !important;
-    padding: 10px 18px !important;
-    margin-right: 4px !important;
+    padding: 10px 20px !important;
+    margin-right: 6px !important;
+    transition: all 0.2s ease !important;
 }
 
 .tab-nav:hover, .tabs button:hover, button[role="tab"]:hover {
@@ -174,20 +179,22 @@ div[data-testid="image"], .image-container, .gr-image {
 }
 
 .tab-nav.selected, .tabs button.selected, button[role="tab"][aria-selected="true"] {
-    background-color: #0284c7 !important;
+    background-color: #1e293b !important;
     color: #ffffff !important;
-    border-color: #0284c7 !important;
+    border-color: #334155 !important;
+    border-bottom: 3px solid #0284c7 !important;
 }
 
 /* Buttons */
 button.primary, .btn-primary, .gr-button-primary {
     background-color: #0284c7 !important;
     color: #ffffff !important;
-    font-weight: 600 !important;
-    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    font-size: 0.98rem !important;
     border: none !important;
     border-radius: 8px !important;
-    padding: 10px 20px !important;
+    padding: 12px 24px !important;
+    transition: background-color 0.2s ease !important;
 }
 
 button.primary:hover, .btn-primary:hover {
@@ -199,17 +206,22 @@ button.secondary, .btn-secondary {
     color: #ffffff !important;
     font-weight: 600 !important;
     border: 1px solid #475569 !important;
-    border-radius: 6px !important;
+    border-radius: 8px !important;
 }
 
-/* High Contrast Tables */
+/* High Contrast Tables with Auto-Overflow & Text Wrapping */
+.table-wrap, div[data-testid="markdown"] table {
+    width: 100% !important;
+    overflow-x: auto !important;
+}
+
 table {
     width: 100% !important;
     border-collapse: collapse !important;
-    margin: 12px 0 !important;
+    margin: 14px 0 !important;
     background-color: #1e293b !important;
     border: 1px solid #334155 !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     overflow: hidden !important;
 }
 
@@ -217,18 +229,19 @@ th {
     background-color: #0f172a !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    font-size: 0.88rem !important;
-    padding: 10px 14px !important;
+    font-size: 0.9rem !important;
+    padding: 12px 16px !important;
     text-align: left !important;
     border-bottom: 2px solid #334155 !important;
 }
 
 td {
     color: #f8fafc !important;
-    font-size: 0.88rem !important;
-    padding: 9px 14px !important;
+    font-size: 0.9rem !important;
+    padding: 10px 16px !important;
     border-bottom: 1px solid #334155 !important;
-    white-space: nowrap !important;
+    white-space: normal !important;
+    word-break: break-word !important;
 }
 
 td:first-child, th:first-child {
@@ -240,28 +253,86 @@ tr:nth-child(even) td {
     background-color: #0f172a !important;
 }
 
-/* Footer */
-.academic-footer {
-    margin: 32px -24px -24px -24px;
-    padding: 16px 24px;
-    background-color: #1e293b;
-    border-top: 1px solid #334155;
-    color: #cbd5e1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-size: 0.85rem;
+/* Code backtick & Markdown styling overrides */
+code, :not(pre) > code, .prose code, .md code, .markdown code, [class*="prose"] code, .gradio-container code {
+    background-color: #0b1220 !important;
+    color: #7dd3fc !important;
+    border: 1px solid #334155 !important;
+    border-radius: 4px !important;
+    padding: 2px 7px !important;
+    font-weight: 600 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
-.footer-link {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 600;
+pre, pre code {
+    background-color: #0b1220 !important;
+    color: #f8fafc !important;
+    border-radius: 8px !important;
+    padding: 14px !important;
+}
+
+blockquote {
+    border-left: 4px solid #0284c7 !important;
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    color: #cbd5e1 !important;
+    padding: 10px 16px !important;
+    margin: 10px 0 !important;
+    border-radius: 0 8px 8px 0 !important;
+}
+
+/* PDF Download Box & gr.File Styling */
+div[data-testid="file"], .gr-file, .file-preview, .file-download, div.file, .file-container {
+    background-color: #1e293b !important;
+    border: 1px solid #0284c7 !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15) !important;
+}
+
+div[data-testid="file"] label, .gr-file label, div.file-label {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    margin-bottom: 8px !important;
+}
+
+.file-preview a, .file-download a, div[data-testid="file"] a, a[download], .file-name {
+    color: #7dd3fc !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+}
+
+.file-preview a:hover, .file-download a:hover, div[data-testid="file"] a:hover, a[download]:hover {
+    color: #38bdf8 !important;
+    text-decoration: underline !important;
+}
+
+.file-size, .file-icon, td.file-name {
+    color: #cbd5e1 !important;
 }
 
 /* Hide Default Gradio Footer */
 footer {
     display: none !important;
+}
+
+/* Responsive Breakpoint: Stack Columns Vertically on Screens <= 900px */
+@media (max-width: 900px) {
+    .gradio-container {
+        padding: 0 16px 24px 16px !important;
+    }
+    
+    .academic-header {
+        padding: 16px 20px !important;
+    }
+
+    div.row, div.gr-row {
+        flex-direction: column !important;
+    }
+
+    div.column, div.gr-column {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }

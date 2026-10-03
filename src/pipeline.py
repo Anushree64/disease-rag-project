@@ -133,7 +133,8 @@ class DiseaseRAGPipeline:
         self.dual_report_engine = DualReportGenerator()
         self.guideline_auditor = ClinicalGuidelineAuditor()
 
-        vis_dim = 512 if backbone == 'resnet18' else 1280
+        dim_map = {'resnet18': 512, 'efficientnet_b0': 1280, 'vit_b_16': 768, 'convnext_tiny': 768, 'swin_t': 768}
+        vis_dim = dim_map.get(backbone, 512)
         self.fusion_module = TabularImageCrossAttentionFusion(visual_dim=vis_dim, num_classes=len(self.classes)).to(self.device)
 
         # 4. Load Calibrated Conformal Predictor
@@ -150,6 +151,8 @@ class DiseaseRAGPipeline:
 
     def predict_image(self, image_input: Union[str, Path, Image.Image]) -> Tuple[str, float, Dict[str, float], torch.Tensor]:
         """Run classification on input image and return logits."""
+        from src.models import CONFIDENCE_TEMPERATURE
+
         if isinstance(image_input, (str, Path)):
             img = Image.open(image_input).convert('RGB')
         else:
@@ -159,7 +162,7 @@ class DiseaseRAGPipeline:
 
         with torch.no_grad():
             outputs = self.model(img_tensor)
-            probs = torch.softmax(outputs, dim=1).squeeze().cpu().tolist()
+            probs = torch.softmax(outputs / CONFIDENCE_TEMPERATURE, dim=1).squeeze().cpu().tolist()
 
         if isinstance(probs, float):
             probs = [probs]

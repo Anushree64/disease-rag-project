@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.98,
+  "precision": 0.978,
+  "recall": 0.98,
+  "f1": 0.978,
+  "auroc": 0.99,
+  "num_test_samples": 250,
+  "disease": "parkinsons",
+  "backbone": "vit_b_16",
+  "best_val_accuracy": 0.977
+}

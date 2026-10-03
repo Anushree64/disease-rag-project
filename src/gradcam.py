@@ -18,7 +18,7 @@ from src.data_utils import get_transforms
 
 
 class GradCAM:
-    """Grad-CAM implementation for PyTorch CNN backbones."""
+    """Grad-CAM implementation for PyTorch CNN, ViT, Swin, and ConvNeXt backbones."""
 
     def __init__(self, model: nn.Module, target_layer: nn.Module):
         self.model = model
@@ -54,9 +54,37 @@ class GradCAM:
         score = output[0, target_class_idx]
         score.backward()
 
-        # Global average pooling of gradients over spatial dimensions
-        weights = torch.mean(self.gradients[0], dim=(1, 2), keepdim=True)  # [C, 1, 1]
-        cam = torch.sum(weights * self.activations[0], dim=0)  # [H, W]
+        act = self.activations[0]
+        grad = self.gradients[0]
+
+        # Determine spatial dimensions based on activation shape
+        if act.ndim == 2 and act.shape[0] == 197:
+            # ViT-B/16 token sequence: [197, C] where index 0 is [CLS] token
+            spatial_act = act[1:]    # [196, C]
+            spatial_grad = grad[1:]  # [196, C]
+            weights = torch.mean(spatial_grad, dim=0, keepdim=True) # [1, C]
+            cam = torch.sum(weights * spatial_act, dim=-1) # [196]
+            grid_size = int(np.sqrt(cam.shape[0])) # 14
+            cam = cam.reshape(grid_size, grid_size) # [14, 14]
+
+        elif act.ndim == 3 and act.shape[0] != 197:
+            # Swin-T NHWC format: [H, W, C]
+            weights = torch.mean(grad, dim=(0, 1), keepdim=True) # [1, 1, C]
+            cam = torch.sum(weights * act, dim=-1) # [H, W]
+
+        elif act.ndim == 3 and act.shape[0] == 197:
+            # ViT-B/16 token sequence with leading dim
+            spatial_act = act[0, 1:]
+            spatial_grad = grad[0, 1:]
+            weights = torch.mean(spatial_grad, dim=0, keepdim=True)
+            cam = torch.sum(weights * spatial_act, dim=-1)
+            grid_size = int(np.sqrt(cam.shape[0]))
+            cam = cam.reshape(grid_size, grid_size)
+
+        else:
+            # Standard NCHW 2D feature map [C, H, W]
+            weights = torch.mean(grad, dim=(1, 2), keepdim=True)  # [C, 1, 1]
+            cam = torch.sum(weights * act, dim=0)  # [H, W]
 
         cam = F.relu(cam).detach().cpu().numpy()
         if cam.max() > 0:
@@ -77,38 +105,49 @@ def get_gradcam_overlay(
     """
     Computes Grad-CAM heatmap and returns (overlay_pil_image, raw_cam_map).
     """
-    # Select target layer based on backbone architecture
-    if backbone_name == 'resnet18':
-        target_layer = model.layer4[-1]
-    elif backbone_name == 'efficientnet_b0':
-        target_layer = model.features[-1]
-    else:
-        target_layer = list(model.children())[-2]
+    backbone_name = backbone_name.lower().strip()
+    try:
+        # Select target layer based on backbone architecture
+        if backbone_name == 'resnet18':
+            target_layer = model.layer4[-1]
+        elif backbone_name in ['efficientnet_b0', 'convnext_tiny']:
+            target_layer = model.features[-1]
+        elif backbone_name in ['vit_b_16', 'vit']:
+            target_layer = model.encoder.layers[-1].ln_1
+        elif backbone_name in ['swin_t', 'swin']:
+            target_layer = model.features[-1][-1].norm1
+        else:
+            target_layer = list(model.children())[-2]
 
-    transform = get_transforms(train=False, img_size=224)
-    input_tensor = transform(pil_image.convert('RGB')).unsqueeze(0)
+        transform = get_transforms(train=False, img_size=224)
+        input_tensor = transform(pil_image.convert('RGB')).unsqueeze(0)
 
-    grad_cam = GradCAM(model, target_layer)
-    device = next(model.parameters()).device
-    input_tensor = input_tensor.to(device)
+        grad_cam = GradCAM(model, target_layer)
+        device = next(model.parameters()).device
+        input_tensor = input_tensor.to(device)
 
-    cam_map = grad_cam.generate_heatmap(input_tensor, target_class_idx=target_class_idx)
+        cam_map = grad_cam.generate_heatmap(input_tensor, target_class_idx=target_class_idx)
 
-    # Resize spatial heatmap (e.g. 7x7) to match image resolution (224, 224)
-    cam_img = Image.fromarray((cam_map * 255.0).astype(np.uint8)).resize((224, 224), resample=Image.BILINEAR)
-    cam_map_resized = np.array(cam_img, dtype=np.float32) / 255.0
+        # Resize spatial heatmap to match image resolution (224, 224)
+        cam_img = Image.fromarray((cam_map * 255.0).astype(np.uint8)).resize((224, 224), resample=Image.BILINEAR)
+        cam_map_resized = np.array(cam_img, dtype=np.float32) / 255.0
 
-    # Resize input image to (224, 224)
-    resized_img = pil_image.convert('RGB').resize((224, 224))
-    img_np = np.array(resized_img, dtype=np.float32) / 255.0
+        # Resize input image to (224, 224)
+        resized_img = pil_image.convert('RGB').resize((224, 224))
+        img_np = np.array(resized_img, dtype=np.float32) / 255.0
 
-    # Apply JET colormap to heatmap
-    colormap = cm.get_cmap('jet')
-    heatmap_colored = colormap(cam_map_resized)[:, :, :3]  # Drop alpha channel
+        # Apply JET colormap to heatmap
+        colormap = cm.get_cmap('jet')
+        heatmap_colored = colormap(cam_map_resized)[:, :, :3]
 
-    # Blend original image and heatmap
-    overlay = (1.0 - alpha) * img_np + alpha * heatmap_colored
-    overlay = np.clip(overlay * 255.0, 0, 255).astype(np.uint8)
+        # Blend original image and heatmap
+        overlay = (1.0 - alpha) * img_np + alpha * heatmap_colored
+        overlay = np.clip(overlay * 255.0, 0, 255).astype(np.uint8)
 
-    overlay_pil = Image.fromarray(overlay)
-    return overlay_pil, cam_map
+        overlay_pil = Image.fromarray(overlay)
+        return overlay_pil, cam_map
+    except Exception as e:
+        print(f"Warning: Grad-CAM overlay generation failed for backbone '{backbone_name}': {e}")
+        fallback_img = pil_image.convert('RGB').resize((224, 224))
+        return fallback_img, np.zeros((224, 224), dtype=np.float32)
+

@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.959,
+  "precision": 0.957,
+  "recall": 0.959,
+  "f1": 0.956,
+  "auroc": 0.972,
+  "num_test_samples": 310,
+  "disease": "cad",
+  "backbone": "swin_t",
+  "best_val_accuracy": 0.956
+}

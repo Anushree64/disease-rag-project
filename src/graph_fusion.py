@@ -280,16 +280,14 @@ def run_gat_ablation_study():
     backbones = ['resnet18', 'efficientnet_b0']
     k_values = [4, 8, 16]
 
-    print("
-==================================================")
+    print("\n==================================================")
     print("  RUNNING GNN (GAT) FUSION LAYER & k-NN ABLATION")
     print("==================================================")
 
     all_gat_results = {}
     for d in diseases:
         for b in backbones:
-            print(f"
---- Extracting embeddings for {d.upper()} ({b}) ---")
+            print(f"\n--- Extracting embeddings for {d.upper()} ({b}) ---")
             config = load_disease_config(d)
             num_classes = len(config['classes'])
             train_loader, val_loader, test_loader, _ = get_dataloaders(d, batch_size=64)
@@ -322,8 +320,7 @@ def run_gat_ablation_study():
     with open(base_dir / "results" / "gat_ablation_summary.json", 'w') as f:
         json.dump(all_gat_results, f, indent=2)
 
-    print("
-  GAT Ablation study completed successfully!")
+    print("\n  GAT Ablation study completed successfully!")
 
 
 if __name__ == '__main__':

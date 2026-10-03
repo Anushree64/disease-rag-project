@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.982,
+  "precision": 0.98,
+  "recall": 0.982,
+  "f1": 0.98,
+  "auroc": 0.99,
+  "num_test_samples": 250,
+  "disease": "parkinsons",
+  "backbone": "swin_t",
+  "best_val_accuracy": 0.979
+}

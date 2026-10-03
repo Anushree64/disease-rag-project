@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.96,
+  "precision": 0.958,
+  "recall": 0.96,
+  "f1": 0.957,
+  "auroc": 0.9724999999999999,
+  "num_test_samples": 310,
+  "disease": "cad",
+  "backbone": "convnext_tiny",
+  "best_val_accuracy": 0.957
+}

@@ -194,17 +194,32 @@ def get_dataloaders(
     total = len(all_paths)
     print(f"  Total images: {total}")
 
-    # Stratified 70 / 15 / 15 split
-    X_train, X_temp, y_train, y_temp = train_test_split(
-        all_paths, all_labels,
-        test_size=0.30, stratify=all_labels, random_state=42,
-    )
-    X_val, X_test, y_val, y_test = train_test_split(
-        X_temp, y_temp,
-        test_size=0.50, stratify=y_temp, random_state=42,
-    )
+    # Group-aware 70 / 15 / 15 split (keeps all augmented copies of one scan in the same split)
+    import re
+    from sklearn.model_selection import GroupShuffleSplit
+    
+    groups = [re.split(r'[\s(_]', Path(p).name)[0] for p in all_paths]
 
-    print(f"  Split → train: {len(X_train)} | val: {len(X_val)} | test: {len(X_test)}")
+    gss1 = GroupShuffleSplit(n_splits=1, test_size=0.30, random_state=42)
+    train_idx, temp_idx = next(gss1.split(all_paths, all_labels, groups=groups))
+
+    X_train = [all_paths[i] for i in train_idx]
+    y_train = [all_labels[i] for i in train_idx]
+
+    temp_paths = [all_paths[i] for i in temp_idx]
+    temp_labels = [all_labels[i] for i in temp_idx]
+    temp_groups = [groups[i] for i in temp_idx]
+
+    gss2 = GroupShuffleSplit(n_splits=1, test_size=0.50, random_state=42)
+    val_idx, test_idx = next(gss2.split(temp_paths, temp_labels, groups=temp_groups))
+
+    X_val = [temp_paths[i] for i in val_idx]
+    y_val = [temp_labels[i] for i in val_idx]
+
+    X_test = [temp_paths[i] for i in test_idx]
+    y_test = [temp_labels[i] for i in test_idx]
+
+    print(f"  Group Split -> train: {len(X_train)} | val: {len(X_val)} | test: {len(X_test)} (Unique Groups: {len(set(groups))})")
     print(f"  Train class distribution: {dict(Counter(y_train))}")
     print(f"  Val   class distribution: {dict(Counter(y_val))}")
     print(f"  Test  class distribution: {dict(Counter(y_test))}")

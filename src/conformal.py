@@ -102,11 +102,13 @@ def get_calibrated_conformal_predictor(
     val_probs_list = []
     val_labels_list = []
 
+    from src.models import CONFIDENCE_TEMPERATURE
+
     with torch.no_grad():
         for images, labels in val_loader:
             images = images.to(device)
             outputs = model(images)
-            probs = torch.softmax(outputs, dim=1)
+            probs = torch.softmax(outputs / CONFIDENCE_TEMPERATURE, dim=1)
             val_probs_list.append(probs.cpu().numpy())
             val_labels_list.append(labels.numpy())
 

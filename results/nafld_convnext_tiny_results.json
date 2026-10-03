@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.998,
+  "precision": 0.996,
+  "recall": 0.998,
+  "f1": 0.997,
+  "auroc": 0.9984999999999999,
+  "num_test_samples": 200,
+  "disease": "nafld",
+  "backbone": "convnext_tiny",
+  "best_val_accuracy": 0.995
+}

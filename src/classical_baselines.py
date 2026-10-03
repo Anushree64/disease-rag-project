@@ -132,10 +132,9 @@ def run_classical_baselines_for_disease(
     class_names = config['classes']
     num_classes = len(class_names)
 
-    print(f"
-==================================================")
+    print("\n==================================================")
     print(f"  CLASSICAL BASELINES: {disease_name.upper()} ({backbone_name})")
-    print(f"==================================================")
+    print("==================================================")
 
     # 1. Load data loaders with larger batch size for fast inference
     train_loader, val_loader, test_loader, _ = get_dataloaders(disease_name, batch_size=64)
@@ -236,8 +235,7 @@ def run_all_classical_baselines():
     with open(base_dir / "results" / "classical_baselines_summary.json", 'w') as f:
         json.dump(all_results, f, indent=2)
 
-    print("
-==================================================")
+    print("\n==================================================")
     print("  CLASSICAL BASELINES COMPLETED FOR ALL DISEASES")
     print("==================================================")
 

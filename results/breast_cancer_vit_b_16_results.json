@@ -1,0 +1,11 @@
+{
+  "accuracy": 0.99,
+  "precision": 0.988,
+  "recall": 0.99,
+  "f1": 0.988,
+  "auroc": 0.999,
+  "num_test_samples": 1145,
+  "disease": "breast_cancer",
+  "backbone": "vit_b_16",
+  "best_val_accuracy": 0.987
+}

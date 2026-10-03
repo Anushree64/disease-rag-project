@@ -9,11 +9,14 @@ Each model's final classification head is replaced with a new
 nn.Linear(in_features, num_classes) layer.
 """
 
+import os
 from typing import Optional
 
 import torch
 import torch.nn as nn
 from torchvision import models
+
+CONFIDENCE_TEMPERATURE = float(os.environ.get("CONFIDENCE_TEMPERATURE", "3.0"))
 
 
 def build_model(
@@ -134,7 +137,7 @@ def unfreeze_all(model: nn.Module) -> None:
 # Quick self-test
 # ───────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
-    for name in ['resnet18', 'efficientnet_b0']:
+    for name in ['resnet18', 'efficientnet_b0', 'vit_b_16', 'convnext_tiny', 'swin_t']:
         print(f"\n--- {name} ---")
         m = build_model(name, num_classes=5, pretrained=True)
         freeze_backbone(m)
@@ -142,4 +145,4 @@ if __name__ == '__main__':
         out = m(dummy)
         print(f"  Output shape: {out.shape}")
         unfreeze_all(m)
-        print(f"  ✓ {name} OK")
+        print(f"  [OK] {name} OK")
