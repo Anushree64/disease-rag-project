@@ -109,7 +109,7 @@ p, span, div, label, legend, .gr-form, .gr-box, .gr-markdown p, .gr-markdown li 
 }
 
 /* Dark Surface Panels & Consistent 10px Border Radius */
-.block, .gr-box, .gr-form, .gr-panel, div.column {
+.block:not([data-testid="file"]), .gr-box:not([data-testid="file"]), .gr-form:not([data-testid="file"]), .gr-panel:not([data-testid="file"]), div.column {
     background-color: #1e293b !important;
     border: 1px solid #334155 !important;
     border-radius: 10px !important;
@@ -215,7 +215,7 @@ button.secondary, .btn-secondary {
     overflow-x: auto !important;
 }
 
-table {
+table:not(div[data-testid="file"] table) {
     width: 100% !important;
     border-collapse: collapse !important;
     margin: 14px 0 !important;
@@ -235,7 +235,7 @@ th {
     border-bottom: 2px solid #334155 !important;
 }
 
-td {
+td:not(div[data-testid="file"] td) {
     color: #f8fafc !important;
     font-size: 0.9rem !important;
     padding: 10px 16px !important;
@@ -244,12 +244,12 @@ td {
     word-break: break-word !important;
 }
 
-td:first-child, th:first-child {
+td:first-child:not(div[data-testid="file"] td), th:first-child {
     color: #ffffff !important;
     font-weight: 700 !important;
 }
 
-tr:nth-child(even) td {
+tr:nth-child(even) td:not(div[data-testid="file"] td) {
     background-color: #0f172a !important;
 }
 
@@ -280,36 +280,100 @@ blockquote {
     border-radius: 0 8px 8px 0 !important;
 }
 
-/* PDF Download Box & gr.File Styling */
-div[data-testid="file"], .gr-file, .file-preview, .file-download, div.file, .file-container {
+/* ─────────────────────────────────────────────────────────────
+   PDF Download Component (gr.File) Complete Reset & Styling
+   ───────────────────────────────────────────────────────────── */
+
+/* Outer single dark card container */
+div[data-testid="file"] {
     background-color: #1e293b !important;
-    border: 1px solid #0284c7 !important;
+    border: 1px solid #334155 !important;
     border-radius: 10px !important;
-    padding: 14px !important;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.15) !important;
+    padding: 16px !important;
+    margin: 16px 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
 }
 
-div[data-testid="file"] label, .gr-file label, div.file-label {
+/* Remove stacked borders, margins, and white backgrounds from all nested divs/tables inside gr.File */
+div[data-testid="file"] div,
+div[data-testid="file"] .file-container,
+div[data-testid="file"] .file-preview,
+div[data-testid="file"] .file-download,
+div[data-testid="file"] .file-preview-holder,
+div[data-testid="file"] .file,
+div[data-testid="file"] table,
+div[data-testid="file"] tbody,
+div[data-testid="file"] tr,
+div[data-testid="file"] td {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Label above file download component */
+div[data-testid="file"] label,
+div[data-testid="file"] .file-label,
+div[data-testid="file"] span.block-title {
     color: #ffffff !important;
     font-weight: 700 !important;
     font-size: 0.95rem !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
+    display: block !important;
 }
 
-.file-preview a, .file-download a, div[data-testid="file"] a, a[download], .file-name {
-    color: #7dd3fc !important;
-    font-weight: 600 !important;
+/* Style the file row/preview container as a sleek dark cyan pill */
+div[data-testid="file"] table,
+div[data-testid="file"] .file-preview,
+div[data-testid="file"] div.file {
+    background-color: #0f172a !important;
+    border: 1px solid #0284c7 !important;
+    border-radius: 8px !important;
+    padding: 12px 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+div[data-testid="file"] tr {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+}
+
+div[data-testid="file"] td {
+    color: #f8fafc !important;
+    font-size: 0.95rem !important;
+    border: none !important;
+    border-bottom: none !important;
+    padding: 4px 8px !important;
+}
+
+/* File name, link & download button text */
+div[data-testid="file"] a,
+div[data-testid="file"] a[download],
+div[data-testid="file"] .file-name,
+div[data-testid="file"] .filename {
+    color: #38bdf8 !important;
+    font-weight: 700 !important;
     font-size: 0.95rem !important;
     text-decoration: none !important;
 }
 
-.file-preview a:hover, .file-download a:hover, div[data-testid="file"] a:hover, a[download]:hover {
-    color: #38bdf8 !important;
+div[data-testid="file"] a:hover,
+div[data-testid="file"] a[download]:hover {
+    color: #7dd3fc !important;
     text-decoration: underline !important;
 }
 
-.file-size, .file-icon, td.file-name {
-    color: #cbd5e1 !important;
+div[data-testid="file"] .file-size,
+div[data-testid="file"] span.size {
+    color: #94a3b8 !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
 }
 
 /* Hide Default Gradio Footer */
