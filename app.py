@@ -413,6 +413,24 @@ def build_app():
             # LEFT COLUMN: Inputs & Controls (scale=4)
             with gr.Column(scale=4, min_width=340):
                 gr.Markdown("### Input Controls")
+                
+                # Modality Quick Reference Badge Grid
+                gr.HTML(
+                    """
+                    <div class="domain-organ-card">
+                        <div class="organ-card-title">Supported Clinical Modalities (6 Domains)</div>
+                        <div class="organ-grid">
+                            <div class="organ-item"><span class="organ-icon">🩺</span> Breast Ultrasound</div>
+                            <div class="organ-item"><span class="organ-icon">🫀</span> CAD Angiography</div>
+                            <div class="organ-item"><span class="organ-icon">👁️</span> Retina Fundus</div>
+                            <div class="organ-item"><span class="organ-icon">🫘</span> Kidney CT DICOM</div>
+                            <div class="organ-item"><span class="organ-icon">🧪</span> Liver Ultrasound</div>
+                            <div class="organ-item"><span class="organ-icon">🧠</span> Parkinson Spiral</div>
+                        </div>
+                    </div>
+                    """
+                )
+                
                 domain_dropdown = gr.Dropdown(
                     choices=list(DOMAIN_MAP.keys()),
                     value="Breast Cancer (Ultrasound)",
@@ -500,6 +518,16 @@ def build_app():
                 comments_box = gr.Textbox(placeholder="Clinical observations...", label="Comments")
                 feedback_btn = gr.Button("Submit Feedback", variant="secondary")
             feedback_status = gr.Markdown()
+
+        # Academic System Footer Card
+        gr.HTML(
+            """
+            <div class="academic-footer-card">
+                <span>© 2026 Doclinic XAI CDS • Explainable AI Multi-Disease Clinical Decision Support System</span>
+                <span>Powered by PyTorch, Grad-CAM, BiomedCLIP, FLAN-T5 & Split Conformal Prediction (95% Target)</span>
+            </div>
+            """
+        )
 
         # Event Handlers
         domain_dropdown.change(

@@ -214,6 +214,64 @@ p, span, div, label, legend, .gr-form, .gr-box, .gr-markdown p, .gr-markdown li 
     font-size: 0.75rem !important;
 }
 
+/* Modality Quick Reference Badge Grid */
+.domain-organ-card {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    padding: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+.organ-card-title {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    font-size: 0.82rem !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.organ-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+}
+
+.organ-item {
+    background-color: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 6px !important;
+    padding: 6px 10px !important;
+    color: #cbd5e1 !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+}
+
+.organ-icon {
+    font-size: 1rem !important;
+}
+
+/* Academic Footer Card */
+.academic-footer-card {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    border-radius: 10px !important;
+    padding: 14px 20px !important;
+    margin-top: 24px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+}
+
 /* Dark Surface Panels & Consistent 10px Border Radius */
 .block:not([data-testid="file"]), .gr-box:not([data-testid="file"]), .gr-form:not([data-testid="file"]), .gr-panel:not([data-testid="file"]), div.column {
     background-color: #1e293b !important;
